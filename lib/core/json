@@ -1,0 +1,1993 @@
+{
+    "categories": [
+        {
+            "id": "7c59de1b-0789-452e-987f-7e059fb1958c",
+            "slug": "maxi-box-eeou91l8ivfc1u",
+            "parent_id": "",
+            "image": "58a2f8db-98e9-44e5-8d6a-e626772492a9",
+            "description": {
+                "uz": "  ",
+                "ru": "  ",
+                "en": "  "
+            },
+            "title": {
+                "uz": "🍟🍔🥤Maxi BOX",
+                "ru": "🍟🍔🥤Макси BOX",
+                "en": "🍟🍔🥤Maxi BOX"
+            },
+            "order_no": "0",
+            "active": true,
+            "products": [
+                {
+                    "id": "58dd8606-46bd-47dd-bdd5-39874a1acb3b",
+                    "out_price": 35000,
+                    "currency": "UZS",
+                    "string": "",
+                    "type": "simple",
+                    "categories": [
+                        "7c59de1b-0789-452e-987f-7e059fb1958c"
+                    ],
+                    "brand_id": "",
+                    "rate_id": "",
+                    "image": "https://maxway.uz/_next/image?url=https%3A%2F%2Fcdn.delever.uz%2Fdelever%2F1bb4c9a5-79ed-459a-8580-c915a48bca61&w=1920&q=75",
+                    "active_in_menu": false,
+                    "has_modifier": true,
+                    "from_time": "",
+                    "to_time": "",
+                    "off_always": false,
+                    "gallery": null,
+                    "title": {
+                        "uz": "Maxi BOX An'anaviy",
+                        "ru": "Макси BOX Традиция",
+                        "en": "Maxi BOX Tradition"
+                    },
+                    "description": {
+                        "uz": "  Original sendvich, kartoshka fri, 0,4 l kola, tanlash uchun sous\n",
+                        "ru": "  Сэндвич Original, картофель-фри, кола 0,4 л, соус на выбор\n",
+                        "en": "  Original sandwich, fries, 0.4 l cola, sauce to choose from"
+                    },
+                    "active": true,
+                    "iiko_id": "7957c03e-f85c-4453-a607-4fefc33c97ae",
+                    "jowi_id": "",
+                    "discounts": null
+                },
+                {
+                    "id": "aafee7cc-5584-4457-aba8-c2e9d60b6b0a",
+                    "out_price": 40000,
+                    "currency": "UZS",
+                    "string": "",
+                    "type": "simple",
+                    "categories": [
+                        "7c59de1b-0789-452e-987f-7e059fb1958c"
+                    ],
+                    "brand_id": "",
+                    "rate_id": "",
+                    "image": "https://maxway.uz/_next/image?url=https%3A%2F%2Fcdn.delever.uz%2Fdelever%2Fda37e23a-63f2-4d64-a976-7083154f4fb5&w=1920&q=75",
+                    "active_in_menu": false,
+                    "has_modifier": true,
+                    "from_time": "",
+                    "to_time": "",
+                    "off_always": false,
+                    "gallery": null,
+                    "title": {
+                        "uz": "Maxi BOX Taniqli",
+                        "ru": "Макси BOX Популярный",
+                        "en": "Maxi BOX Popular"
+                    },
+                    "description": {
+                        "uz": "  Original lavash, kartoshka fri, 0,4 l kola, tanlash uchun sous\n",
+                        "ru": "  Лаваш Original, картофель-фри, кола 0,4 л, соус на выбор\n",
+                        "en": "  Original pita bread, fries, 0.4 l cola, sauce to choose from"
+                    },
+                    "active": true,
+                    "iiko_id": "95f126c7-b064-4934-8342-326ea6d5be9f",
+                    "jowi_id": "",
+                    "discounts": null
+                },
+                {
+                    "id": "36a9238a-adf2-4894-8052-8a9580f14c03",
+                    "out_price": 38000,
+                    "currency": "UZS",
+                    "string": "",
+                    "type": "simple",
+                    "categories": [
+                        "7c59de1b-0789-452e-987f-7e059fb1958c"
+                    ],
+                    "brand_id": "",
+                    "rate_id": "",
+                    "image": "https://maxway.uz/_next/image?url=https%3A%2F%2Fcdn.delever.uz%2Fdelever%2Fd9b8fe88-cea7-426e-b179-b1d6613ef95b&w=1920&q=75",
+                    "active_in_menu": false,
+                    "has_modifier": true,
+                    "from_time": "",
+                    "to_time": "",
+                    "off_always": false,
+                    "gallery": null,
+                    "title": {
+                        "uz": "Maxi BOX Retro",
+                        "ru": "Макси BOX Ретро",
+                        "en": "Maxi BOX Retro"
+                    },
+                    "description": {
+                        "uz": "  Shawarma Original, kartoshka fri, 0,4 l kola, tanlash uchun sous",
+                        "ru": "   Шаурма Original, картофель-фри, кола 0,4 л, соус на выбор\n",
+                        "en": "Shawarma Original, fries, cola 0,4 l, sauce to choose from"
+                    },
+                    "active": true,
+                    "iiko_id": "3127674f-e3df-48e3-9700-f3ab0afe04ae",
+                    "jowi_id": "",
+                    "discounts": null
+                },
+                {
+                    "id": "d831c847-a108-4afa-bbc7-80830e7e7171",
+                    "out_price": 38000,
+                    "currency": "UZS",
+                    "string": "",
+                    "type": "simple",
+                    "categories": [
+                        "7c59de1b-0789-452e-987f-7e059fb1958c"
+                    ],
+                    "brand_id": "",
+                    "rate_id": "",
+                    "image": "https://maxway.uz/_next/image?url=https%3A%2F%2Fcdn.delever.uz%2Fdelever%2F6683df94-5d09-453d-9f9f-717cd4f9f426&w=1920&q=75",
+                    "active_in_menu": false,
+                    "has_modifier": true,
+                    "from_time": "",
+                    "to_time": "",
+                    "off_always": false,
+                    "gallery": null,
+                    "title": {
+                        "uz": "Max BOX Panini ",
+                        "ru": "Макси BOX Панини",
+                        "en": "Maxi BOX Рanini "
+                    },
+                    "description": {
+                        "uz": "  Original panini, kartoshka fri, 0,4 l kola, tanlash uchun sous\n",
+                        "ru": "  Панини Original, картофель-фри, кола 0,4 л, соус на выбор\n",
+                        "en": "  Original panini, fries, 0.4 l cola, sauce to choose from"
+                    },
+                    "active": true,
+                    "iiko_id": "aca09961-cce8-47b1-9ae2-32bd28be62fe",
+                    "jowi_id": "",
+                    "discounts": null
+                },
+                {
+                    "id": "53ccebba-27d3-4441-aa0d-3772baa6beff",
+                    "out_price": 35000,
+                    "currency": "UZS",
+                    "string": "",
+                    "type": "simple",
+                    "categories": [
+                        "7c59de1b-0789-452e-987f-7e059fb1958c"
+                    ],
+                    "brand_id": "",
+                    "rate_id": "",
+                    "image": "https://maxway.uz/_next/image?url=https%3A%2F%2Fcdn.delever.uz%2Fdelever%2F5e121e00-c5fb-4937-a18d-1f194d53559a&w=1920&q=75",
+                    "active_in_menu": false,
+                    "has_modifier": true,
+                    "from_time": "",
+                    "to_time": "",
+                    "off_always": false,
+                    "gallery": null,
+                    "title": {
+                        "uz": "Maxi BOX Trend",
+                        "ru": "Макси BOX Тренд",
+                        "en": "Maxi BOX Trend"
+                    },
+                    "description": {
+                        "uz": "Gamburger,  kartoshka fri, 0,4 l kola, tanlash uchun sous\n",
+                        "ru": "  Гамбургер, картофель-фри, кола 0,4 л, соус на выбор\n",
+                        "en": "  Hamburger, fries, 0.4 l cola, sauce to choose from"
+                    },
+                    "active": true,
+                    "iiko_id": "a8ac8c00-29cf-4d2e-8a2c-c5af75eab8a5",
+                    "jowi_id": "",
+                    "discounts": null
+                },
+                {
+                    "id": "84d069ee-a4c6-41aa-a0ff-91d0c7079f00",
+                    "out_price": 25000,
+                    "currency": "UZS",
+                    "string": "",
+                    "type": "simple",
+                    "categories": [
+                        "7c59de1b-0789-452e-987f-7e059fb1958c"
+                    ],
+                    "brand_id": "",
+                    "rate_id": "",
+                    "image": "https://maxway.uz/_next/image?url=https%3A%2F%2Fcdn.delever.uz%2Fdelever%2Fa9e8678a-c7c5-4806-b6d1-3fa1b7b3f9a2&w=1920&q=75",
+                    "active_in_menu": false,
+                    "has_modifier": true,
+                    "from_time": "",
+                    "to_time": "",
+                    "off_always": false,
+                    "gallery": null,
+                    "title": {
+                        "uz": "Mini BOX",
+                        "ru": "Мини BOX",
+                        "en": "Mini boks "
+                    },
+                    "description": {
+                        "uz": "Longer, kartoshka fri, coca-cola 0,3, tanlovga ko'ra sous",
+                        "ru": "Лонгер, картофель-фри, coca-cola 0,3 л, соус на выбор",
+                        "en": "Longer, fries, coca-cola 0,3, sauce to choose from"
+                    },
+                    "active": true,
+                    "iiko_id": "10056c5b-1dcf-4a05-af95-a8522dbd98ff",
+                    "jowi_id": "",
+                    "discounts": null
+                }
+            ],
+            "child_categories": null
+        },
+        {
+            "id": "d7ae811c-5bf1-496f-bb8d-15d4c5ae15a2",
+            "slug": "club-sandvich-eeou91l8ivhu8f",
+            "parent_id": "",
+            "image": "4a0722be-8c4f-4ad6-b6e3-3d97ed95f727",
+            "description": {
+                "uz": "  ",
+                "ru": "  ",
+                "en": "  "
+            },
+            "title": {
+                "uz": "🥪Klab-Sendvich",
+                "ru": "🥪Клаб-сэндвич",
+                "en": "🥪Club - Sandvich"
+            },
+            "order_no": "1",
+            "active": true,
+            "products": [
+                {
+                    "id": "cca34455-65ec-4115-badc-4c70ad67efbf",
+                    "out_price": 30000,
+                    "currency": "UZS",
+                    "string": "",
+                    "type": "simple",
+                    "categories": [
+                        "d7ae811c-5bf1-496f-bb8d-15d4c5ae15a2"
+                    ],
+                    "brand_id": "",
+                    "rate_id": "",
+                    "image": "https://maxway.uz/_next/image?url=https%3A%2F%2Fcdn.delever.uz%2Fdelever%2Fea5f0173-2256-470f-9302-378f17529d1b&w=1920&q=75",
+                    "active_in_menu": false,
+                    "has_modifier": true,
+                    "from_time": "",
+                    "to_time": "",
+                    "off_always": false,
+                    "gallery": null,
+                    "title": {
+                        "uz": "Klab sendvich",
+                        "ru": "Клаб сэндвич",
+                        "en": "Club Sandwich Chicken"
+                    },
+                    "description": {
+                        "uz": "  Original sendvich, kartoshka fri, tanlash uchun sous\n",
+                        "ru": "  Сэндвич Original, картофель-фри, соус на выбор\n",
+                        "en": "  Original sandwich,  fries, sauce to choose from"
+                    },
+                    "active": true,
+                    "iiko_id": "aa3b174e-24bc-470d-a40e-e3fd74ccb3d0",
+                    "jowi_id": "",
+                    "discounts": null
+                },
+                {
+                    "id": "4ace44ec-5fc6-4dba-b3c8-0a5e61dd7fd2",
+                    "out_price": 25000,
+                    "currency": "UZS",
+                    "string": "",
+                    "type": "simple",
+                    "categories": [
+                        "d7ae811c-5bf1-496f-bb8d-15d4c5ae15a2"
+                    ],
+                    "brand_id": "",
+                    "rate_id": "",
+                    "image": "https://maxway.uz/_next/image?url=https%3A%2F%2Fcdn.delever.uz%2Fdelever%2Fb1e4cb8b-95cf-4f44-a067-91c28a9edd9c&w=1920&q=75",
+                    "active_in_menu": false,
+                    "has_modifier": false,
+                    "from_time": "",
+                    "to_time": "",
+                    "off_always": false,
+                    "gallery": null,
+                    "title": {
+                        "uz": "Sendvich Original",
+                        "ru": "Сэндвич Original",
+                        "en": "Sandwich Original"
+                    },
+                    "description": {
+                        "uz": "  Toster non, tovuq shnitseli, yangi bodring, pomidor, klab sousi, Xoxland pishloq\n",
+                        "ru": "  Тостер хлеб, куриный шницель, свежие огурцы, помидоры, соус \"клаб\", сыр Хохланд\n",
+                        "en": "Toaster bread, chicken schnitzel, fresh cucumbers, tomatoes, club sauce, Hohland cheese"
+                    },
+                    "active": true,
+                    "iiko_id": "cc8bf337-197e-457a-8ba4-856592b7a355",
+                    "jowi_id": "",
+                    "discounts": null
+                }
+            ],
+            "child_categories": null
+        },
+        {
+            "id": "ea14f29b-e384-42a9-b8aa-a7fe3ee2ba0c",
+            "slug": "lavash-eeou91l8ivgepr",
+            "parent_id": "",
+            "image": "6228b23c-7489-4030-9374-2b7f7435fba8",
+            "description": {
+                "uz": "🌯Lavash",
+                "ru": "🌯Лаваш",
+                "en": "🌯Lavash"
+            },
+            "title": {
+                "uz": "🌯Lavash",
+                "ru": "🌯Лаваш",
+                "en": "🌯Lavash"
+            },
+            "order_no": "2",
+            "active": true,
+            "products": [
+                {
+                    "id": "98d5b326-2c28-4e56-b58f-8eaf7c5dee65",
+                    "out_price": 27000,
+                    "currency": "UZS",
+                    "string": "",
+                    "type": "origin",
+                    "categories": [
+                        "ea14f29b-e384-42a9-b8aa-a7fe3ee2ba0c"
+                    ],
+                    "brand_id": "",
+                    "rate_id": "",
+                    "image": "https://maxway.uz/_next/image?url=https%3A%2F%2Fcdn.delever.uz%2Fdelever%2F217532f8-8fc3-4ef0-b7d9-e9415ddba382&w=1920&q=75",
+                    "active_in_menu": false,
+                    "has_modifier": false,
+                    "from_time": "",
+                    "to_time": "",
+                    "off_always": false,
+                    "gallery": null,
+                    "title": {
+                        "uz": "Lavash ",
+                        "ru": "Лаваш ",
+                        "en": "Lavash "
+                    },
+                    "description": {
+                        "uz": "  Lavash, donar mol go'shti, pomidor, chipslar, pomidor sousi, mayonez",
+                        "ru": "  Лаваш, говяжье мясо-донар, помидор, чипсы, томатный соус, майонез",
+                        "en": "  Lavash, donar beef meat, tomato, chips, tomato sauce, mayonnaise"
+                    },
+                    "active": true,
+                    "iiko_id": "",
+                    "jowi_id": "",
+                    "discounts": null
+                },
+                {
+                    "id": "3a902bcc-1ec0-44f0-994f-cada8a2ac7a3",
+                    "out_price": 22000,
+                    "currency": "UZS",
+                    "string": "",
+                    "type": "origin",
+                    "categories": [
+                        "ea14f29b-e384-42a9-b8aa-a7fe3ee2ba0c"
+                    ],
+                    "brand_id": "",
+                    "rate_id": "",
+                    "image": "https://maxway.uz/_next/image?url=https%3A%2F%2Fcdn.delever.uz%2Fdelever%2F445f09f0-33d6-4410-b149-f76ed1067f58&w=1920&q=75",
+                    "active_in_menu": false,
+                    "has_modifier": false,
+                    "from_time": "",
+                    "to_time": "",
+                    "off_always": false,
+                    "gallery": null,
+                    "title": {
+                        "uz": "Lavash mini",
+                        "ru": "Лаваш мини",
+                        "en": "Lavash mini"
+                    },
+                    "description": {
+                        "uz": "      Pita, mol go'shti-donar, pomidor, chiplar, pomidor sousi, mayonez",
+                        "ru": "     Лаваш, говяжье мясо-донар, помидор, чипсы, томатный соус, майонез\n",
+                        "en": "      Lavash, beef donard, tomato, chips, tomato sauce, mayonnaise"
+                    },
+                    "active": true,
+                    "iiko_id": "",
+                    "jowi_id": "",
+                    "discounts": null
+                }
+            ],
+            "child_categories": null
+        },
+        {
+            "id": "b5603a72-6efb-4e9d-b329-4699c87ca4c2",
+            "slug": "shawarma-eeou91l8ix6xrp",
+            "parent_id": "",
+            "image": "8bd21b37-580c-4088-a0d7-371f3ddce0d0",
+            "description": {
+                "uz": "🌮Shaurma",
+                "ru": "🌮Шаурма",
+                "en": "🌮Shawarma"
+            },
+            "title": {
+                "uz": "🌮Shaurma",
+                "ru": "🌮Шаурма",
+                "en": "🌮Shawarma"
+            },
+            "order_no": "3",
+            "active": true,
+            "products": [
+                {
+                    "id": "bd759365-4252-4cf9-a9f2-0d179cf29e31",
+                    "out_price": 25000,
+                    "currency": "UZS",
+                    "string": "",
+                    "type": "origin",
+                    "categories": [
+                        "b5603a72-6efb-4e9d-b329-4699c87ca4c2"
+                    ],
+                    "brand_id": "",
+                    "rate_id": "",
+                    "image": "https://maxway.uz/_next/image?url=https%3A%2F%2Fcdn.delever.uz%2Fdelever%2Fdbe27711-5950-4aa8-9b50-d9b8b08c8b8e&w=1920&q=75",
+                    "active_in_menu": false,
+                    "has_modifier": false,
+                    "from_time": "",
+                    "to_time": "",
+                    "off_always": false,
+                    "gallery": null,
+                    "title": {
+                        "uz": "Shaurma",
+                        "ru": "Шаурма",
+                        "en": "Shawarma standard"
+                    },
+                    "description": {
+                        "uz": " Donar bulochka, mol go'shti-donar, tuzlangan bodring, pomidor, pomidor sousi\n",
+                        "ru": " Донар булочка, говяжье мясо-донар, соленые огурцы, помидоры, томатный соус\n",
+                        "en": " Donar bun, beef meat-donar, pickles, tomatoes, tomato sauce"
+                    },
+                    "active": true,
+                    "iiko_id": "9ee0709b-4bd6-473d-9a0d-1d8b047cbc3a",
+                    "jowi_id": "",
+                    "discounts": null
+                }
+            ],
+            "child_categories": null
+        },
+        {
+            "id": "ffa91235-1ff5-421c-a8a6-43e4e6931c87",
+            "slug": "donar-kebab-eeou91l8ix7slk",
+            "parent_id": "",
+            "image": "e606771a-03b2-444d-98a3-664a4adff23b",
+            "description": {
+                "uz": "🍱Donar kebab",
+                "ru": "🍱Донар кебаб",
+                "en": "🍱Donar kebab"
+            },
+            "title": {
+                "uz": "🍱Donar kebab",
+                "ru": "🍱Донар кебаб",
+                "en": "🍱Donar kebab"
+            },
+            "order_no": "4",
+            "active": true,
+            "products": [
+                {
+                    "id": "45d0a16b-29af-488f-a132-9a4c7d27f8ae",
+                    "out_price": 40000,
+                    "currency": "UZS",
+                    "string": "",
+                    "type": "simple",
+                    "categories": [
+                        "ffa91235-1ff5-421c-a8a6-43e4e6931c87"
+                    ],
+                    "brand_id": "",
+                    "rate_id": "",
+                    "image": "https://maxway.uz/_next/image?url=https%3A%2F%2Fcdn.delever.uz%2Fdelever%2Fbde75e71-27f9-4041-bcd2-b24ad224f178&w=1920&q=75",
+                    "active_in_menu": false,
+                    "has_modifier": false,
+                    "from_time": "",
+                    "to_time": "",
+                    "off_always": false,
+                    "gallery": null,
+                    "title": {
+                        "uz": "Donar kebab ",
+                        "ru": "Донар кебаб ",
+                        "en": "Donar Kebab "
+                    },
+                    "description": {
+                        "uz": "  Mol go'shti donari-go'sht, makkajo'xori bilan guruch, kartoshka fri, qizil karam salati, ziravorlar sousi\n",
+                        "ru": "  Говяжье донар-мясо, рис с кукурузой, картофель-фри, салат из красной капусты, спэшл соус\n",
+                        "en": "  Beef donar meat, rice with corn, fries, red cabbage salad, special sauce"
+                    },
+                    "active": true,
+                    "iiko_id": "0bee127f-91c3-4b6b-b3c0-db1189a8a5c2",
+                    "jowi_id": "",
+                    "discounts": null
+                },
+                {
+                    "id": "5c83942a-eba6-4754-986f-b31804310ef1",
+                    "out_price": 35000,
+                    "currency": "UZS",
+                    "string": "",
+                    "type": "simple",
+                    "categories": [
+                        "ffa91235-1ff5-421c-a8a6-43e4e6931c87"
+                    ],
+                    "brand_id": "",
+                    "rate_id": "",
+                    "image": "https://maxway.uz/_next/image?url=https%3A%2F%2Fcdn.delever.uz%2Fdelever%2F6804aa54-a0f5-4de6-95a0-ac7a2a49bb2a&w=1920&q=75",
+                    "active_in_menu": false,
+                    "has_modifier": false,
+                    "from_time": "",
+                    "to_time": "",
+                    "off_always": false,
+                    "gallery": null,
+                    "title": {
+                        "uz": "Donar Box",
+                        "ru": "Донар BOX",
+                        "en": "Donar Box"
+                    },
+                    "description": {
+                        "uz": "Mol go'shti donari-go'sht, kartoshka fri, guruch\n\n",
+                        "ru": "  Говяжье донар-мясо, картофель-фри, рис\n",
+                        "en": "   Beef donar-meat,  fries, rice"
+                    },
+                    "active": true,
+                    "iiko_id": "e6f8dcb9-66d7-4d6a-bac9-af9eb2ab270d",
+                    "jowi_id": "",
+                    "discounts": null
+                },
+                {
+                    "id": "a0d49665-fb0c-44c2-91b0-605c6ce586c1",
+                    "out_price": 40000,
+                    "currency": "UZS",
+                    "string": "",
+                    "type": "simple",
+                    "categories": [
+                        "ffa91235-1ff5-421c-a8a6-43e4e6931c87"
+                    ],
+                    "brand_id": "",
+                    "rate_id": "",
+                    "image": "https://maxway.uz/_next/image?url=https%3A%2F%2Fcdn.delever.uz%2Fdelever%2Fc78b9552-e131-4f7c-8863-665fe6fd147c&w=1920&q=75",
+                    "active_in_menu": false,
+                    "has_modifier": true,
+                    "from_time": "",
+                    "to_time": "",
+                    "off_always": false,
+                    "gallery": null,
+                    "title": {
+                        "uz": "Donar BOX + 0.4 Coca cola",
+                        "ru": "Донар BOX + 0.4 Coca cola",
+                        "en": "Donar BOX + 0.4 Coca cola"
+                    },
+                    "description": {
+                        "uz": "  Mol go'shti donari-go'sht, kartoshka fri, guruch, 0.4l quyma kola",
+                        "ru": "  Донар BOX, coca-cola разливная 0,4 л\n",
+                        "en": "  Donor BOX, coca-Cola draught 0.4 l"
+                    },
+                    "active": true,
+                    "iiko_id": "b331d49a-eae4-472a-a760-0db8c2f7a1ad",
+                    "jowi_id": "",
+                    "discounts": null
+                },
+                {
+                    "id": "e25b92dc-d7e2-49ef-b2bb-eb4d1defb86c",
+                    "out_price": 3000,
+                    "currency": "UZS",
+                    "string": "",
+                    "type": "simple",
+                    "categories": [
+                        "ffa91235-1ff5-421c-a8a6-43e4e6931c87"
+                    ],
+                    "brand_id": "",
+                    "rate_id": "",
+                    "image": "https://maxway.uz/_next/image?url=https%3A%2F%2Fcdn.delever.uz%2Fdelever%2Fa4306b8f-6563-4987-bbe0-284d7c40510e&w=1920&q=75",
+                    "active_in_menu": false,
+                    "has_modifier": false,
+                    "from_time": "",
+                    "to_time": "",
+                    "off_always": false,
+                    "gallery": null,
+                    "title": {
+                        "uz": "Non",
+                        "ru": "Хлеб",
+                        "en": "Bread"
+                    },
+                    "description": {
+                        "uz": "   Yumshoq bulochka\n",
+                        "ru": "   Мягкая булочка \n",
+                        "en": "   Soft bun"
+                    },
+                    "active": true,
+                    "iiko_id": "6b6e3aa5-6de8-40d1-a0a6-7cea99daac8c",
+                    "jowi_id": "",
+                    "discounts": null
+                }
+            ],
+            "child_categories": null
+        },
+        {
+            "id": "da1f40ca-2778-484a-9676-4324a2441e95",
+            "slug": "shawarma-bagget-(huggie)-eeou91l8ix9w94",
+            "parent_id": "",
+            "image": "90ba6c3c-6231-425c-b604-134a25169655",
+            "description": {
+                "uz": "🫔Panini",
+                "ru": "🫔Панини",
+                "en": "🫔Panini"
+            },
+            "title": {
+                "uz": "🫔Panini",
+                "ru": "🫔Панини",
+                "en": "🫔Panini"
+            },
+            "order_no": "6",
+            "active": true,
+            "products": [
+                {
+                    "id": "0ff86075-cf61-4f96-84b3-0cbea194d901",
+                    "out_price": 25000,
+                    "currency": "UZS",
+                    "string": "",
+                    "type": "origin",
+                    "categories": [
+                        "da1f40ca-2778-484a-9676-4324a2441e95"
+                    ],
+                    "brand_id": "",
+                    "rate_id": "",
+                    "image": "https://maxway.uz/_next/image?url=https%3A%2F%2Fcdn.delever.uz%2Fdelever%2F0af1c3e3-e271-4b2f-a6c6-d35c9eb13fcf&w=1920&q=75",
+                    "active_in_menu": false,
+                    "has_modifier": false,
+                    "from_time": "",
+                    "to_time": "",
+                    "off_always": false,
+                    "gallery": null,
+                    "title": {
+                        "uz": "Panini",
+                        "ru": "Панини",
+                        "en": "Panini"
+                    },
+                    "description": {
+                        "uz": "      Bulochka, mol go'shti-donar, tuzlangan bodring, pomidor, pomidor sousi, ranch sousi\n",
+                        "ru": "      Булочка, говяжье мясо-донар, соленые огурцы, помидоры, томатный соус, ранч соус\n",
+                        "en": "      Bun, beef donard, pickles, tomatoes, tomato sauce, ranch sauce"
+                    },
+                    "active": true,
+                    "iiko_id": "e6fda951-8ebd-4326-b162-54a7b8410508",
+                    "jowi_id": "",
+                    "discounts": null
+                }
+            ],
+            "child_categories": null
+        },
+        {
+            "id": "9d2b21c3-3ee0-4381-8d80-0bc43e856c66",
+            "slug": "burgers-eeou91l8ixb0nm",
+            "parent_id": "",
+            "image": "7617afb4-904a-4669-bcad-0d0bc10a7a0b",
+            "description": {
+                "uz": "🍔Burger",
+                "ru": "🍔Бургеры",
+                "en": "🍔Burgers"
+            },
+            "title": {
+                "uz": "🍔Burger",
+                "ru": "🍔Бургеры",
+                "en": "🍔Burgers"
+            },
+            "order_no": "7",
+            "active": true,
+            "products": [
+                {
+                    "id": "69eee912-cf44-4f65-81bc-0187006758cd",
+                    "out_price": 22000,
+                    "currency": "UZS",
+                    "string": "",
+                    "type": "simple",
+                    "categories": [
+                        "9d2b21c3-3ee0-4381-8d80-0bc43e856c66"
+                    ],
+                    "brand_id": "",
+                    "rate_id": "",
+                    "image": "https://maxway.uz/_next/image?url=https%3A%2F%2Fcdn.delever.uz%2Fdelever%2Fbb890e3e-731a-4996-9c61-bf71cccaefa9&w=1920&q=75",
+                    "active_in_menu": false,
+                    "has_modifier": false,
+                    "from_time": "",
+                    "to_time": "",
+                    "off_always": false,
+                    "gallery": null,
+                    "title": {
+                        "uz": "Gamburger",
+                        "ru": "Гамбургер",
+                        "en": "Hamburger"
+                    },
+                    "description": {
+                        "uz": "Burger bulochkasi, tuzlangan bodring, pomidor, go'shtli Patti, qizil piyoz, aysberg, Burger sousi\n",
+                        "ru": "  Булочка гамбургер, соленые огурцы, помидоры, мясная котлета, красный лук, айсберг, соус \"бургер\"\n",
+                        "en": "  Hamburger bun, pickles, tomatoes, meat patty, red onion, iceberg, burger sauce"
+                    },
+                    "active": true,
+                    "iiko_id": "b2096d1c-afc1-4415-aa1c-149caaa5634b",
+                    "jowi_id": "",
+                    "discounts": null
+                },
+                {
+                    "id": "3842a14d-7ecb-4630-966a-a220d46f2890",
+                    "out_price": 25000,
+                    "currency": "UZS",
+                    "string": "",
+                    "type": "simple",
+                    "categories": [
+                        "9d2b21c3-3ee0-4381-8d80-0bc43e856c66"
+                    ],
+                    "brand_id": "",
+                    "rate_id": "",
+                    "image": "https://maxway.uz/_next/image?url=https%3A%2F%2Fcdn.delever.uz%2Fdelever%2F233d912e-f3d3-44c2-aed7-020eb65f588a&w=1920&q=75",
+                    "active_in_menu": false,
+                    "has_modifier": false,
+                    "from_time": "",
+                    "to_time": "",
+                    "off_always": false,
+                    "gallery": null,
+                    "title": {
+                        "uz": "Chizburger",
+                        "ru": "Чизбургер",
+                        "en": "Cheeseburger"
+                    },
+                    "description": {
+                        "uz": "  Burger bulochkasi, tuzlangan bodring, pomidor, go'shtli Patti, qizil piyoz, aysberg, Burger sousi, Xoxland pishlog'i\n",
+                        "ru": "  Булочка гамбургер, соленые огурцы, помидоры, мясная котлета, красный лук, айсберг, соус \"бургер\", сыр Хохланд\n",
+                        "en": "  Hamburger bun, pickles, tomatoes, meat patty, red onion, iceberg, burger sauce, Hohland cheese"
+                    },
+                    "active": true,
+                    "iiko_id": "5de62b4c-1d16-4b5a-955f-618b1cf9d759",
+                    "jowi_id": "",
+                    "discounts": null
+                },
+                {
+                    "id": "12709523-3036-4fda-8933-e1b8e2afebfa",
+                    "out_price": 35000,
+                    "currency": "UZS",
+                    "string": "",
+                    "type": "simple",
+                    "categories": [
+                        "9d2b21c3-3ee0-4381-8d80-0bc43e856c66"
+                    ],
+                    "brand_id": "",
+                    "rate_id": "",
+                    "image": "https://maxway.uz/_next/image?url=https%3A%2F%2Fcdn.delever.uz%2Fdelever%2Fdc760582-0308-4231-bc31-89f55617da84&w=1920&q=75",
+                    "active_in_menu": false,
+                    "has_modifier": false,
+                    "from_time": "",
+                    "to_time": "",
+                    "off_always": false,
+                    "gallery": null,
+                    "title": {
+                        "uz": "Bigburger",
+                        "ru": "Бигбургер",
+                        "en": "Bigburger"
+                    },
+                    "description": {
+                        "uz": "  Burger bulochkasi, tuzlangan bodring, pomidor, 2 ta go'shtli Patti, qizil piyoz, aysberg, Burger sousi, Xoxland pishloq\n",
+                        "ru": "  Булочка гамбургер, соленые огурцы, помидоры, 2 мясной котлеты, красный лук, айсберг, соус \"бургер\", сыр \"Хохланд\"\n",
+                        "en": "  Hamburger bun, pickles, tomatoes, 2 meat patties, red onion, iceberg, burger sauce, Hohland cheese"
+                    },
+                    "active": true,
+                    "iiko_id": "3e2e43d4-a845-4d5c-971a-ec6c0f9167fb",
+                    "jowi_id": "",
+                    "discounts": null
+                }
+            ],
+            "child_categories": null
+        },
+        {
+            "id": "e736a14e-b220-4d47-b436-2aa5c9484667",
+            "slug": "hot-dog-eeou91l8ixc6k6",
+            "parent_id": "",
+            "image": "c8b01f24-12c7-401f-beb9-a30c4872160d",
+            "description": {
+                "uz": "🌭Hot-Dog",
+                "ru": "🌭Хот-дог",
+                "en": "🌭Hot-Dog"
+            },
+            "title": {
+                "uz": "🌭Hot-Dog",
+                "ru": "🌭Хот-дог",
+                "en": "🌭Hot-Dog"
+            },
+            "order_no": "7",
+            "active": true,
+            "products": [
+                {
+                    "id": "b578b08f-25b4-4754-b163-0c63ba3cbc01",
+                    "out_price": 15000,
+                    "currency": "UZS",
+                    "string": "",
+                    "type": "simple",
+                    "categories": [
+                        "e736a14e-b220-4d47-b436-2aa5c9484667"
+                    ],
+                    "brand_id": "",
+                    "rate_id": "",
+                    "image": "https://maxway.uz/_next/image?url=https%3A%2F%2Fcdn.delever.uz%2Fdelever%2Fcd38ec4f-d4b7-4c9c-a93e-a5d8c0050ac9&w=1920&q=75",
+                    "active_in_menu": false,
+                    "has_modifier": false,
+                    "from_time": "",
+                    "to_time": "",
+                    "off_always": false,
+                    "gallery": null,
+                    "title": {
+                        "uz": "Longer",
+                        "ru": "Лонгер",
+                        "en": "Longer"
+                    },
+                    "description": {
+                        "uz": "Ma'lumot: xot-dog bulochkasi, sous, naggetslar, tuzlangan bodringlar, aysberg",
+                        "ru": "Информация: Хот-дог булочка, кетчуп, майонез, наггетсы, соленые огурцы, салат айсбер",
+                        "en": "Information: hot dog bun, ketchunez, nuggets, pickles, iceberg lettuce"
+                    },
+                    "active": true,
+                    "iiko_id": "54a3bc21-dac6-4672-a0c3-12f84a252f43",
+                    "jowi_id": "",
+                    "discounts": null
+                },
+                {
+                    "id": "ac90421c-5c6f-4179-a49c-6a76a00e9721",
+                    "out_price": 12000,
+                    "currency": "UZS",
+                    "string": "",
+                    "type": "simple",
+                    "categories": [
+                        "e736a14e-b220-4d47-b436-2aa5c9484667"
+                    ],
+                    "brand_id": "",
+                    "rate_id": "",
+                    "image": "https://maxway.uz/_next/image?url=https%3A%2F%2Fcdn.delever.uz%2Fdelever%2F1be9c4e8-cc1e-49f6-8ae3-07dbb48b3242&w=1920&q=75",
+                    "active_in_menu": false,
+                    "has_modifier": false,
+                    "from_time": "",
+                    "to_time": "",
+                    "off_always": false,
+                    "gallery": null,
+                    "title": {
+                        "uz": "Hot Dog",
+                        "ru": "Хот Дог",
+                        "en": "Hot Dog"
+                    },
+                    "description": {
+                        "uz": "  Hot-dog bulochkasi, Kanada kolbasasi, tuzlangan bodring, pomidor, aysberg, Hot-dog sousi\n",
+                        "ru": "  Булочка хот-дог, канадская сосиска,соленые огурцы, помидоры, айсберг, соус \"хот-дог\"\n",
+                        "en": "  Hot dog bun, Canadian sausage, pickles, tomatoes, iceberg, hot dog sauce"
+                    },
+                    "active": true,
+                    "iiko_id": "16386014-810e-4dda-9d66-021a23f8b16f",
+                    "jowi_id": "",
+                    "discounts": null
+                },
+                {
+                    "id": "39fc65ea-f9f3-43eb-bed6-410006535875",
+                    "out_price": 20000,
+                    "currency": "UZS",
+                    "string": "",
+                    "type": "simple",
+                    "categories": [
+                        "e736a14e-b220-4d47-b436-2aa5c9484667"
+                    ],
+                    "brand_id": "",
+                    "rate_id": "",
+                    "image": "https://maxway.uz/_next/image?url=https%3A%2F%2Fcdn.delever.uz%2Fdelever%2Ffb2cfa3d-8d0a-42a1-a3b4-0fca2c2a19c3&w=1920&q=75",
+                    "active_in_menu": false,
+                    "has_modifier": false,
+                    "from_time": "",
+                    "to_time": "",
+                    "off_always": false,
+                    "gallery": null,
+                    "title": {
+                        "uz": "King Dog",
+                        "ru": "Кинг Дог",
+                        "en": "King dog"
+                    },
+                    "description": {
+                        "uz": "Hot-dog bulochkasi, 2 ta kanadalik kolbasa, tuzlangan bodring, pomidor, aysberg, Xoxland pishloq\n",
+                        "ru": " Булочка хот-дог, 2 канадские сосиски, соленые огурцы, помидоры, айсберг, сыр Хохланд\n",
+                        "en": "  Hot dog bun, 2 Canadian sausages, pickles, tomatoes, iceberg, Hohland cheese"
+                    },
+                    "active": true,
+                    "iiko_id": "ea19405f-64e1-40b3-afa1-d9ee1aec3336",
+                    "jowi_id": "",
+                    "discounts": null
+                },
+                {
+                    "id": "fb083bd3-41d7-49e3-84cf-606785a802d5",
+                    "out_price": 15000,
+                    "currency": "UZS",
+                    "string": "",
+                    "type": "simple",
+                    "categories": [
+                        "e736a14e-b220-4d47-b436-2aa5c9484667"
+                    ],
+                    "brand_id": "",
+                    "rate_id": "",
+                    "image": "https://maxway.uz/_next/image?url=https%3A%2F%2Fcdn.delever.uz%2Fdelever%2F1d9d3e29-768d-408e-885f-ef4c4c06f743&w=1920&q=75",
+                    "active_in_menu": false,
+                    "has_modifier": false,
+                    "from_time": "",
+                    "to_time": "",
+                    "off_always": false,
+                    "gallery": null,
+                    "title": {
+                        "uz": "Chiz dog",
+                        "ru": "Чиз дог",
+                        "en": "Cheese dog"
+                    },
+                    "description": {
+                        "uz": "  Hot-dog bulochkasi, kanadalik kolbasa, tuzlangan bodring, pomidor, aysberg, Xoxland pishloq, Hot-dog sousi\n",
+                        "ru": "  Булочка хот-дог, канадская сосиска,соленые огурцы, помидоры, айсберг, сыр Хохланд, соус \"хот-дог\"\n",
+                        "en": "  Hot dog bun, Canadian sausage,pickles, tomatoes, iceberg, Hohland cheese, hot dog sauce"
+                    },
+                    "active": true,
+                    "iiko_id": "e1f4988f-a2ae-4a0b-ac7d-3ae2a573f3a9",
+                    "jowi_id": "",
+                    "discounts": null
+                }
+            ],
+            "child_categories": null
+        },
+        {
+            "id": "1fa1c562-6f0d-4bb0-86e9-cc202a0d36b4",
+            "slug": "snacks-eeou91l8ivu5by",
+            "parent_id": "",
+            "image": "2cbc6d33-1dfa-4ca7-9901-b0025f7ccd26",
+            "description": {
+                "uz": "🍟Gazaklar",
+                "ru": "🍟Снеки",
+                "en": "🍟Snacks"
+            },
+            "title": {
+                "uz": "🍟Gazaklar",
+                "ru": "🍟Снеки",
+                "en": "🍟Snacks"
+            },
+            "order_no": "8",
+            "active": true,
+            "products": [
+                {
+                    "id": "be6d9128-4a05-4640-8123-00b5d3441789",
+                    "out_price": 8000,
+                    "currency": "UZS",
+                    "string": "",
+                    "type": "origin",
+                    "categories": [
+                        "1fa1c562-6f0d-4bb0-86e9-cc202a0d36b4"
+                    ],
+                    "brand_id": "",
+                    "rate_id": "",
+                    "image": "https://maxway.uz/_next/image?url=https%3A%2F%2Fcdn.delever.uz%2Fdelever%2F0749510f-be13-40fb-9e41-b15c9818331c&w=1920&q=75",
+                    "active_in_menu": false,
+                    "has_modifier": false,
+                    "from_time": "",
+                    "to_time": "",
+                    "off_always": false,
+                    "gallery": null,
+                    "title": {
+                        "uz": "Fri kartoshkasi",
+                        "ru": "Картофель Фри ",
+                        "en": "French fries"
+                    },
+                    "description": {
+                        "uz": "  ",
+                        "ru": "  ",
+                        "en": " "
+                    },
+                    "active": true,
+                    "iiko_id": "0b4f8be8-bc81-4b7d-95cc-c1d70758b402",
+                    "jowi_id": "",
+                    "discounts": null
+                },
+                {
+                    "id": "3a22feb1-243b-44d2-9539-1cbe23a144de",
+                    "out_price": 14000,
+                    "currency": "UZS",
+                    "string": "",
+                    "type": "simple",
+                    "categories": [
+                        "1fa1c562-6f0d-4bb0-86e9-cc202a0d36b4"
+                    ],
+                    "brand_id": "",
+                    "rate_id": "",
+                    "image": "https://maxway.uz/_next/image?url=https%3A%2F%2Fcdn.delever.uz%2Fdelever%2F1e1f0e35-8faf-49e3-b5fe-0d0d3b2413a6&w=1920&q=75",
+                    "active_in_menu": false,
+                    "has_modifier": false,
+                    "from_time": "",
+                    "to_time": "",
+                    "off_always": false,
+                    "gallery": null,
+                    "title": {
+                        "uz": "Po-derevenski",
+                        "ru": "Картофель по-деревенски",
+                        "en": "Rustic potatoes"
+                    },
+                    "description": {
+                        "uz": "  ",
+                        "ru": "  ",
+                        "en": "  "
+                    },
+                    "active": true,
+                    "iiko_id": "75ac93ff-9b11-4bfa-b7ed-f9efcdd3e4c9",
+                    "jowi_id": "",
+                    "discounts": null
+                },
+                {
+                    "id": "bde023fd-c671-41f7-a93b-d216f30ada27",
+                    "out_price": 23000,
+                    "currency": "UZS",
+                    "string": "",
+                    "type": "origin",
+                    "categories": [
+                        "1fa1c562-6f0d-4bb0-86e9-cc202a0d36b4"
+                    ],
+                    "brand_id": "",
+                    "rate_id": "",
+                    "image": "https://maxway.uz/_next/image?url=https%3A%2F%2Fcdn.delever.uz%2Fdelever%2F2a7937f1-bf14-49a4-8eec-fe859f868e77&w=1920&q=75",
+                    "active_in_menu": false,
+                    "has_modifier": false,
+                    "from_time": "",
+                    "to_time": "",
+                    "off_always": false,
+                    "gallery": null,
+                    "title": {
+                        "uz": "BOX",
+                        "ru": "BOX",
+                        "en": "BOX"
+                    },
+                    "description": {
+                        "uz": "  Strips (2 dona), kartoshka fri (80 gr), naggetslar (4 dona)\n",
+                        "ru": "  Стрипсы (2 шт), фри (80 гр), наггетсы (4 шт)\n",
+                        "en": "   Strips (2 pcs), fries (80 gr), nuggets (4 pcs)"
+                    },
+                    "active": true,
+                    "iiko_id": "",
+                    "jowi_id": "",
+                    "discounts": null
+                },
+                {
+                    "id": "ff0398cb-01c5-4360-abaf-62f854a25963",
+                    "out_price": 15000,
+                    "currency": "UZS",
+                    "string": "",
+                    "type": "origin",
+                    "categories": [
+                        "1fa1c562-6f0d-4bb0-86e9-cc202a0d36b4"
+                    ],
+                    "brand_id": "",
+                    "rate_id": "",
+                    "image": "https://maxway.uz/_next/image?url=https%3A%2F%2Fcdn.delever.uz%2Fdelever%2F1770f757-e00d-41cf-9525-daf56d8801fe&w=1920&q=75",
+                    "active_in_menu": false,
+                    "has_modifier": false,
+                    "from_time": "",
+                    "to_time": "",
+                    "off_always": false,
+                    "gallery": null,
+                    "title": {
+                        "uz": "Strips",
+                        "ru": "Стрипсы",
+                        "en": "Strips"
+                    },
+                    "description": {
+                        "uz": "    ",
+                        "ru": "   ",
+                        "en": "   "
+                    },
+                    "active": true,
+                    "iiko_id": "",
+                    "jowi_id": "",
+                    "discounts": null
+                },
+                {
+                    "id": "029578f9-ee9a-459b-b1f5-5de36b1b5510",
+                    "out_price": 15000,
+                    "currency": "UZS",
+                    "string": "",
+                    "type": "origin",
+                    "categories": [
+                        "1fa1c562-6f0d-4bb0-86e9-cc202a0d36b4"
+                    ],
+                    "brand_id": "",
+                    "rate_id": "",
+                    "image": "https://maxway.uz/_next/image?url=https%3A%2F%2Fcdn.delever.uz%2Fdelever%2F65c762a6-7d7f-40af-a79f-cee1723de2a1&w=1920&q=75",
+                    "active_in_menu": false,
+                    "has_modifier": false,
+                    "from_time": "",
+                    "to_time": "",
+                    "off_always": false,
+                    "gallery": null,
+                    "title": {
+                        "uz": "Naggets",
+                        "ru": "Наггетсы",
+                        "en": "Nuggets"
+                    },
+                    "description": {
+                        "uz": "    ",
+                        "ru": "  ",
+                        "en": "    "
+                    },
+                    "active": true,
+                    "iiko_id": "feea673c-e9eb-4938-92ca-4d53a7a42548",
+                    "jowi_id": "",
+                    "discounts": null
+                }
+            ],
+            "child_categories": null
+        },
+        {
+            "id": "3d3cad5d-3380-4397-a319-053c3040d522",
+            "slug": "drinks-eeou91l8ivl388",
+            "parent_id": "",
+            "image": "ef77aa86-bec4-4cc4-8ff9-7c5ba92f4f8f",
+            "description": {
+                "uz": "🥤Ichimliklar",
+                "ru": "🥤Напитки",
+                "en": "🥤Drinks"
+            },
+            "title": {
+                "uz": "🥤Ichimliklar",
+                "ru": "🥤Напитки",
+                "en": "🥤Drinks"
+            },
+            "order_no": "9",
+            "active": true,
+            "products": [
+                {
+                    "id": "a638d1e1-79f3-41c9-8bb9-d8640f00f380",
+                    "out_price": 15000,
+                    "currency": "UZS",
+                    "string": "",
+                    "type": "simple",
+                    "categories": [
+                        "3d3cad5d-3380-4397-a319-053c3040d522"
+                    ],
+                    "brand_id": "",
+                    "rate_id": "",
+                    "image": "https://maxway.uz/_next/image?url=https%3A%2F%2Fcdn.delever.uz%2Fdelever%2F5c7b84d9-a8ea-4f68-9baf-d985256428a2&w=1920&q=75",
+                    "active_in_menu": false,
+                    "has_modifier": false,
+                    "from_time": "",
+                    "to_time": "",
+                    "off_always": false,
+                    "gallery": null,
+                    "title": {
+                        "uz": "Ays-ti",
+                        "ru": "Айс-ти",
+                        "en": "Ice Tea"
+                    },
+                    "description": {
+                        "uz": "  ",
+                        "ru": "  ",
+                        "en": "  "
+                    },
+                    "active": true,
+                    "iiko_id": "4b1a1e6a-dfdb-4458-8229-881613867ca8",
+                    "jowi_id": "",
+                    "discounts": null
+                },
+                {
+                    "id": "c9c0cfaf-370b-4a88-ac21-a405a2d4470e",
+                    "out_price": 6000,
+                    "currency": "UZS",
+                    "string": "",
+                    "type": "origin",
+                    "categories": [
+                        "3d3cad5d-3380-4397-a319-053c3040d522"
+                    ],
+                    "brand_id": "",
+                    "rate_id": "",
+                    "image": "https://maxway.uz/_next/image?url=https%3A%2F%2Fcdn.delever.uz%2Fdelever%2F2144193b-bfd3-44f5-8926-403b1a5ac72d&w=1920&q=75",
+                    "active_in_menu": false,
+                    "has_modifier": false,
+                    "from_time": "",
+                    "to_time": "",
+                    "off_always": false,
+                    "gallery": null,
+                    "title": {
+                        "uz": "Coca Cola (quyma)",
+                        "ru": "Coca Cola (разлив)",
+                        "en": "Cola Spill"
+                    },
+                    "description": {
+                        "uz": "   ",
+                        "ru": "  ",
+                        "en": "   "
+                    },
+                    "active": true,
+                    "iiko_id": "",
+                    "jowi_id": "",
+                    "discounts": null
+                },
+                {
+                    "id": "642b6c15-8c2a-43a8-b4c0-2601627a316e",
+                    "out_price": 8000,
+                    "currency": "UZS",
+                    "string": "",
+                    "type": "origin",
+                    "categories": [
+                        "3d3cad5d-3380-4397-a319-053c3040d522"
+                    ],
+                    "brand_id": "",
+                    "rate_id": "",
+                    "image": "https://maxway.uz/_next/image?url=https%3A%2F%2Fcdn.delever.uz%2Fdelever%2Fe021d31e-1d89-45a9-b243-0b39dc7344ef&w=1920&q=75",
+                    "active_in_menu": false,
+                    "has_modifier": false,
+                    "from_time": "",
+                    "to_time": "",
+                    "off_always": false,
+                    "gallery": null,
+                    "title": {
+                        "uz": "Coca Cola ",
+                        "ru": "Coca Cola ",
+                        "en": "Coca-cola"
+                    },
+                    "description": {
+                        "uz": " ",
+                        "ru": " ",
+                        "en": " "
+                    },
+                    "active": true,
+                    "iiko_id": "",
+                    "jowi_id": "",
+                    "discounts": null
+                },
+                {
+                    "id": "1f01c2d0-d3ad-4db1-9ec1-80a52df9aefd",
+                    "out_price": 8000,
+                    "currency": "UZS",
+                    "string": "",
+                    "type": "origin",
+                    "categories": [
+                        "3d3cad5d-3380-4397-a319-053c3040d522"
+                    ],
+                    "brand_id": "",
+                    "rate_id": "",
+                    "image": "https://maxway.uz/_next/image?url=https%3A%2F%2Fcdn.delever.uz%2Fdelever%2Fcd5ae189-f72c-40d7-8447-f7c9812c5386&w=1920&q=75",
+                    "active_in_menu": false,
+                    "has_modifier": false,
+                    "from_time": "",
+                    "to_time": "",
+                    "off_always": false,
+                    "gallery": null,
+                    "title": {
+                        "uz": "Fanta",
+                        "ru": "Fanta",
+                        "en": "Fanta"
+                    },
+                    "description": {
+                        "uz": "  ",
+                        "ru": "  ",
+                        "en": "  "
+                    },
+                    "active": true,
+                    "iiko_id": "",
+                    "jowi_id": "",
+                    "discounts": null
+                },
+                {
+                    "id": "ac487717-0224-4838-8d58-2ac5fbe0cb87",
+                    "out_price": 8000,
+                    "currency": "UZS",
+                    "string": "",
+                    "type": "simple",
+                    "categories": [
+                        "3d3cad5d-3380-4397-a319-053c3040d522"
+                    ],
+                    "brand_id": "",
+                    "rate_id": "",
+                    "image": "https://maxway.uz/_next/image?url=https%3A%2F%2Fcdn.delever.uz%2Fdelever%2F3aa0f5ba-d4d3-4e1a-a0e8-4373dd07de4c&w=1920&q=75",
+                    "active_in_menu": false,
+                    "has_modifier": false,
+                    "from_time": "",
+                    "to_time": "",
+                    "off_always": false,
+                    "gallery": null,
+                    "title": {
+                        "uz": "Fuse tea",
+                        "ru": "Fuse tea",
+                        "en": "Fuse tea"
+                    },
+                    "description": {
+                        "uz": "  ",
+                        "ru": "  ",
+                        "en": "  "
+                    },
+                    "active": true,
+                    "iiko_id": "0f93e76f-c142-4823-9801-5363752a91e3",
+                    "jowi_id": "",
+                    "discounts": null
+                },
+                {
+                    "id": "371d1af9-8db5-4395-8d87-124db0d5210f",
+                    "out_price": 15000,
+                    "currency": "UZS",
+                    "string": "",
+                    "type": "origin",
+                    "categories": [
+                        "3d3cad5d-3380-4397-a319-053c3040d522"
+                    ],
+                    "brand_id": "",
+                    "rate_id": "",
+                    "image": "https://maxway.uz/_next/image?url=https%3A%2F%2Fcdn.delever.uz%2Fdelever%2F5481e462-5eb9-4e19-bdaa-bbb6535a9191&w=1920&q=75",
+                    "active_in_menu": false,
+                    "has_modifier": false,
+                    "from_time": "",
+                    "to_time": "",
+                    "off_always": false,
+                    "gallery": null,
+                    "title": {
+                        "uz": "Sharbat Dena",
+                        "ru": "Сок Dena",
+                        "en": "Juice Dena"
+                    },
+                    "description": {
+                        "uz": " ",
+                        "ru": " ",
+                        "en": "  "
+                    },
+                    "active": true,
+                    "iiko_id": "",
+                    "jowi_id": "",
+                    "discounts": null
+                },
+                {
+                    "id": "379f36e8-2076-477a-83f6-cd05252f756c",
+                    "out_price": 3000,
+                    "currency": "UZS",
+                    "string": "",
+                    "type": "simple",
+                    "categories": [
+                        "3d3cad5d-3380-4397-a319-053c3040d522"
+                    ],
+                    "brand_id": "",
+                    "rate_id": "",
+                    "image": "https://maxway.uz/_next/image?url=https%3A%2F%2Fcdn.delever.uz%2Fdelever%2Ff783312e-690d-4399-8430-9bd6b1614986&w=1920&q=75",
+                    "active_in_menu": false,
+                    "has_modifier": false,
+                    "from_time": "",
+                    "to_time": "",
+                    "off_always": false,
+                    "gallery": null,
+                    "title": {
+                        "uz": "Bonaqua",
+                        "ru": "Вода Bonaqua",
+                        "en": "Bonaqua"
+                    },
+                    "description": {
+                        "uz": " ",
+                        "ru": " ",
+                        "en": " "
+                    },
+                    "active": true,
+                    "iiko_id": "2abea839-b678-4fa0-8bad-5355b0b566b5",
+                    "jowi_id": "",
+                    "discounts": null
+                },
+                {
+                    "id": "e32408ce-d007-408d-bb4f-10cdc83b872a",
+                    "out_price": 3000,
+                    "currency": "UZS",
+                    "string": "",
+                    "type": "simple",
+                    "categories": [
+                        "3d3cad5d-3380-4397-a319-053c3040d522"
+                    ],
+                    "brand_id": "",
+                    "rate_id": "",
+                    "image": "https://maxway.uz/_next/image?url=https%3A%2F%2Fcdn.delever.uz%2Fdelever%2Fb2992e56-468b-4f79-a476-17345f0be785&w=1920&q=75",
+                    "active_in_menu": false,
+                    "has_modifier": false,
+                    "from_time": "",
+                    "to_time": "",
+                    "off_always": false,
+                    "gallery": null,
+                    "title": {
+                        "uz": "Qora choy",
+                        "ru": "Чай черный",
+                        "en": "Black tea"
+                    },
+                    "description": {
+                        "uz": "  Qora choy (ta’bga kora shakar)",
+                        "ru": "  Чёрный чай (сахар по вкусу )",
+                        "en": "  Black tea (sugar to taste)"
+                    },
+                    "active": true,
+                    "iiko_id": "fac67bf7-83df-415d-a61d-f3ea806605f1",
+                    "jowi_id": "",
+                    "discounts": null
+                },
+                {
+                    "id": "4d9d869b-1d9f-4bda-af2c-24adc7b88f6e",
+                    "out_price": 3000,
+                    "currency": "UZS",
+                    "string": "",
+                    "type": "simple",
+                    "categories": [
+                        "3d3cad5d-3380-4397-a319-053c3040d522"
+                    ],
+                    "brand_id": "",
+                    "rate_id": "",
+                    "image": "https://maxway.uz/_next/image?url=https%3A%2F%2Fcdn.delever.uz%2Fdelever%2Fb2992e56-468b-4f79-a476-17345f0be785&w=1920&q=75",
+                    "active_in_menu": false,
+                    "has_modifier": false,
+                    "from_time": "",
+                    "to_time": "",
+                    "off_always": false,
+                    "gallery": null,
+                    "title": {
+                        "uz": "Ko'k choy",
+                        "ru": "Чай зеленый",
+                        "en": "Green tea"
+                    },
+                    "description": {
+                        "uz": "   Ko’k choy (ta’bga kora shakar)",
+                        "ru": " \tЗеленый чай (сахар по вкусу) ",
+                        "en": "  Green tea (sugat to taste)"
+                    },
+                    "active": true,
+                    "iiko_id": "fac67bf7-83df-415d-a61d-f3ea806605f1",
+                    "jowi_id": "",
+                    "discounts": null
+                },
+                {
+                    "id": "a57eddf6-21b3-40f6-b992-d41b94f8947b",
+                    "out_price": 6000,
+                    "currency": "UZS",
+                    "string": "",
+                    "type": "simple",
+                    "categories": [
+                        "3d3cad5d-3380-4397-a319-053c3040d522"
+                    ],
+                    "brand_id": "",
+                    "rate_id": "",
+                    "image": "https://maxway.uz/_next/image?url=https%3A%2F%2Fcdn.delever.uz%2Fdelever%2Fb2992e56-468b-4f79-a476-17345f0be785&w=1920&q=75",
+                    "active_in_menu": false,
+                    "has_modifier": false,
+                    "from_time": "",
+                    "to_time": "",
+                    "off_always": false,
+                    "gallery": null,
+                    "title": {
+                        "uz": "Limonli choy",
+                        "ru": "Чай с лимоном",
+                        "en": "tea with lemon"
+                    },
+                    "description": {
+                        "uz": "Limonli choy (ta’bga ko'rish uchun shakar)",
+                        "ru": "Чай с лимоном (сахар по вкусу)",
+                        "en": "  Lemon tea (sugar to taste)"
+                    },
+                    "active": true,
+                    "iiko_id": "43e1e74e-a6a9-40b9-b2ca-96279d35f915",
+                    "jowi_id": "",
+                    "discounts": null
+                },
+                {
+                    "id": "078fec9e-a354-4313-985f-db8731624f8f",
+                    "out_price": 10000,
+                    "currency": "UZS",
+                    "string": "",
+                    "type": "simple",
+                    "categories": [
+                        "3d3cad5d-3380-4397-a319-053c3040d522"
+                    ],
+                    "brand_id": "",
+                    "rate_id": "",
+                    "image": "https://maxway.uz/_next/image?url=https%3A%2F%2Fcdn.delever.uz%2Fdelever%2F3ed87983-e592-4642-b6fc-a3a0b9d86ae1&w=1920&q=75",
+                    "active_in_menu": false,
+                    "has_modifier": false,
+                    "from_time": "",
+                    "to_time": "",
+                    "off_always": false,
+                    "gallery": null,
+                    "title": {
+                        "uz": "Amerikano",
+                        "ru": "Американо",
+                        "en": "Americano"
+                    },
+                    "description": {
+                        "uz": "    Tabiiy donli qahva (espresso, suv)\n",
+                        "ru": "    Натуральный зерновой кофе (эспрессо, вода)\n",
+                        "en": "    Natural grain coffee (espresso, water)"
+                    },
+                    "active": true,
+                    "iiko_id": "7a6094ee-4dc0-4866-97fe-cc57a256c94e",
+                    "jowi_id": "",
+                    "discounts": null
+                },
+                {
+                    "id": "a5f0ddb9-3fad-4b5d-99ad-000ba06a4154",
+                    "out_price": 12000,
+                    "currency": "UZS",
+                    "string": "",
+                    "type": "simple",
+                    "categories": [
+                        "3d3cad5d-3380-4397-a319-053c3040d522"
+                    ],
+                    "brand_id": "",
+                    "rate_id": "",
+                    "image": "https://maxway.uz/_next/image?url=https%3A%2F%2Fcdn.delever.uz%2Fdelever%2Fc6ebf24a-7b7d-4a1e-a8e1-2576c659746e&w=1920&q=75",
+                    "active_in_menu": false,
+                    "has_modifier": false,
+                    "from_time": "",
+                    "to_time": "",
+                    "off_always": false,
+                    "gallery": null,
+                    "title": {
+                        "uz": "Kapuchino",
+                        "ru": "Капучино",
+                        "en": "Cappuccino"
+                    },
+                    "description": {
+                        "uz": "  Tabiiy donli qahva (espresso, sut, suv)\n",
+                        "ru": "   Натуральный зерновой кофе (эспрессо, молоко, вода)\n",
+                        "en": "    Natural grain coffee (espresso, milk, water)"
+                    },
+                    "active": true,
+                    "iiko_id": "26b06a4a-df1f-49fb-9800-001af98e049b",
+                    "jowi_id": "",
+                    "discounts": null
+                },
+                {
+                    "id": "753f1e01-e227-4a81-8b41-20fbc5e0cbf7",
+                    "out_price": 12000,
+                    "currency": "UZS",
+                    "string": "",
+                    "type": "simple",
+                    "categories": [
+                        "3d3cad5d-3380-4397-a319-053c3040d522"
+                    ],
+                    "brand_id": "",
+                    "rate_id": "",
+                    "image": "https://maxway.uz/_next/image?url=https%3A%2F%2Fcdn.delever.uz%2Fdelever%2Fc50ac814-8012-4fa8-81de-1f3bdfdb7b92&w=1920&q=75",
+                    "active_in_menu": false,
+                    "has_modifier": false,
+                    "from_time": "",
+                    "to_time": "",
+                    "off_always": false,
+                    "gallery": null,
+                    "title": {
+                        "uz": "Latte",
+                        "ru": "Латте",
+                        "en": "Latte"
+                    },
+                    "description": {
+                        "uz": "  Tabiiy donli qahva (espresso, sut, suv)\n",
+                        "ru": "   Натуральный зерновой кофе (эспрессо, молоко, вода)\n",
+                        "en": "Natural grain coffee (espresso, milk, water)"
+                    },
+                    "active": true,
+                    "iiko_id": "78ecf5fc-165a-43af-9163-5e00da2c963c",
+                    "jowi_id": "",
+                    "discounts": null
+                },
+                {
+                    "id": "be1f4c3d-faf8-4fb6-80b1-87fb5408a927",
+                    "out_price": 1000,
+                    "currency": "UZS",
+                    "string": "",
+                    "type": "simple",
+                    "categories": [
+                        "3d3cad5d-3380-4397-a319-053c3040d522"
+                    ],
+                    "brand_id": "",
+                    "rate_id": "",
+                    "image": "https://maxway.uz/_next/image?url=https%3A%2F%2Fcdn.delever.uz%2Fdelever%2F66c29fca-e6fd-4d19-9827-4745052f7439&w=1920&q=75",
+                    "active_in_menu": false,
+                    "has_modifier": false,
+                    "from_time": "",
+                    "to_time": "",
+                    "off_always": false,
+                    "gallery": null,
+                    "title": {
+                        "uz": "Bir martali stakan",
+                        "ru": "Одноразовый стакан",
+                        "en": "Disposable cup"
+                    },
+                    "description": {
+                        "uz": "   ",
+                        "ru": "   ",
+                        "en": "   "
+                    },
+                    "active": true,
+                    "iiko_id": "d2a3f84a-87c7-4775-9a24-19306e9a7c01",
+                    "jowi_id": "",
+                    "discounts": null
+                }
+            ],
+            "child_categories": null
+        },
+        {
+            "id": "475e687c-eca9-4651-84ec-c45233e4fd51",
+            "slug": "desserts-eeou91l8ivjou6",
+            "parent_id": "",
+            "image": "a1524f13-5499-4ce7-a6fa-d8b860c06380",
+            "description": {
+                "uz": "🍰Desertlar",
+                "ru": "🍰Десерты",
+                "en": "🍰Desserts"
+            },
+            "title": {
+                "uz": "🍰Desertlar",
+                "ru": "🍰Десерты",
+                "en": "🍰Desserts"
+            },
+            "order_no": "10",
+            "active": true,
+            "products": [
+                {
+                    "id": "44b16544-da5d-4db9-a709-a69a7f8b6fbc",
+                    "out_price": 18000,
+                    "currency": "UZS",
+                    "string": "",
+                    "type": "simple",
+                    "categories": [
+                        "475e687c-eca9-4651-84ec-c45233e4fd51"
+                    ],
+                    "brand_id": "",
+                    "rate_id": "",
+                    "image": "https://maxway.uz/_next/image?url=https%3A%2F%2Fcdn.delever.uz%2Fdelever%2Ff6b336da-dd13-4412-8b93-0385f80f476e&w=1920&q=75",
+                    "active_in_menu": false,
+                    "has_modifier": false,
+                    "from_time": "",
+                    "to_time": "",
+                    "off_always": false,
+                    "gallery": null,
+                    "title": {
+                        "uz": "Brauni",
+                        "ru": "Брауни",
+                        "en": "Brauni"
+                    },
+                    "description": {
+                        "uz": "  Qora shokolad, yong'oq va shokoladli pechene\n",
+                        "ru": "  Темный шоколад, грецкие орехи и шоколадный бисквит\n",
+                        "en": "  Dark chocolate, walnuts and chocolate sponge cake"
+                    },
+                    "active": true,
+                    "iiko_id": "3eb485ca-7895-4ee5-a5b9-e7ba8e40fb36",
+                    "jowi_id": "",
+                    "discounts": null
+                },
+                {
+                    "id": "3fa5eb10-a0df-4178-9fca-b9b0c89757d0",
+                    "out_price": 18000,
+                    "currency": "UZS",
+                    "string": "",
+                    "type": "simple",
+                    "categories": [
+                        "475e687c-eca9-4651-84ec-c45233e4fd51"
+                    ],
+                    "brand_id": "",
+                    "rate_id": "",
+                    "image": "https://maxway.uz/_next/image?url=https%3A%2F%2Fcdn.delever.uz%2Fdelever%2F7d9b0f14-1be0-40b4-932f-fcaa6f09d8d8&w=1920&q=75",
+                    "active_in_menu": false,
+                    "has_modifier": false,
+                    "from_time": "",
+                    "to_time": "",
+                    "off_always": false,
+                    "gallery": null,
+                    "title": {
+                        "uz": "Tiramisu",
+                        "ru": "Тирамису",
+                        "en": "Tiramusu"
+                    },
+                    "description": {
+                        "uz": "  Savoyardi pechene, mascarpone, qahva\n",
+                        "ru": "Печенье \"Савоярди\", маскарпоне, кофе\n",
+                        "en": "  Savoyardi cookies, mascarpone, coffee"
+                    },
+                    "active": true,
+                    "iiko_id": "33c5f436-5630-4972-b972-5dab504c0ff8",
+                    "jowi_id": "",
+                    "discounts": null
+                },
+                {
+                    "id": "b7620311-83b0-46d1-838b-38f884dd9c66",
+                    "out_price": 20000,
+                    "currency": "UZS",
+                    "string": "",
+                    "type": "simple",
+                    "categories": [
+                        "475e687c-eca9-4651-84ec-c45233e4fd51"
+                    ],
+                    "brand_id": "",
+                    "rate_id": "",
+                    "image": "https://maxway.uz/_next/image?url=https%3A%2F%2Fcdn.delever.uz%2Fdelever%2F62f54ba5-fef2-43a5-b885-6889cb6ec347&w=1920&q=75",
+                    "active_in_menu": false,
+                    "has_modifier": false,
+                    "from_time": "",
+                    "to_time": "",
+                    "off_always": false,
+                    "gallery": null,
+                    "title": {
+                        "uz": "San-sebastian",
+                        "ru": "Сан-себастьян",
+                        "en": "San-sebastian"
+                    },
+                    "description": {
+                        "uz": "Savoyardi kukilari, mascarpone, kahva\n\n",
+                        "ru": "Молочный шоколад, крем-чиз и бисквит\n\n",
+                        "en": "Milk chocolate, cream cheese and sponge cake\n"
+                    },
+                    "active": true,
+                    "iiko_id": "86a9d8bc-6c2e-457a-9d0b-909f5b1f57ae",
+                    "jowi_id": "",
+                    "discounts": null
+                }
+            ],
+            "child_categories": null
+        },
+        {
+            "id": "ef892529-43ff-451e-a306-623eccbf4a8b",
+            "slug": "souses-eeou91l8isx5u0",
+            "parent_id": "",
+            "image": "49b4ff2f-c854-4fce-8296-21eb95732c46",
+            "description": {
+                "uz": "🥫Souslar",
+                "ru": "🥫Соусы",
+                "en": "🥫Souses"
+            },
+            "title": {
+                "uz": "🥫Souslar",
+                "ru": "🥫Соусы",
+                "en": "🥫Souses"
+            },
+            "order_no": "131",
+            "active": true,
+            "products": [
+                {
+                    "id": "ed7654f9-a6e5-45a9-b8a0-9f150610cc74",
+                    "out_price": 2000,
+                    "currency": "UZS",
+                    "string": "",
+                    "type": "simple",
+                    "categories": [
+                        "ef892529-43ff-451e-a306-623eccbf4a8b"
+                    ],
+                    "brand_id": "",
+                    "rate_id": "",
+                    "image": "https://maxway.uz/_next/image?url=https%3A%2F%2Fcdn.delever.uz%2Fdelever%2Fb02cac62-baf8-4cc4-b207-4611b7ceacb7&w=1920&q=75",
+                    "active_in_menu": false,
+                    "has_modifier": false,
+                    "from_time": "",
+                    "to_time": "",
+                    "off_always": false,
+                    "gallery": null,
+                    "title": {
+                        "uz": "Xalapeno",
+                        "ru": "Халапеньо ",
+                        "en": "Jalapeno "
+                    },
+                    "description": {
+                        "uz": "  ",
+                        "ru": "  ",
+                        "en": "  "
+                    },
+                    "active": true,
+                    "iiko_id": "7cb0e10c-6fbc-422a-8f27-ff81aba2c981",
+                    "jowi_id": "",
+                    "discounts": null
+                },
+                {
+                    "id": "bf48b3c6-a9b7-46c0-82de-49f45b6f8eb0",
+                    "out_price": 2000,
+                    "currency": "UZS",
+                    "string": "",
+                    "type": "simple",
+                    "categories": [
+                        "ef892529-43ff-451e-a306-623eccbf4a8b"
+                    ],
+                    "brand_id": "",
+                    "rate_id": "",
+                    "image": "https://maxway.uz/_next/image?url=https%3A%2F%2Fcdn.delever.uz%2Fdelever%2F4c67d369-c999-4cd7-90d0-2b0e86a9b556&w=1920&q=75",
+                    "active_in_menu": false,
+                    "has_modifier": false,
+                    "from_time": "",
+                    "to_time": "",
+                    "off_always": false,
+                    "gallery": null,
+                    "title": {
+                        "uz": "Ketchup",
+                        "ru": "Кетчуп",
+                        "en": "Ketchup"
+                    },
+                    "description": {
+                        "uz": "  ",
+                        "ru": "  ",
+                        "en": "  "
+                    },
+                    "active": true,
+                    "iiko_id": "474065c1-37c6-4f96-bcef-ad80deabad1c",
+                    "jowi_id": "",
+                    "discounts": null
+                },
+                {
+                    "id": "bd50184e-9434-4a8b-b48b-1807b8d83af3",
+                    "out_price": 2000,
+                    "currency": "UZS",
+                    "string": "",
+                    "type": "simple",
+                    "categories": [
+                        "ef892529-43ff-451e-a306-623eccbf4a8b"
+                    ],
+                    "brand_id": "",
+                    "rate_id": "",
+                    "image": "https://maxway.uz/_next/image?url=https%3A%2F%2Fcdn.delever.uz%2Fdelever%2F33df33d7-cc35-425c-9d56-b1ec29dc4b57&w=1920&q=75",
+                    "active_in_menu": false,
+                    "has_modifier": false,
+                    "from_time": "",
+                    "to_time": "",
+                    "off_always": false,
+                    "gallery": null,
+                    "title": {
+                        "uz": "Pishloqli sous",
+                        "ru": "Сырный соус",
+                        "en": "Cheese sauce"
+                    },
+                    "description": {
+                        "uz": " ",
+                        "ru": " ",
+                        "en": " "
+                    },
+                    "active": true,
+                    "iiko_id": "6128d73e-647b-4480-b038-417ca218df99",
+                    "jowi_id": "",
+                    "discounts": null
+                },
+                {
+                    "id": "a01f15eb-2010-4a0a-8779-e978520468c6",
+                    "out_price": 2000,
+                    "currency": "UZS",
+                    "string": "",
+                    "type": "simple",
+                    "categories": [
+                        "ef892529-43ff-451e-a306-623eccbf4a8b"
+                    ],
+                    "brand_id": "",
+                    "rate_id": "",
+                    "image": "https://maxway.uz/_next/image?url=https%3A%2F%2Fcdn.delever.uz%2Fdelever%2F8a51fa2d-21a7-41b5-9253-b4fb56c9a4cb&w=1920&q=75",
+                    "active_in_menu": false,
+                    "has_modifier": false,
+                    "from_time": "",
+                    "to_time": "",
+                    "off_always": false,
+                    "gallery": null,
+                    "title": {
+                        "uz": "Mayonez",
+                        "ru": "Майонез",
+                        "en": "Mayonnaise"
+                    },
+                    "description": {
+                        "uz": " ",
+                        "ru": "  ",
+                        "en": " "
+                    },
+                    "active": true,
+                    "iiko_id": "4399df3a-3bd4-4fdc-aa77-dad1dd8e3634",
+                    "jowi_id": "",
+                    "discounts": null
+                },
+                {
+                    "id": "07a4614d-5a5e-449d-b64c-8b91a9518bd9",
+                    "out_price": 2000,
+                    "currency": "UZS",
+                    "string": "",
+                    "type": "simple",
+                    "categories": [
+                        "ef892529-43ff-451e-a306-623eccbf4a8b"
+                    ],
+                    "brand_id": "",
+                    "rate_id": "",
+                    "image": "https://maxway.uz/_next/image?url=https%3A%2F%2Fcdn.delever.uz%2Fdelever%2Fa888f2da-c3db-405f-90fc-2dc37eebff58&w=1920&q=75",
+                    "active_in_menu": false,
+                    "has_modifier": false,
+                    "from_time": "",
+                    "to_time": "",
+                    "off_always": false,
+                    "gallery": null,
+                    "title": {
+                        "uz": "Sarimsoqli sous",
+                        "ru": "Чесночный соус",
+                        "en": "Garlic Sause"
+                    },
+                    "description": {
+                        "uz": "  ",
+                        "ru": " ",
+                        "en": "   "
+                    },
+                    "active": true,
+                    "iiko_id": "bdf9e153-b0df-4142-934e-e38236f7a744",
+                    "jowi_id": "",
+                    "discounts": null
+                }
+            ],
+            "child_categories": null
+        },
+        {
+            "id": "fc5fac93-27f1-4183-8538-cf612cb2126c",
+            "slug": "snacks-eeou91l8ivolc3",
+            "parent_id": "",
+            "image": "e0f74eab-e185-47f1-809c-4926ee46e9d2",
+            "description": {
+                "uz": "🍚Tamaddilar",
+                "ru": "🍚Гарниры",
+                "en": "🍚Garnish"
+            },
+            "title": {
+                "uz": "🍚Tamaddilar",
+                "ru": "🍚Гарниры",
+                "en": "🍚Garnish"
+            },
+            "order_no": "132",
+            "active": true,
+            "products": [
+                {
+                    "id": "bcee15ad-7d9b-4c7d-a20c-55741c192d57",
+                    "out_price": 6000,
+                    "currency": "UZS",
+                    "string": "",
+                    "type": "simple",
+                    "categories": [
+                        "fc5fac93-27f1-4183-8538-cf612cb2126c"
+                    ],
+                    "brand_id": "",
+                    "rate_id": "",
+                    "image": "https://maxway.uz/_next/image?url=https%3A%2F%2Fcdn.delever.uz%2Fdelever%2F03da0f1b-a4ee-4f58-9ff2-d5a873160d3e&w=1920&q=75",
+                    "active_in_menu": false,
+                    "has_modifier": false,
+                    "from_time": "",
+                    "to_time": "",
+                    "off_always": false,
+                    "gallery": null,
+                    "title": {
+                        "uz": "Guruch",
+                        "ru": "Рис с кукурузой",
+                        "en": "Rice"
+                    },
+                    "description": {
+                        "uz": "   Shirin makkajo'xori bilan pishirilgan \"lazer\" guruch\n",
+                        "ru": "   Сваренный рис \"лазер\" со сладкой кукурузой\n",
+                        "en": "   Cooked rice \"laser\" with sweet corn"
+                    },
+                    "active": true,
+                    "iiko_id": "1d802e55-1cb0-4fa6-8d64-1d38629bffa6",
+                    "jowi_id": "",
+                    "discounts": null
+                },
+                {
+                    "id": "2c75dfce-d35b-47d2-81a2-71c189f99ccd",
+                    "out_price": 6000,
+                    "currency": "UZS",
+                    "string": "",
+                    "type": "simple",
+                    "categories": [
+                        "fc5fac93-27f1-4183-8538-cf612cb2126c"
+                    ],
+                    "brand_id": "",
+                    "rate_id": "",
+                    "image": "https://maxway.uz/_next/image?url=https%3A%2F%2Fcdn.delever.uz%2Fdelever%2Fcef4048d-618c-4e51-aabe-40b4b125ec77&w=1920&q=75",
+                    "active_in_menu": false,
+                    "has_modifier": false,
+                    "from_time": "",
+                    "to_time": "",
+                    "off_always": false,
+                    "gallery": null,
+                    "title": {
+                        "uz": "Salat",
+                        "ru": "Салат с капустой",
+                        "en": "Salad"
+                    },
+                    "description": {
+                        "uz": "    Salat qizil karam aralashmasi\n",
+                        "ru": "  Салат микс из красной капусты\n",
+                        "en": "   Mixed red cabbage salad"
+                    },
+                    "active": true,
+                    "iiko_id": "6225e97a-68f0-444c-9125-8935a3bbe3f0",
+                    "jowi_id": "",
+                    "discounts": null
+                }
+            ],
+            "child_categories": null
+        }
+    ]
+}
