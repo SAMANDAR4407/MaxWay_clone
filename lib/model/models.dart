@@ -18,10 +18,14 @@ class Category {
     );
   }
 
-  factory Category.empty() => Category._(
-    id: '',
-    title: Description._(uz: ''),
-    products: []
+  factory Category.empty({
+    String id = '',
+    String title = '',
+    List<Product> list = const []
+}) => Category._(
+    id: id,
+    title: Description._(uz: title),
+    products: list
   );
 }
 

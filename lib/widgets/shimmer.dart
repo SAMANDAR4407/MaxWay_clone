@@ -9,6 +9,7 @@ class ShimmerView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListView.separated(
+      padding: const EdgeInsets.only(bottom: 10),
       separatorBuilder: (__, _) => const SizedBox(height: 10,),
       itemCount: 5,
       itemBuilder: (_, i) {
@@ -30,9 +31,7 @@ class ShimmerView extends StatelessWidget {
                   color: Colors.white,
                 ),
               ),
-              const SizedBox(
-                height: 10,
-              ),
+              const SizedBox(height: 10,),
               SizedBox(
                 height: 350,
                 child: ListView.separated(

@@ -3,10 +3,8 @@ import 'package:flutter/material.dart';
 import '../model/models.dart';
 
 class ProductItem extends StatelessWidget {
-  final Function() onTap;
   const ProductItem({
     super.key,
-    required this.onTap,
     required this.product,
   });
 
@@ -14,60 +12,61 @@ class ProductItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      width: MediaQuery.of(context).size.width * 0.8,
-      padding: const EdgeInsets.all(14),
-      decoration: BoxDecoration(
-          color: Colors.white, borderRadius: BorderRadius.circular(20)),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
+    return SizedBox(
+      height: 85,
+      child: Row(
         children: [
           Expanded(
-              child: Center(
-                  child: Image.network(
-            product.image,
-          ))),
-          const SizedBox(
-            height: 10,
-          ),
-          Text(
-            product.title.uz,
-            style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-          ),
-          product.description.uz.isNotEmpty
-              ? Text(
-                  product.description.uz.trim(),
-                  maxLines: 2,
-                  style: const TextStyle(overflow: TextOverflow.ellipsis),
-                )
-              : const SizedBox(),
-          SizedBox(
-            height: 50,
-            child: Row(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  "${product.price} ",
-                  style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                  product.title.uz,
+                  style: const TextStyle(
+                      color: Colors.black, fontWeight: FontWeight.bold),
                 ),
-                Text(product.currency,),
-                Expanded(child: Container()),
-                InkWell(
-                  onTap: onTap,
-                  child: Container(
-                      padding: const EdgeInsets.symmetric(
-                          horizontal: 25, vertical: 10),
-                      height: double.infinity,
-                      decoration: BoxDecoration(
-                          color: Colors.deepPurple,
-                          borderRadius: BorderRadius.circular(30)),
-                      child: const Center(
-                          child: Text(
-                        'Qo\'shish',
-                        style: TextStyle(
-                            fontWeight: FontWeight.bold, color: Colors.white),
-                      ))),
-                )
+                Text(product.description.uz.trim(),
+                    maxLines: 2,
+                    style: const TextStyle(overflow: TextOverflow.ellipsis)),
+                Text(
+                  "${product.price} so'm",
+                  style: const TextStyle(
+                      color: Colors.indigo, fontWeight: FontWeight.bold),
+                ),
               ],
+            ),
+          ),
+          const SizedBox(
+            width: 5,
+          ),
+          SizedBox(
+            width: MediaQuery.of(context).size.width * 0.25,
+            height: MediaQuery.of(context).size.width * 0.25,
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(10),
+              child: Image.network(
+                product.image,
+                fit: BoxFit.cover,
+                loadingBuilder: (BuildContext context, Widget child,
+                    ImageChunkEvent? loadingProgress) {
+                  if (loadingProgress == null) return child;
+                  return Center(
+                    child: SizedBox(
+                      height: 30,
+                      width: 30,
+                      child: CircularProgressIndicator(
+                        strokeWidth: 3,
+                        color: Colors.grey,
+                        value: loadingProgress.expectedTotalBytes != null
+                            ? loadingProgress.cumulativeBytesLoaded /
+                                loadingProgress.expectedTotalBytes!
+                            : null,
+                      ),
+                    ),
+                  );
+                },
+              ),
             ),
           )
         ],

@@ -1,4 +1,4 @@
-import 'package:demo_max_way/pages/home_page.dart';
+import 'package:demo_max_way/pages/home/home_page.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -19,7 +19,7 @@ class _SplashState extends State<Splash> {
   @override
   void initState() {
     next().then((value) {
-      Navigator.pushReplacement(context, CupertinoPageRoute(builder: (BuildContext context) => const HomePage()));
+      Navigator.pushReplacement(context, CupertinoPageRoute(builder: (BuildContext context) => const HomePage(isFirst: true)));
     });
     super.initState();
   }

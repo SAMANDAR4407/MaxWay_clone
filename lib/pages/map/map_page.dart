@@ -1,13 +1,14 @@
 import 'dart:async';
 
+import 'package:demo_max_way/pages/home/home_page.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:geolocator/geolocator.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:yandex_mapkit/yandex_mapkit.dart';
 
 import '../../model/location_model.dart';
-import '../address_add/confirm_page.dart';
 import 'map_utils.dart';
 
 class MapPage extends StatefulWidget {
@@ -21,9 +22,14 @@ class _MapPageState extends State<MapPage> {
   final mapController = Completer<YandexMapController>();
   var _locationModel = LocationModel();
   var locationName = '';
+  SharedPreferences? prefs;
 
   @override
   void initState() {
+    handleLocationPermission();
+    load().then((value) {
+      prefs?.setBool('isFirst', false);
+    });
     super.initState();
   }
 
@@ -58,10 +64,33 @@ class _MapPageState extends State<MapPage> {
     });
   }
 
+  Future<void> load() async {
+    prefs = await SharedPreferences.getInstance();
+  }
+
+  // Future<bool> _onBackPressed() async {
+  //   return (await showDialog(
+  //     context: context,
+  //     builder: (context) => AlertDialog(
+  //       title: const Text('Are you sure?'),
+  //       content: const Text('Do you want to exit'),
+  //       actions: <Widget>[
+  //         TextButton(
+  //           onPressed: () => Navigator.of(context).pop(false),
+  //           child: const Text('No'),
+  //         ),
+  //         TextButton(
+  //           onPressed: () => Navigator.of(context).pop(true),
+  //           child: const Text('Yes'),
+  //         ),
+  //       ],
+  //     ),
+  //   )) ?? false;
+  // }
+
   @override
   Widget build(BuildContext context) {
-    locationName =
-        '${_locationModel.regionName}, ${_locationModel.cityName}, ${_locationModel.streetName}';
+    locationName = '${_locationModel.regionName}, ${_locationModel.cityName}, ${_locationModel.streetName}';
     return Scaffold(
       body: Stack(children: [
         Column(
@@ -117,20 +146,9 @@ class _MapPageState extends State<MapPage> {
                     onTap: () {
                       Navigator.pop(context);
                     },
-                    child: Material(
-                      elevation: 5,
-                      borderRadius: BorderRadius.circular(50),
-                      child: Container(
-                        padding: const EdgeInsets.all(8),
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(50),
-                          color: Colors.white,
-                        ),
-                        child: const Icon(
-                          Icons.close,
-                          color: Color(0xff51267D),
-                        ),
-                      ),
+                    child: const Icon(
+                      Icons.close,
+                      color: Color(0xff51267D),
                     ),
                   ),
                 ),
@@ -199,13 +217,16 @@ class _MapPageState extends State<MapPage> {
                         const Expanded(child: SizedBox()),
                         InkWell(
                           onTap: () {
-                            Navigator.push(context, CupertinoPageRoute(
-                              builder: (context) {
-                                return ConfirmPage(
-                                  pinnedLocation: locationName,
-                                );
-                              },
-                            ));
+                            // Navigator.push(context, CupertinoPageRoute(
+                            //   builder: (context) {
+                            //     return ConfirmPage(
+                            //       pinnedLocation: locationName,
+                            //     );
+                            //   },
+                            // ));
+
+                            prefs?.setString('location', locationName);
+                            Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => const HomePage(isFirst: false),));
                           },
                           child: Container(
                             width: double.infinity,
@@ -216,7 +237,7 @@ class _MapPageState extends State<MapPage> {
                                 borderRadius:
                                     BorderRadius.all(Radius.circular(10))),
                             child: const Text(
-                              'Tasdiqlash',
+                              'Tasdiqlang',
                               textAlign: TextAlign.center,
                               style:
                                   TextStyle(color: Colors.white, fontSize: 16),

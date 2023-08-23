@@ -1,16 +1,20 @@
 import 'package:demo_max_way/pages/map/map_page.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 
 import '../model/models.dart';
+import '../pages/detail/detail_page.dart';
 import 'product.dart';
 
 class CategoryItem extends StatelessWidget {
   const CategoryItem({
     super.key,
     required this.category,
+    required this.isFirst,
   });
 
   final Category category;
+  final bool isFirst;
 
   @override
   Widget build(BuildContext context) {
@@ -19,66 +23,39 @@ class CategoryItem extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const SizedBox(
-            height: 20,
-          ),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 20),
-            child: Text(
-              category.title.uz.contains('Panini')? '🧈Panini': category.title.uz,
-              style: const TextStyle(fontSize: 21, fontWeight: FontWeight.bold),
+          Container(
+            padding: const EdgeInsets.all(10),
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(20),
+              color: Colors.white70
             ),
-          ),
-          const SizedBox(
-            height: 10,
-          ),
-          SizedBox(
-            height: 350,
-            child: ListView.separated(
-              separatorBuilder: (context, index) => const SizedBox(width: 10,),
-              scrollDirection: Axis.horizontal,
-              itemCount: category.products.length,
-              itemBuilder: (_, ind) {
-                final product = category.products[ind];
-                if(ind == 0){
-                  return Row(
-                    children: [
-                      const SizedBox(width: 20,),
-                      ProductItem(onTap: () {
-                        Navigator.push(context, CupertinoPageRoute(
-                          builder: (context) {
-                            return const MapPage();
+            height: category.products.length * 90 + 75,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(category.title.uz, style: const TextStyle(fontSize: 21, fontWeight: FontWeight.bold),),
+                const SizedBox(height: 10,),
+                SizedBox(
+                  height: category.products.length * 90 + 15,
+                  child: ListView.separated(
+                    physics: const NeverScrollableScrollPhysics(),
+                    itemCount: category.products.length,
+                    separatorBuilder: (BuildContext context, int index) => const Divider(thickness: 1,height: 6.6),
+                    itemBuilder: (_, ind) {
+                      final product = category.products[ind];
+                      return InkWell(
+                          onTap: () {
+                            Navigator.push(
+                                context,
+                                CupertinoPageRoute(builder: (context) => isFirst
+                                    ? const MapPage() : const DetailPage(),));
                           },
-                        ));
-                      }, product: product)
-                    ],
-                  );
-                }
-                if(ind == category.products.length-1){
-                  return Row(
-                    children: [
-                      ProductItem(onTap: () {
-                        Navigator.push(context, CupertinoPageRoute(
-                          builder: (context) {
-                            return const MapPage();
-                          },
-                        ));
-                      }, product: product),
-                      const SizedBox(width: 20,),
-                    ],
-                  );
-                }
-                return ProductItem(
-                  product: product,
-                  onTap: () {
-                    Navigator.push(context, CupertinoPageRoute(
-                      builder: (context) {
-                        return const MapPage();
-                      },
-                    ));
-                  },
-                );
-              },
+                          child: ProductItem(product: product)
+                      );
+                    },
+                  ),
+                ),
+              ],
             ),
           )
         ],

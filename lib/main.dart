@@ -1,4 +1,3 @@
-import 'package:demo_max_way/pages/map/map_utils.dart';
 import 'package:flutter/material.dart';
 
 import 'pages/splash/splash_page.dart';
@@ -13,7 +12,6 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    handleLocationPermission();
     return MaterialApp(
       title: 'Demo Max Way',
       debugShowCheckedModeBanner: false,
