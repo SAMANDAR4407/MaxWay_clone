@@ -13,7 +13,7 @@ class ProductItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 85,
+      height: 90,
       child: Row(
         children: [
           Expanded(
@@ -24,15 +24,16 @@ class ProductItem extends StatelessWidget {
                 Text(
                   product.title.uz,
                   style: const TextStyle(
-                      color: Colors.black, fontWeight: FontWeight.bold),
+                      color: Colors.black, fontWeight: FontWeight.w500, fontSize: 15),
                 ),
                 Text(product.description.uz.trim(),
                     maxLines: 2,
-                    style: const TextStyle(overflow: TextOverflow.ellipsis)),
+                    style: TextStyle(fontSize: 13,overflow: TextOverflow.ellipsis, color: Colors.grey[600])),
+                const SizedBox(height: 4,),
                 Text(
                   "${product.price} so'm",
                   style: const TextStyle(
-                      color: Colors.indigo, fontWeight: FontWeight.bold),
+                      color: Color(0xff51267D), fontWeight: FontWeight.bold),
                 ),
               ],
             ),
@@ -41,8 +42,8 @@ class ProductItem extends StatelessWidget {
             width: 5,
           ),
           SizedBox(
-            width: MediaQuery.of(context).size.width * 0.25,
-            height: MediaQuery.of(context).size.width * 0.25,
+            width: MediaQuery.of(context).size.width * 0.24,
+            height: double.infinity,
             child: ClipRRect(
               borderRadius: BorderRadius.circular(10),
               child: Image.network(

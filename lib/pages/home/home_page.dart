@@ -1,13 +1,13 @@
 import 'package:demo_max_way/core/food_api.dart';
-import 'package:demo_max_way/pages/home/product_bloc.dart';
-import 'package:demo_max_way/widgets/product.dart';
+import 'package:demo_max_way/core/pref.dart';
+import 'package:demo_max_way/pages/home/bloc/bloc.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 import 'package:shimmer/shimmer.dart';
 
 import '../../widgets/category.dart';
+import '../../widgets/product_search.dart';
 import '../../widgets/shimmer.dart';
 import '../map/map_page.dart';
 
@@ -21,30 +21,27 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  final bloc = ProductBloc(FoodApi());
+  final bloc = FoodBloc(FoodApi());
   final controller = TextEditingController();
   final _node = FocusNode();
-  late SharedPreferences pref;
-  bool isClicked = false;
-  int index = 0;
-  bool? isFirst;
+  final pref = PrefHelper();
+  bool isFirst = true;
   String? location;
 
   Future<void> load() async {
-    pref = await SharedPreferences.getInstance();
-    isFirst = pref.getBool('isFirst') ?? true;
-    location = pref.getString('location') ?? '';
+    isFirst = await pref.isFirst();
+    location = await pref.getLocation();
   }
 
   @override
   void initState() {
     load();
-    bloc.add(ProductEvent.loadData());
+    bloc.add(LoadData());
     controller.addListener(() {
       if (controller.text.isEmpty) {
-        bloc.add(ProductEvent.loadData());
+        bloc.add(LoadData());
       } else {
-        bloc.add(ProductEvent.search(query: controller.text));
+        bloc.add(Search(controller.text));
       }
     });
     super.initState();
@@ -57,40 +54,24 @@ class _HomePageState extends State<HomePage> {
     super.dispose();
   }
 
+  var selectedCategories = <String>[];
+
   @override
   Widget build(BuildContext context) {
-    // if (location!.isEmpty) {
-    //   setState(() {
-    //     location = pref.getString('location');
-    //   });
-    // }
+
     if (widget.isFirst) {
       setState(() {});
     } else {
       setState(() {});
     }
-    return BlocBuilder<ProductBloc, ProductState>(
+
+    return BlocBuilder<FoodBloc, FoodState>(
       bloc: bloc,
       builder: (context, state) {
         return Scaffold(
-          backgroundColor: const Color(0xFFEFEFEF),
-          bottomNavigationBar: BottomNavigationBar(
-            items: const [
-            BottomNavigationBarItem(icon: Icon(CupertinoIcons.home), label: 'Asosiy'),
-            BottomNavigationBarItem(icon: Icon(CupertinoIcons.cart), label: 'Savatcha'),
-            BottomNavigationBarItem(icon: Icon(Icons.shopping_bag_outlined), label: 'Buyurtmalar'),
-            BottomNavigationBarItem(icon: Icon(CupertinoIcons.person), label: 'Profil'),
-          ],
-            selectedItemColor: Colors.deepPurple,
-            unselectedItemColor: Colors.grey,
-            selectedLabelStyle: const TextStyle(color: Colors.deepPurple, fontSize: 12),
-            unselectedLabelStyle: const TextStyle(color: Colors.grey, fontSize: 12),
-            currentIndex: 0,
-            showUnselectedLabels: true,
-            enableFeedback: true,
-            type: BottomNavigationBarType.fixed,
-          ),
+          backgroundColor: const Color(0xFFF6F6F6),
           appBar: AppBar(
+            scrolledUnderElevation: 0,
             automaticallyImplyLeading: false,
             backgroundColor: Colors.white,
             title: isFirst == true
@@ -165,164 +146,172 @@ class _HomePageState extends State<HomePage> {
                   ),
           ),
           body: Column(
-            children: [
-              Container(
-                height: MediaQuery.of(context).size.height * 0.15,
-                width: double.infinity,
-                color: Colors.white,
-                child: Column(
-                  children: [
-                    Container(
-                      margin: const EdgeInsets.all(12),
-                      decoration: ShapeDecoration(
-                        color: const Color(0xFFF3F3F3),
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(12),
-                        ),
-                      ),
-                      child: TextField(
-                        focusNode: _node,
-                        controller: controller,
-                        onTapOutside: (event) {
-                          _node.unfocus();
-                          setState(() {});
-                        },
-                        cursorColor: Colors.deepPurple,
-                        decoration: InputDecoration(
-                          enabledBorder: InputBorder.none,
-                          focusedBorder: InputBorder.none,
-                          hintText: 'Qidiruv',
-                          suffixIcon: controller.text.isNotEmpty
-                              ? IconButton(
-                              onPressed: () {
-                                controller.clear();
-                                setState(() {});
-                              },
-                              icon: const Icon(
-                                Icons.close,
+                children: [
+                  Container(
+                    height: MediaQuery.of(context).size.height * 0.136,
+                    width: double.infinity,
+                    color: Colors.white,
+                    child: Column(
+                      children: [
+                        Container(
+                          alignment: Alignment.center,
+                          height: MediaQuery.of(context).size.height*0.05,
+                          margin: const EdgeInsets.only(left: 12,right: 12,bottom: 12),
+                          decoration: ShapeDecoration(
+                            color: const Color(0xFFF3F3F3),
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(12),
+                            ),
+                          ),
+                          child: TextField(
+                            focusNode: _node,
+                            controller: controller,
+                            onTapOutside: (event) {
+                              _node.unfocus();
+                              setState(() {});
+                            },
+                            cursorColor: Colors.deepPurple,
+                            decoration: InputDecoration(
+                              enabledBorder: InputBorder.none,
+                              isCollapsed: true,
+                              contentPadding: const EdgeInsets.symmetric(vertical: 8),
+                              focusedBorder: InputBorder.none,
+                              hintText: 'Qidiruv',
+                              suffixIcon: controller.text.isNotEmpty
+                                  ? IconButton(
+                                  onPressed: () {
+                                    controller.clear();
+                                    setState(() {});
+                                  },
+                                  icon: const Icon(
+                                    Icons.close,
+                                    color: Colors.grey,
+                                  ))
+                                  : null,
+                              prefixIcon: const Icon(CupertinoIcons.search,
+                                  color: Colors.grey),
+                              hintStyle: const TextStyle(
                                 color: Colors.grey,
-                              ))
-                              : null,
-                          prefixIcon: const Icon(CupertinoIcons.search,
-                              color: Colors.grey),
-                          hintStyle: const TextStyle(
-                            color: Colors.grey,
+                              ),
+                            ),
                           ),
                         ),
-                      ),
-                    ),
-                    SizedBox(
-                      height: 40,
-                      child: Builder(
-                        builder: (context) {
-                          final catNames = state.categoryNames;
-                          if(state.status == EnumStatus.loading && state.categories.isEmpty){
-                            return ListView.separated(
-                              scrollDirection: Axis.horizontal,
-                              padding: const EdgeInsets.symmetric(horizontal: 12),
-                              itemBuilder: (__, i) {
-                                return Container(
-                                  height: 40,
-                                  width: 150,
-                                  clipBehavior: Clip.antiAlias,
-                                  decoration: BoxDecoration(
-                                      color: Colors.white,
-                                      borderRadius: BorderRadius.circular(10)),
-                                  child: Shimmer.fromColors(
-                                    baseColor: Colors.grey.withOpacity(0.1),
-                                    highlightColor: Colors.grey.withOpacity(0.3),
-                                    child: Container(
-                                      color: Colors.white,
-                                    ),
+                        SizedBox(
+                          height: 40,
+                          child: Builder(
+                            builder: (context) {
+                              if(state.status == EnumStatus.loading && state.categories.isEmpty){
+                                return ListView.separated(
+                                  scrollDirection: Axis.horizontal,
+                                  padding: const EdgeInsets.symmetric(horizontal: 12),
+                                  itemBuilder: (__, i) {
+                                    return Container(
+                                      height: 40,
+                                      width: 150,
+                                      clipBehavior: Clip.antiAlias,
+                                      decoration: BoxDecoration(
+                                          color: Colors.white,
+                                          borderRadius: BorderRadius.circular(10)),
+                                      child: Shimmer.fromColors(
+                                        baseColor: Colors.grey.withOpacity(0.1),
+                                        highlightColor: Colors.grey.withOpacity(0.3),
+                                        child: Container(
+                                          color: Colors.white,
+                                        ),
+                                      ),
+                                    );
+                                  },
+                                  separatorBuilder: (context, index) => const SizedBox(
+                                    width: 10,
                                   ),
+                                  itemCount: 10,
                                 );
-                              },
-                              separatorBuilder: (context, index) => const SizedBox(
-                                width: 10,
-                              ),
-                              itemCount: 10,
-                            );
-                          }
-                          return ListView.separated(
-                            scrollDirection: Axis.horizontal,
-                            padding: const EdgeInsets.symmetric(horizontal: 12),
-                            itemBuilder: (__, i) {
-                              return InkWell(
-                                onTap: () {
-                                  isClicked = true;
-                                  index = i;
-                                  setState(() {});
+                              }
+                              return ListView.separated(
+                                scrollDirection: Axis.horizontal,
+                                separatorBuilder: (context, index) => const SizedBox(width: 10,),
+                                itemCount: state.categoryNames.length,
+                                padding: const EdgeInsets.symmetric(horizontal: 12),
+                                itemBuilder: (__, i) {
+                                  final category = state.categoryNames[i];
+                                  return GestureDetector(
+                                    onTap: () {
+                                      if(selectedCategories.contains(category)){
+                                        selectedCategories.remove(category);
+                                      } else {
+                                        selectedCategories.add(category);
+                                      }
+
+                                      setState(() {});
+
+                                      if(selectedCategories.isEmpty){
+                                        bloc.add(LoadData());
+                                      }
+                                      bloc.add(FilterCategory(selectedCategories));
+
+                                    },
+                                    child: Container(
+                                      decoration: BoxDecoration(
+                                          color: selectedCategories.contains(category)
+                                              ? const Color(0xff51267D)
+                                              : const Color(0xFFEFEFEF),
+                                          borderRadius: BorderRadius.circular(10)),
+                                      child: Padding(
+                                          padding: const EdgeInsets.symmetric(
+                                              horizontal: 15, vertical: 10),
+                                          child: Text(
+                                            category,
+                                            style: TextStyle(
+                                                fontWeight: FontWeight.w600,
+                                                color: selectedCategories.contains(category)
+                                                    ? Colors.white
+                                                    : Colors.black),
+                                          )),
+                                    ),
+                                  );
                                 },
-                                child: Container(
-                                  decoration: BoxDecoration(
-                                      color: isClicked && index == i
-                                          ? const Color(0xff51267D)
-                                          : const Color(0xFFEFEFEF),
-                                      borderRadius: BorderRadius.circular(10)),
-                                  child: Padding(
-                                      padding: const EdgeInsets.symmetric(
-                                          horizontal: 15, vertical: 10),
-                                      child: Text(
-                                        catNames[i],
-                                        style: TextStyle(
-                                            fontWeight: FontWeight.w600,
-                                            color: isClicked && index == i
-                                                ? Colors.white
-                                                : Colors.black),
-                                      )),
-                                ),
                               );
-                            },
-                            separatorBuilder: (context, index) => const SizedBox(width: 10,),
-                            itemCount: catNames.length,
-                          );
-                        }
-                      ),
+                            }
+                          ),
+                        ),
+                      ],
                     ),
-                  ],
-                ),
-              ),
-              Expanded(
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 8),
-                  child: Builder(builder: (context) {
-                    if (controller.text.isNotEmpty &&
-                        state.products.isNotEmpty) {
+                  ),
+                  Expanded(
+                    child: Builder(builder: (context) {
+                      if (controller.text.isNotEmpty &&
+                          state.products.isNotEmpty) {
+                        return ListView.separated(
+                          padding: const EdgeInsets.only(bottom: 12, top: 12),
+                          itemCount: state.products.length,
+                          itemBuilder: (context, index) {
+                            final product = state.products[index];
+                            return ProductSearchItem(product: product);
+                          },
+                          separatorBuilder: (_, __) => const SizedBox(height: 10,),
+                        );
+                      }
+                      if (state.status == EnumStatus.loading) {
+                        return const SingleChildScrollView(child: ShimmerView());
+                      }
                       return ListView.separated(
                         padding: const EdgeInsets.symmetric(vertical: 10),
-                        itemCount: state.products.length,
-                        itemBuilder: (context, index) {
-                          final product = state.products[index];
-                          return ProductItem(product: product);
-                        },
-                        separatorBuilder: (_, __) => const SizedBox(
+                        separatorBuilder: (__, _) => const SizedBox(
                           height: 10,
                         ),
+                        itemCount: state.categories.length,
+                        itemBuilder: (_, i) {
+                          final category = state.categories[i];
+                          return CategoryItem(
+                            category: category,
+                            isFirst: isFirst,
+                          );
+                        },
                       );
-                    }
-                    if (state.status == EnumStatus.loading &&
-                        state.categories.isEmpty) {
-                      return const ShimmerView();
-                    }
-                    return ListView.separated(
-                      padding: const EdgeInsets.symmetric(vertical: 10),
-                      separatorBuilder: (__, _) => const SizedBox(
-                        height: 10,
-                      ),
-                      itemCount: state.categories.length,
-                      itemBuilder: (_, i) {
-                        final category = state.categories[i];
-                        return CategoryItem(
-                          category: category,
-                          isFirst: isFirst!,
-                        );
-                      },
-                    );
-                  }),
-                ),
-              ),
-            ],
-          ),
+                    }),
+                  ),
+                ],
+              )
         );
       },
     );

@@ -3,10 +3,8 @@ import 'package:flutter/material.dart';
 import '../model/models.dart';
 
 class ProductSearchItem extends StatelessWidget {
-  final Function() onTap;
   const ProductSearchItem({
     super.key,
-    required this.onTap,
     required this.product,
   });
 
@@ -15,62 +13,37 @@ class ProductSearchItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: MediaQuery.of(context).size.width * 0.8,
-      height: 350,
-      padding: const EdgeInsets.all(14),
+      margin: const EdgeInsets.symmetric(horizontal: 5),
+      padding: const EdgeInsets.all(10),
       decoration: BoxDecoration(
-          color: Colors.white, borderRadius: BorderRadius.circular(20)),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(15)
+      ),
+      height: 70,
+      child: Row(
         children: [
-          Expanded(
-              child: Center(
-                  child: Image.network(
-            product.image,
-          ))),
-          const SizedBox(
-            height: 10,
+          AspectRatio(
+            aspectRatio: 1,
+            child: Container(
+              clipBehavior: Clip.antiAlias,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(10),
+                border: Border.all(color: Colors.black, width: 0.6,strokeAlign: BorderSide.strokeAlignOutside)
+              ),
+              child: Image.network(product.image, fit: BoxFit.cover,),
+            ),
           ),
-          Text(
-            product.title.uz,
-            style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-          ),
-          product.description.uz.isNotEmpty
-              ? Text(
-                  product.description.uz.trim(),
-                  maxLines: 2,
-                  style: const TextStyle(overflow: TextOverflow.ellipsis),
-                )
-              : const SizedBox(),
-          SizedBox(
-            height: 50,
+          const SizedBox(width: 10,),
+          Expanded(child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 5),
             child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text(
-                  "${product.price} ",
-                  style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-                ),
-                Text(product.currency,),
-                Expanded(child: Container()),
-                InkWell(
-                  onTap: onTap,
-                  child: Container(
-                      padding: const EdgeInsets.symmetric(
-                          horizontal: 25, vertical: 10),
-                      height: double.infinity,
-                      decoration: BoxDecoration(
-                          color: Colors.deepPurple,
-                          borderRadius: BorderRadius.circular(30)),
-                      child: const Center(
-                          child: Text(
-                        'Qo\'shish',
-                        style: TextStyle(
-                            fontWeight: FontWeight.bold, color: Colors.white),
-                      ))),
-                )
+                Text(product.title.uz, style: const TextStyle(fontWeight: FontWeight.bold),),
+                Text("${product.price} so'm", style: const TextStyle(fontWeight: FontWeight.bold),)
               ],
             ),
-          )
+          ))
         ],
       ),
     );

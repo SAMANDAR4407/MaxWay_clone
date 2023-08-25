@@ -1,11 +1,11 @@
 import 'dart:async';
 
-import 'package:demo_max_way/pages/home/home_page.dart';
+import 'package:demo_max_way/core/pref.dart';
+import 'package:demo_max_way/pages/base/base_page.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:geolocator/geolocator.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 import 'package:yandex_mapkit/yandex_mapkit.dart';
 
 import '../../model/location_model.dart';
@@ -22,14 +22,12 @@ class _MapPageState extends State<MapPage> {
   final mapController = Completer<YandexMapController>();
   var _locationModel = LocationModel();
   var locationName = '';
-  SharedPreferences? prefs;
+  final prefs = PrefHelper();
 
   @override
   void initState() {
     handleLocationPermission();
-    load().then((value) {
-      prefs?.setBool('isFirst', false);
-    });
+    prefs.setIsFirst(false);
     super.initState();
   }
 
@@ -64,33 +62,9 @@ class _MapPageState extends State<MapPage> {
     });
   }
 
-  Future<void> load() async {
-    prefs = await SharedPreferences.getInstance();
-  }
-
-  // Future<bool> _onBackPressed() async {
-  //   return (await showDialog(
-  //     context: context,
-  //     builder: (context) => AlertDialog(
-  //       title: const Text('Are you sure?'),
-  //       content: const Text('Do you want to exit'),
-  //       actions: <Widget>[
-  //         TextButton(
-  //           onPressed: () => Navigator.of(context).pop(false),
-  //           child: const Text('No'),
-  //         ),
-  //         TextButton(
-  //           onPressed: () => Navigator.of(context).pop(true),
-  //           child: const Text('Yes'),
-  //         ),
-  //       ],
-  //     ),
-  //   )) ?? false;
-  // }
-
   @override
   Widget build(BuildContext context) {
-    locationName = '${_locationModel.regionName}, ${_locationModel.cityName}, ${_locationModel.streetName}';
+    locationName = _locationModel.countryName.isEmpty ? '': '${_locationModel.countryName}, ${_locationModel.regionName}, ${_locationModel.cityName}';
     return Scaffold(
       body: Stack(children: [
         Column(
@@ -148,7 +122,7 @@ class _MapPageState extends State<MapPage> {
                     },
                     child: const Icon(
                       Icons.close,
-                      color: Color(0xff51267D),
+                      color: Colors.black,
                     ),
                   ),
                 ),
@@ -204,7 +178,7 @@ class _MapPageState extends State<MapPage> {
                               ),
                               Expanded(
                                 child: Text(
-                                  locationName[0] == ',' ? '' : locationName,
+                                  locationName,
                                   style: const TextStyle(
                                       fontWeight: FontWeight.bold,
                                       fontSize: 16,
@@ -215,32 +189,32 @@ class _MapPageState extends State<MapPage> {
                           ),
                         ),
                         const Expanded(child: SizedBox()),
-                        InkWell(
-                          onTap: () {
-                            // Navigator.push(context, CupertinoPageRoute(
-                            //   builder: (context) {
-                            //     return ConfirmPage(
-                            //       pinnedLocation: locationName,
-                            //     );
-                            //   },
-                            // ));
+                        Material(
+                          color: const Color(0xff51267D),
+                          borderRadius: BorderRadius.circular(10),
+                          child: InkWell(
+                            borderRadius: BorderRadius.circular(10),
+                            onTap: () {
+                              // Navigator.push(context, CupertinoPageRoute(
+                              //   builder: (context) {
+                              //     return ConfirmPage(
+                              //       pinnedLocation: locationName,
+                              //     );
+                              //   },
+                              // ));
 
-                            prefs?.setString('location', locationName);
-                            Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => const HomePage(isFirst: false),));
-                          },
-                          child: Container(
-                            width: double.infinity,
-                            padding: const EdgeInsets.symmetric(
-                                vertical: 16, horizontal: 16),
-                            decoration: const BoxDecoration(
-                                color: Color(0xff51267D),
-                                borderRadius:
-                                    BorderRadius.all(Radius.circular(10))),
-                            child: const Text(
-                              'Tasdiqlang',
-                              textAlign: TextAlign.center,
-                              style:
-                                  TextStyle(color: Colors.white, fontSize: 16),
+                              prefs.setLocation(locationName.replaceAll('Uzbekistan', 'O\'zbekiston'));
+                              Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => const HostPage(),));
+                            },
+                            child: Container(
+                              width: double.infinity,
+                              padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 16),
+                              child: const Text(
+                                'Tasdiqlang',
+                                textAlign: TextAlign.center,
+                                style:
+                                    TextStyle(color: Colors.white, fontSize: 16),
+                              ),
                             ),
                           ),
                         )

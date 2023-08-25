@@ -1,9 +1,9 @@
 
 class LocationModel{
   final String cityName;
-  final String streetName;
+  final String countryName;
   final String regionName;
   final double lat;
   final double long;
-  LocationModel({this.streetName='', this.cityName="",this.regionName="",this.lat=0,this.long=0});
+  LocationModel({this.countryName='', this.cityName="",this.regionName="",this.lat=0,this.long=0});
 }

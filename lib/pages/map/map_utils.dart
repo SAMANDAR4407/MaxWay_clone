@@ -46,7 +46,7 @@ Future<void> getAddressFromLatLong(
     Placemark place = placemarks[0];
     final location = LocationModel(
         cityName: place.locality ?? "",
-        streetName: place.street ?? "",
+        countryName: place.country ?? "",
         regionName: place.administrativeArea ?? "",
         lat: lat,
         long: long);

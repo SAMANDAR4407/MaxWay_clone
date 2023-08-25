@@ -51,7 +51,7 @@ class _ConfirmPageState extends State<ConfirmPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFFEAEAEA),
+      backgroundColor: const Color(0xFFF6F6F6),
       appBar: AppBar(
         title: const Text('Yetkazib berish manzili', style: TextStyle(fontWeight: FontWeight.bold),),
         centerTitle: true,),
