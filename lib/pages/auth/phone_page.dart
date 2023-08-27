@@ -1,3 +1,5 @@
+import 'package:demo_max_way/utils/utils.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -8,14 +10,24 @@ class PhonePage extends StatefulWidget {
   final String page;
   const PhonePage({super.key, required this.page});
 
+  static String verification = '';
+
   @override
   State<PhonePage> createState() => _PhonePageState();
 }
 
 class _PhonePageState extends State<PhonePage> {
   final _text = TextEditingController();
-  var valid = false;
+  var valid = true;
+  String phone = '';
+  final node = FocusNode();
+  FirebaseAuth auth = FirebaseAuth.instance;
 
+  @override
+  void initState() {
+    _text.text = '+998';
+    super.initState();
+  }
   @override
   void dispose() {
     _text.dispose();
@@ -41,9 +53,14 @@ class _PhonePageState extends State<PhonePage> {
               children: [
                 const Text('Telefon raqami', style: TextStyle(fontSize: 17),),
                 TextField(
-                  maxLength: 9,
-                  style: const TextStyle(color: Colors.black, fontSize: 20),
-                  keyboardType: TextInputType.number,
+                  inputFormatters: [LengthLimitingTextInputFormatter(13)],
+                  focusNode: node,
+                  onTapOutside: (event) {
+                    node.unfocus();
+                    setState(() {});
+                  },
+                  style: const TextStyle(color: Colors.black),
+                  keyboardType: TextInputType.phone,
                   controller: _text,
                   onChanged: (value) {
                     setState(() {
@@ -51,26 +68,41 @@ class _PhonePageState extends State<PhonePage> {
                     });
                   },
                   decoration: InputDecoration(
-                    fillColor: const Color(0xff51267D),
-                    prefixText: '+998 ',
-                    prefixStyle: const TextStyle(color: Colors.black, fontSize: 20),
                     errorText: valid ? null : 'kirishda xatolik',
                     border: const OutlineInputBorder(
                       borderRadius: BorderRadius.all(Radius.circular(15),),
-                      borderSide: BorderSide(color: Colors.black,width: 1)
                     ),
+                    focusedBorder: const OutlineInputBorder(
+                        borderRadius: BorderRadius.all(Radius.circular(15),),
+                        borderSide: BorderSide(color: Color(0xff51267D))
+                    )
                   ),
                 ),
               ],
             ),
             InkWell(
-              onTap: () {
+              onTap: () async {
                 setState(() {
-                  _text.text.isEmpty || _text.text.length != 9 ? valid = false : valid = true;
+                  _text.text.isEmpty || _text.text.length != 13 ? valid = false : valid = true;
                 });
-                print('object');
-                valid ? Navigator.push(context, CupertinoPageRoute(builder: (context) => NamePage(page: widget.page,))): null;
-                // Navigator.push(context, CupertinoPageRoute(builder: (context) => const NamePage(),));
+                valid
+                    ? await auth.verifyPhoneNumber(
+                  phoneNumber: _text.text,
+                  verificationCompleted: (PhoneAuthCredential credential) async {
+                    await auth.signInWithCredential(credential).then((value) {
+                      print("You are logged in successfully");
+                    });
+                  },
+                  verificationFailed: (FirebaseAuthException e) {
+                    showToast(['Xatolik'], context, color: Colors.redAccent);
+                    print(e.message);
+                  },
+                  codeSent: (String verificationId, int? resendToken) {
+                    PhonePage.verification = verificationId;
+                    Navigator.pushReplacement(context, CupertinoPageRoute(builder: (context) => NamePage(page: widget.page,number: _text.text,)));
+                  },
+                  codeAutoRetrievalTimeout: (String verificationId) {},)
+                    : null;
               },
               child: Container(
                   decoration: BoxDecoration(

@@ -1,6 +1,7 @@
 import 'package:dio/dio.dart';
 
-import '../model/models.dart';
+import '../../model/branch_models.dart';
+import '../../model/models.dart';
 
 class FoodApi{
   final _dio = Dio(BaseOptions(baseUrl: 'https://run.mocky.io/v3/',
@@ -23,5 +24,10 @@ class FoodApi{
       }
     }
     return products;
+  }
+  
+  Future<List<Branch>> getBranches() async {
+    final response = await _dio.get('13b307b1-567c-4dd0-acd2-9598114d558e');
+    return (response.data['branches'] as List).map((e) => Branch.fromJson(e)).toList();
   }
 }

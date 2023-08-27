@@ -1,13 +1,18 @@
+import 'package:demo_max_way/core/database/database.dart';
+import 'package:demo_max_way/pages/auth/phone_page.dart';
 import 'package:demo_max_way/pages/home/home_page.dart';
 import 'package:demo_max_way/pages/orders/orders_page.dart';
 import 'package:demo_max_way/pages/profile/profile_page.dart';
+import 'package:demo_max_way/utils/setup_db.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
+import '../../core/pref.dart';
 import '../cart/cart_page.dart';
 
 class HostPage extends StatefulWidget {
   final int position;
+
   const HostPage({super.key, this.position = 0});
 
   @override
@@ -15,37 +20,52 @@ class HostPage extends StatefulWidget {
 }
 
 class _HostPageState extends State<HostPage> {
-
+  final pref = PrefHelper();
+  bool hasLogged = false;
+  bool isEmpty = true;
   int _selectedIndex = 0;
+  var list = [];
+
   @override
   void initState() {
+    load();
+    if (list.isNotEmpty) {
+      isEmpty = false;
+    }
     _selectedIndex = widget.position;
+    setState(() {});
     super.initState();
   }
 
-  void _onItemTapped(int index){
+  Future<void> load() async {
+    hasLogged = await pref.hasLogged();
+    list = await getIt<AppDatabase>().productDao.getAllProducts();
+  }
+
+  void _onItemTapped(int index) async {
     setState(() {
       _selectedIndex = index;
     });
   }
 
-  final _pages = [
-    const HomePage(isFirst: true),
-    const CartPage(),
-    const OrdersPage(),
-    const ProfilePage(),
-  ];
-
   @override
   Widget build(BuildContext context) {
+    if (list.isNotEmpty) {
+      setState(() {});
+    }
     return Scaffold(
       bottomNavigationBar: BottomNavigationBar(
         backgroundColor: Colors.white,
-        items: const [
-          BottomNavigationBarItem(icon: Icon(CupertinoIcons.home), label: 'Asosiy'),
-          BottomNavigationBarItem(icon: Icon(CupertinoIcons.cart), label: 'Savatcha'),
-          BottomNavigationBarItem(icon: Icon(CupertinoIcons.bag), label: 'Buyurtmalar'),
-          BottomNavigationBarItem(icon: Icon(CupertinoIcons.person), label: 'Profil'),
+        items: [
+          const BottomNavigationBarItem(icon: Icon(CupertinoIcons.home), label: 'Asosiy'),
+          BottomNavigationBarItem(
+              icon: Badge(
+                label: Text('${list.length}'),
+                child: const Icon(CupertinoIcons.cart),
+              ),
+              label: 'Savatcha'),
+          const BottomNavigationBarItem(icon: Icon(CupertinoIcons.bag), label: 'Buyurtmalar'),
+          const BottomNavigationBarItem(icon: Icon(CupertinoIcons.person), label: 'Profil'),
         ],
         onTap: _onItemTapped,
         selectedItemColor: const Color(0xff51267D),
@@ -54,7 +74,15 @@ class _HostPageState extends State<HostPage> {
         enableFeedback: true,
         type: BottomNavigationBarType.fixed,
       ),
-      body: _pages[_selectedIndex],
+      body: IndexedStack(
+        index: _selectedIndex,
+        children: [
+          const HomePage(isFirst: true),
+          CartPage(),
+          const OrdersPage(),
+          hasLogged ? const ProfilePage() : const PhonePage(page: 'profil'),
+        ],
+      ),
     );
   }
 }

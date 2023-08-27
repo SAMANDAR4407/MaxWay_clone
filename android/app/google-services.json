@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "1075464163928",
+    "project_id": "fir-max-way",
+    "storage_bucket": "fir-max-way.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1075464163928:android:fe0dd6e4bc65bea6c8f02d",
+        "android_client_info": {
+          "package_name": "com.example.demo_max_way"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1075464163928-21bm4b8pd0idvvguvd2vcom1e8vth26i.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC_-lGtvcpw1Kw3cBMSG0Ky05JKyINe2wc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1075464163928-21bm4b8pd0idvvguvd2vcom1e8vth26i.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

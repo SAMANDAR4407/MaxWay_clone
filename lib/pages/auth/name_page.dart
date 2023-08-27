@@ -1,18 +1,25 @@
 import 'package:demo_max_way/pages/auth/confirmation_page.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class NamePage extends StatefulWidget {
-  const NamePage({super.key, required this.page});
+  const NamePage({super.key, required this.page, required this.number});
   final String page;
+  final String number;
+
+  static String verification = '';
 
   @override
   State<NamePage> createState() => _NamePageState();
 }
 
+
 class _NamePageState extends State<NamePage> {
   final _text = TextEditingController();
-  var valid = false;
+  var valid = true;
+  final node = FocusNode();
+  final auth = FirebaseAuth.instance;
 
   @override
   void dispose() {
@@ -39,33 +46,43 @@ class _NamePageState extends State<NamePage> {
               children: [
                 const Text('Ism familiya', style: TextStyle(fontSize: 17),),
                 TextField(
+                  focusNode: node,
+                  onTapOutside: (event) {
+                    node.unfocus();
+                    setState(() {});
+                  },
                   onChanged: (value) {
                     setState(() {
                       valid = true;
                     });
                   },
-                  style: const TextStyle(color: Colors.black, fontSize: 17),
+                  style: const TextStyle(color: Colors.black, fontSize: 17, overflow: TextOverflow.ellipsis),
                   controller: _text,
                   decoration: InputDecoration(
-                    enabledBorder: InputBorder.none,
                     prefixStyle: const TextStyle(color: Colors.black, fontSize: 20),
                     errorText: valid ? null : 'Ism xato',
                     hintText: 'Ismingizni kiriting',
                     hintStyle: const TextStyle(color: Colors.black, fontSize: 17, fontWeight: FontWeight.w400),
                     border: const OutlineInputBorder(
-                        borderRadius: BorderRadius.all(Radius.circular(10),),
-                        borderSide: BorderSide(color: Color(0xff51267D))
+                        borderRadius: BorderRadius.all(Radius.circular(15),),
                     ),
+                    focusedBorder: const OutlineInputBorder(
+                        borderRadius: BorderRadius.all(Radius.circular(15),),
+                        borderSide: BorderSide(color: Color(0xff51267D))
+                    )
                   ),
                 ),
               ],
             ),
             InkWell(
-              onTap: () {
+              onTap: () async {
                 setState(() {
                   _text.text.isEmpty ? valid = false : valid = true;
                 });
-                valid ? Navigator.push(context, CupertinoPageRoute(builder: (context) => ConfirmationPage(page: widget.page,))): null;
+
+                valid
+                    ? Navigator.pushReplacement(context, CupertinoPageRoute(builder: (context) => ConfirmationPage(page: widget.page, name: _text.text,number: widget.number,)))
+                    : null;
               },
               child: Container(
                   decoration: BoxDecoration(

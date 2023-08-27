@@ -1,0 +1,259 @@
+{
+  "branches": [
+    {
+      "id": "3800a7fc-976a-4023-88b1-eff582d97983",
+      "name": "MAX WAY MEGA PLANET",
+      "image": "",
+      "phone": "+998712005400",
+      "is_active": true,
+      "address": "улица Ниязбек, 1",
+      "location": {
+        "long": 69.294415,
+        "lat": 41.365869
+      },
+      "destination": "улица Ниязбек, 1",
+      "work_hour_start": "09:00",
+      "work_hour_end": "03:00"
+    },
+    {
+      "id": "46120ff4-e19e-4241-91a2-bfc670b13b7a",
+      "image": "",
+      "name": "MAX WAY AVIASOZLAR",
+      "phone": "+998712005400",
+      "is_active": true,
+      "address": "улица Авиасозлар, 23",
+      "location": {
+        "long": 69.342143,
+        "lat": 41.290889
+      },
+      "destination": "",
+      "work_hour_start": "09:00",
+      "work_hour_end": "03:00"
+    },
+    {
+      "id": "619b4978-eb0b-45dc-825f-f743bbf98e79",
+      "name": "MAX WAY RISOVIY",
+      "image": "",
+      "phone": "+998712005400",
+      "is_active": true,
+      "address": "Узбекистан, Ташкент, Алтынкульская улица, 10",
+      "location": {
+        "long": 69.30943062800078,
+        "lat": 41.274887132515325
+      },
+      "destination": "банкетный зал Тантана",
+      "work_hour_start": "09:00",
+      "work_hour_end": "03:00"
+    },
+    {
+      "id": "a925782e-2b43-42df-9f7c-1d98bd4d195e",
+      "name": "MAX WAY PARUS",
+      "image": "",
+      "phone": "+998712005400",
+      "is_active": true,
+      "address": "улица Катартал, 60/5",
+      "location": {
+        "long": 69.212839,
+        "lat": 41.293531
+      },
+      "destination": "ТЦ Парус",
+      "work_hour_start": "10:00",
+      "work_hour_end": "03:00"
+    },
+    {
+      "id": "e04a9f7e-e980-470a-ac76-d9369fd96dc6",
+      "name": "MAX WAY MAGIC CITY",
+      "image": "",
+      "phone": "+998712005400",
+      "is_active": true,
+      "address": "Узбекистан, Ташкент, улица Бабура, 174/6",
+      "location": {
+        "long": 69.24482866248941,
+        "lat": 41.30427565449729
+      },
+      "destination": "Magic City",
+      "work_hour_start": "12:00",
+      "work_hour_end": "22:00"
+    },
+    {
+      "id": "9c34a9aa-745b-4901-ba1d-6adefeb9225e",
+      "name": "MAX WAY SAMARQAND DARVOZA",
+      "image": "",
+      "phone": "+998712005400",
+      "is_active": true,
+      "address": "Узбекистан, Ташкент, улица Коратош, 5А",
+      "location": {
+        "long": 69.23111368968243,
+        "lat": 41.31672519236396
+      },
+      "destination": "Samarqand Darvoza",
+      "work_hour_start": "10:00",
+      "work_hour_end": "22:00"
+    },
+    {
+      "id": "37932187-750c-4f33-9980-1c7fc7d56aaa",
+      "name": "MAX WAY PARKENT",
+      "image": "",
+      "phone": "+998712005400",
+      "is_active": true,
+      "address": "Узбекистан, Ташкент, Яшнободский район, массив Мавлоно Риёзи, 30В",
+      "location": {
+        "long": 69.32515919396027,
+        "lat": 41.31477406132815
+      },
+      "destination": "Паркентский рынок",
+      "work_hour_start": "09:00",
+      "work_hour_end": "03:00"
+    },
+    {
+      "id": "634135bd-a2d9-4298-8965-27ef41f8dce0",
+      "name": "MAX WAY UNIVERSAM",
+      "image": "",
+      "phone": "+998712005400",
+      "is_active": true,
+      "address": "Узбекистан, Ташкент, проспект Амира Темура, 41/3",
+      "location": {
+        "long": 69.28857878767286,
+        "lat": 41.36346991241693
+      },
+      "destination": "Ориентир: Юнусабад Универсам",
+      "work_hour_start": "09:00",
+      "work_hour_end": "18:00"
+    },
+    {
+      "id": "2943b2d8-006a-4929-9078-12653a541a9c",
+      "name": "MAX WAY ROYSON",
+      "image": "",
+      "phone": "+998712005400",
+      "is_active": true,
+      "address": "Узбекистан, Ташкент, улица Заркайнар, 2",
+      "location": {
+        "long": 69.24197646973016,
+        "lat": 41.32262606049334
+      },
+      "destination": "Ориентир: Цирк",
+      "work_hour_start": "09:00",
+      "work_hour_end": "01:00"
+    },
+    {
+      "id": "60a01e43-a79a-409c-b89f-79203a98f180",
+      "name": "MAX WAY NEXT",
+      "image": "",
+      "phone": "+998712005400",
+      "is_active": true,
+      "address": "Узбекистан, Ташкент, улица Бабура, 6",
+      "location": {
+        "long": 69.24956813545381,
+        "lat": 41.297972435351255
+      },
+      "destination": "Ориентир: Некст",
+      "work_hour_start": "10:00",
+      "work_hour_end": "22:00"
+    },
+    {
+      "id": "08db3979-e08b-432d-92e1-43195441c244",
+      "name": "MAX WAY MUQUMIY",
+      "image": "",
+      "phone": "+998712005400",
+      "is_active": true,
+      "address": "Узбекистан, Ташкент, улица Чиланзар",
+      "location": {
+        "long": 69.2292174882383,
+        "lat": 41.28793140915082
+      },
+      "destination": "Ориентир: Чиланзар 1-й квартал",
+      "work_hour_start": "09:00",
+      "work_hour_end": "03:00"
+    },
+    {
+      "id": "0269ffcb-10ab-43cb-80e3-88a7886f56eb",
+      "name": "MAX WAY GRAND MIR",
+      "image": "",
+      "phone": "+998712005400",
+      "is_active": true,
+      "address": "Узбекистан, Ташкент, улица Шота Руставели, 9А",
+      "location": {
+        "long": 69.267974044373,
+        "lat": 41.295097167316975
+      },
+      "destination": "Ориентир: Гостиница Гранд Мир",
+      "work_hour_start": "09:00",
+      "work_hour_end": "03:00"
+    },
+    {
+      "id": "bc649a88-7118-4bb8-8111-a6fe9ca36c89",
+      "name": "MAX WAY SAYRAM",
+      "image": "",
+      "phone": "+998712005400",
+      "is_active": true,
+      "address": "Узбекистан, Ташкент, улица Юнусота",
+      "location": {
+        "long": 69.31058598660425,
+        "lat": 41.37194234903733
+      },
+      "destination": "Ориентир: Рынок сайрам. ",
+      "work_hour_start": "09:00",
+      "work_hour_end": "03:00"
+    },
+    {
+      "id": "985b8f57-97a2-45bd-ba90-81242ae56e36",
+      "name": "MAX WAY MAKSIM GORKIY",
+      "image": "",
+      "phone": "+998712005400",
+      "is_active": true,
+      "address": "махалля Элобод",
+      "location": {
+        "long": 69.32990312349546,
+        "lat": 41.32705842943611
+      },
+      "destination": "Ориентир: Метро буюк ипак йули",
+      "work_hour_start": "09:00",
+      "work_hour_end": "00:00"
+    },
+    {
+      "id": "8332b780-1786-4542-b838-cb401089c901",
+      "name": "MAX WAY SERGELI",
+      "image": "",
+      "phone": "+998712005400",
+      "is_active": true,
+      "address": "Узбекистан, Ташкент, Сергелийский район, массив Сергели-VIIIА, 11",
+      "location": {
+        "long": 69.21990371529705,
+        "lat": 41.226371246987696
+      },
+      "destination": "Ориентир: Сергели Дехкон Бозори",
+      "work_hour_start": "09:00",
+      "work_hour_end": "03:00"
+    },
+    {
+      "id": "5511d008-c3ab-4c81-a224-ec3ceac3da60",
+      "name": "MAX WAY FONTAN",
+      "image": "",
+      "phone": "+998712005400",
+      "is_active": true,
+      "address": "проспект Амира Темура",
+      "location": {
+        "long": 69.2888501614136,
+        "lat": 41.36290429488542
+      },
+      "destination": "Ориентир: Юнусабадский рынок",
+      "work_hour_start": "09:00",
+      "work_hour_end": "03:00"
+    },
+    {
+      "id": "2300dd84-df40-4ff2-9961-64f97a32d8da",
+      "name": "MAX WAY MINOR",
+      "image": "",
+      "phone": "+998712005400",
+      "is_active": true,
+      "address": "MaxWay",
+      "location": {
+        "long": 69.282478,
+        "lat": 41.328013
+      },
+      "destination": "бывший кинотеатр Казахстан",
+      "work_hour_start": "09:00",
+      "work_hour_end": "03:00"
+    }
+  ]
+}

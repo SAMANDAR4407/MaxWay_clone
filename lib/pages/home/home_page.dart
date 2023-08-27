@@ -1,4 +1,4 @@
-import 'package:demo_max_way/core/food_api.dart';
+import 'package:demo_max_way/core/api/food_api.dart';
 import 'package:demo_max_way/core/pref.dart';
 import 'package:demo_max_way/pages/home/bloc/bloc.dart';
 import 'package:flutter/cupertino.dart';
@@ -9,6 +9,7 @@ import 'package:shimmer/shimmer.dart';
 import '../../widgets/category.dart';
 import '../../widgets/product_search.dart';
 import '../../widgets/shimmer.dart';
+import '../detail/detail_page.dart';
 import '../map/map_page.dart';
 
 class HomePage extends StatefulWidget {
@@ -286,7 +287,12 @@ class _HomePageState extends State<HomePage> {
                           itemCount: state.products.length,
                           itemBuilder: (context, index) {
                             final product = state.products[index];
-                            return ProductSearchItem(product: product);
+                            return ProductSearchItem(product: product, onTap: () {
+                              Navigator.push(
+                                  context,
+                                  CupertinoPageRoute(builder: (context) => isFirst
+                                      ? const MapPage() : DetailPage(product: product),));
+                            },);
                           },
                           separatorBuilder: (_, __) => const SizedBox(height: 10,),
                         );

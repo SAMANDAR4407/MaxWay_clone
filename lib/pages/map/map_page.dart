@@ -190,10 +190,10 @@ class _MapPageState extends State<MapPage> {
                         ),
                         const Expanded(child: SizedBox()),
                         Material(
+                          clipBehavior: Clip.antiAlias,
                           color: const Color(0xff51267D),
                           borderRadius: BorderRadius.circular(10),
                           child: InkWell(
-                            borderRadius: BorderRadius.circular(10),
                             onTap: () {
                               // Navigator.push(context, CupertinoPageRoute(
                               //   builder: (context) {

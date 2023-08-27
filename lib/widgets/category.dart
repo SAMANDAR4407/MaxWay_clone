@@ -24,36 +24,43 @@ class CategoryItem extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Container(
-            padding: const EdgeInsets.all(10),
+            padding: const EdgeInsets.symmetric(vertical: 10),
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(20),
-              color: Colors.white70
+              color: Colors.white
             ),
             // height: 670,
             height: category.products.length * 90 + (category.products.length-1)*12 + 60,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(category.title.uz, style: const TextStyle(fontSize: 21, fontWeight: FontWeight.bold),),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 10),
+                  child: Text(category.title.uz, style: const TextStyle(fontSize: 21, fontWeight: FontWeight.bold),),
+                ),
                 const SizedBox(height: 10,),
                 SizedBox(
                   height: category.products.length * 90 + (category.products.length-1)*12,
-                  // height: 610,
                   child: ListView.separated(
-                    padding: const EdgeInsets.symmetric(horizontal: 5),
                     physics: const NeverScrollableScrollPhysics(),
                     itemCount: category.products.length,
-                    separatorBuilder: (BuildContext context, int index) => const Divider(thickness: 1,height: 8),
+                    separatorBuilder: (BuildContext context, int index) => const Divider(thickness: 1,height: 8,indent: 15,endIndent: 15,),
                     itemBuilder: (_, ind) {
                       final product = category.products[ind];
-                      return InkWell(
-                          onTap: () {
-                            Navigator.push(
-                                context,
-                                CupertinoPageRoute(builder: (context) => isFirst
-                                    ? const MapPage() : DetailPage(product: product),));
-                          },
-                          child: ProductItem(product: product)
+                      return Material(
+                        color: Colors.white,
+                        child: InkWell(
+                            onTap: () {
+                              Navigator.push(
+                                  context,
+                                  CupertinoPageRoute(builder: (context) => isFirst
+                                      ? const MapPage() : DetailPage(product: product),));
+                            },
+                            child: Padding(
+                              padding: const EdgeInsets.symmetric(horizontal: 15),
+                              child: ProductItem(product: product),
+                            )
+                        ),
                       );
                     },
                   ),

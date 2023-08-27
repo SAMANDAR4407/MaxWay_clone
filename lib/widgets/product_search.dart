@@ -5,46 +5,51 @@ import '../model/models.dart';
 class ProductSearchItem extends StatelessWidget {
   const ProductSearchItem({
     super.key,
-    required this.product,
+    required this.product, required this.onTap,
   });
 
+  final Function() onTap;
   final Product product;
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      margin: const EdgeInsets.symmetric(horizontal: 5),
-      padding: const EdgeInsets.all(10),
-      decoration: BoxDecoration(
-          color: Colors.white,
-          borderRadius: BorderRadius.circular(15)
-      ),
-      height: 70,
-      child: Row(
-        children: [
-          AspectRatio(
-            aspectRatio: 1,
-            child: Container(
-              clipBehavior: Clip.antiAlias,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(10),
-                border: Border.all(color: Colors.black, width: 0.6,strokeAlign: BorderSide.strokeAlignOutside)
+    return Material(
+      clipBehavior: Clip.antiAlias,
+      borderRadius: BorderRadius.circular(10),
+      color: Colors.white,
+      child: InkWell(
+        onTap: onTap,
+        child: Container(
+          margin: const EdgeInsets.symmetric(horizontal: 5),
+          padding: const EdgeInsets.all(10),
+          height: 70,
+          child: Row(
+            children: [
+              AspectRatio(
+                aspectRatio: 1,
+                child: Container(
+                  clipBehavior: Clip.antiAlias,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(10),
+                    border: Border.all(color: Colors.black, width: 0.6,strokeAlign: BorderSide.strokeAlignOutside)
+                  ),
+                  child: Image.network(product.image, fit: BoxFit.cover,),
+                ),
               ),
-              child: Image.network(product.image, fit: BoxFit.cover,),
-            ),
+              const SizedBox(width: 10,),
+              Expanded(child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 5),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(product.title.uz, style: const TextStyle(fontWeight: FontWeight.bold),),
+                    Text("${product.price} so'm", style: const TextStyle(fontWeight: FontWeight.bold),)
+                  ],
+                ),
+              ))
+            ],
           ),
-          const SizedBox(width: 10,),
-          Expanded(child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 5),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Text(product.title.uz, style: const TextStyle(fontWeight: FontWeight.bold),),
-                Text("${product.price} so'm", style: const TextStyle(fontWeight: FontWeight.bold),)
-              ],
-            ),
-          ))
-        ],
+        ),
       ),
     );
   }

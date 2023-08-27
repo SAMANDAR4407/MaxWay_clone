@@ -1,8 +1,15 @@
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:demo_max_way/core/database/database.dart';
+import 'package:demo_max_way/core/database/entity/entity.dart';
+import 'package:demo_max_way/pages/base/base_page.dart';
+import 'package:demo_max_way/utils/utils.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_share/flutter_share.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 import '../../model/models.dart';
-import '../../utils/utils.dart';
+import '../../utils/setup_db.dart';
 
 class DetailPage extends StatefulWidget {
   final Product product;
@@ -15,6 +22,28 @@ class DetailPage extends StatefulWidget {
 
 class _DetailPageState extends State<DetailPage> {
   var productCount = 1;
+  bool isAdded = false;
+  List<ProductData> list = [];
+
+  final dao = getIt<AppDatabase>().productDao;
+
+  Future<void> load() async {
+    list = await dao.getAllProducts();
+  }
+
+  @override
+  void initState() {
+    load().then((value){
+      for(var product in list){
+        if(product.title == widget.product.title.uz){
+          productCount = product.amount;
+          isAdded = true;
+        }
+      }
+      setState(() {});
+    });
+    super.initState();
+  }
 
   void inc() {
     productCount++;
@@ -26,8 +55,19 @@ class _DetailPageState extends State<DetailPage> {
     setState(() {});
   }
 
+  Future<void> shareApp() async {
+    // Set the app link and the message to be shared
+    const String appLink = 'https://play.google.com/store/apps/details?id=com.example.myapp';
+    const String message = 'Check out my new app: $appLink';
+
+    // Share the app link and message using the share dialog
+    await FlutterShare.share(title: 'Share App', text: message, linkUrl:
+    appLink);
+  }
+
   @override
   Widget build(BuildContext context) {
+
     return Scaffold(
       backgroundColor: Colors.white,
       body: Stack(children: [
@@ -61,8 +101,8 @@ class _DetailPageState extends State<DetailPage> {
                         borderRadius: BorderRadius.circular(30),
                         child: InkWell(
                           borderRadius: BorderRadius.circular(20),
-                          onTap: () {
-                            showSnackBar('Share app', context);
+                          onTap: () async {
+                            await shareApp();
                           },
                           child: const Padding(
                             padding: EdgeInsets.all(8),
@@ -73,13 +113,15 @@ class _DetailPageState extends State<DetailPage> {
                       const SizedBox(width: 10,)
                     ],
                     flexibleSpace: FlexibleSpaceBar(
-                      background: CachedNetworkImage(imageUrl: widget.product.image, fit: BoxFit.cover,),
+                      background: CachedNetworkImage(
+                        imageUrl: widget.product.image, fit: BoxFit.cover,),
                     ),
                   ),
                   SliverToBoxAdapter(
                     child: Column(
                       children: [
                         Container(
+                          width: double.infinity,
                           margin: const EdgeInsets.symmetric(vertical: 6),
                           padding: const EdgeInsets.all(10),
                           decoration: BoxDecoration(
@@ -89,12 +131,19 @@ class _DetailPageState extends State<DetailPage> {
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Text(widget.product.title.uz, style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 18),),
+                              Text(widget.product.title.uz,
+                                style: const TextStyle(
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 18),),
                               const SizedBox(height: 10,),
-                              Text(widget.product.description.uz.trim(), style: TextStyle(color: Colors.grey[500], fontSize: 15),),
+                              Text(widget.product.description.uz.trim(),
+                                style: TextStyle(
+                                    color: Colors.grey[500], fontSize: 15),),
                             ],
                           ),
-                        ), Container(
+                        ),
+                        Container(
+                          width: double.infinity,
                           margin: const EdgeInsets.symmetric(vertical: 6),
                           padding: const EdgeInsets.all(10),
                           decoration: BoxDecoration(
@@ -104,12 +153,19 @@ class _DetailPageState extends State<DetailPage> {
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Text(widget.product.title.uz, style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 18),),
+                              Text(widget.product.title.uz,
+                                style: const TextStyle(
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 18),),
                               const SizedBox(height: 10,),
-                              Text(widget.product.description.uz.trim(), style: TextStyle(color: Colors.grey[500], fontSize: 15),),
+                              Text(widget.product.description.uz.trim(),
+                                style: TextStyle(
+                                    color: Colors.grey[500], fontSize: 15),),
                             ],
                           ),
-                        ), Container(
+                        ),
+                        Container(
+                          width: double.infinity,
                           margin: const EdgeInsets.symmetric(vertical: 6),
                           padding: const EdgeInsets.all(10),
                           decoration: BoxDecoration(
@@ -119,12 +175,19 @@ class _DetailPageState extends State<DetailPage> {
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Text(widget.product.title.uz, style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 18),),
+                              Text(widget.product.title.uz,
+                                style: const TextStyle(
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 18),),
                               const SizedBox(height: 10,),
-                              Text(widget.product.description.uz.trim(), style: TextStyle(color: Colors.grey[500], fontSize: 15),),
+                              Text(widget.product.description.uz.trim(),
+                                style: TextStyle(
+                                    color: Colors.grey[500], fontSize: 15),),
                             ],
                           ),
-                        ), Container(
+                        ),
+                        Container(
+                          width: double.infinity,
                           margin: const EdgeInsets.symmetric(vertical: 6),
                           padding: const EdgeInsets.all(10),
                           decoration: BoxDecoration(
@@ -134,12 +197,19 @@ class _DetailPageState extends State<DetailPage> {
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Text(widget.product.title.uz, style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 18),),
+                              Text(widget.product.title.uz,
+                                style: const TextStyle(
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 18),),
                               const SizedBox(height: 10,),
-                              Text(widget.product.description.uz.trim(), style: TextStyle(color: Colors.grey[500], fontSize: 15),),
+                              Text(widget.product.description.uz.trim(),
+                                style: TextStyle(
+                                    color: Colors.grey[500], fontSize: 15),),
                             ],
                           ),
-                        ), Container(
+                        ),
+                        Container(
+                          width: double.infinity,
                           margin: const EdgeInsets.symmetric(vertical: 6),
                           padding: const EdgeInsets.all(10),
                           decoration: BoxDecoration(
@@ -149,12 +219,19 @@ class _DetailPageState extends State<DetailPage> {
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Text(widget.product.title.uz, style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 18),),
+                              Text(widget.product.title.uz,
+                                style: const TextStyle(
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 18),),
                               const SizedBox(height: 10,),
-                              Text(widget.product.description.uz.trim(), style: TextStyle(color: Colors.grey[500], fontSize: 15),),
+                              Text(widget.product.description.uz.trim(),
+                                style: TextStyle(
+                                    color: Colors.grey[500], fontSize: 15),),
                             ],
                           ),
-                        ), Container(
+                        ),
+                        Container(
+                          width: double.infinity,
                           margin: const EdgeInsets.symmetric(vertical: 6),
                           padding: const EdgeInsets.all(10),
                           decoration: BoxDecoration(
@@ -164,12 +241,19 @@ class _DetailPageState extends State<DetailPage> {
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Text(widget.product.title.uz, style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 18),),
+                              Text(widget.product.title.uz,
+                                style: const TextStyle(
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 18),),
                               const SizedBox(height: 10,),
-                              Text(widget.product.description.uz.trim(), style: TextStyle(color: Colors.grey[500], fontSize: 15),),
+                              Text(widget.product.description.uz.trim(),
+                                style: TextStyle(
+                                    color: Colors.grey[500], fontSize: 15),),
                             ],
                           ),
-                        ), Container(
+                        ),
+                        Container(
+                          width: double.infinity,
                           margin: const EdgeInsets.symmetric(vertical: 6),
                           padding: const EdgeInsets.all(10),
                           decoration: BoxDecoration(
@@ -179,24 +263,14 @@ class _DetailPageState extends State<DetailPage> {
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Text(widget.product.title.uz, style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 18),),
+                              Text(widget.product.title.uz,
+                                style: const TextStyle(
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 18),),
                               const SizedBox(height: 10,),
-                              Text(widget.product.description.uz.trim(), style: TextStyle(color: Colors.grey[500], fontSize: 15),),
-                            ],
-                          ),
-                        ), Container(
-                          margin: const EdgeInsets.symmetric(vertical: 6),
-                          padding: const EdgeInsets.all(10),
-                          decoration: BoxDecoration(
-                            color: Colors.white,
-                            borderRadius: BorderRadius.circular(10),
-                          ),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(widget.product.title.uz, style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 18),),
-                              const SizedBox(height: 10,),
-                              Text(widget.product.description.uz.trim(), style: TextStyle(color: Colors.grey[500], fontSize: 15),),
+                              Text(widget.product.description.uz.trim(),
+                                style: TextStyle(
+                                    color: Colors.grey[500], fontSize: 15),),
                             ],
                           ),
                         ),
@@ -206,7 +280,10 @@ class _DetailPageState extends State<DetailPage> {
                 ],
               ),
             ),
-            Container(height: MediaQuery.of(context).size.height * 0.18,)
+            Container(height: MediaQuery
+                .of(context)
+                .size
+                .height * 0.18,)
           ],
         ),
         Column(
@@ -219,52 +296,59 @@ class _DetailPageState extends State<DetailPage> {
               elevation: 5,
               child: Container(
                 padding: const EdgeInsets.all(15),
-                height: MediaQuery.of(context).size.height * 0.18,
+                height: MediaQuery
+                    .of(context)
+                    .size
+                    .height * 0.18,
                 child: Column(
                   children: [
                     Expanded(
                         child: Row(
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Container(
-                          margin: EdgeInsets.symmetric(
-                              vertical:
-                                  MediaQuery.of(context).size.height * 0.005),
-                          decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(6),
-                              border: Border.all(
-                                  color: Colors.grey[300]!,
-                                  width: 0.8,
-                                  strokeAlign: BorderSide.strokeAlignOutside)),
-                          child: Row(
-                            children: [
-                              IconButton(
-                                  padding: const EdgeInsets.all(5),
-                                  onPressed: productCount > 1 ? dec : null,
-                                  icon: const Icon(Icons.remove)),
-                              SizedBox(
-                                width: 20,
-                                child: Center(
-                                    child: Text(
-                                  '$productCount',
-                                  style: const TextStyle(fontSize: 17),
-                                )),
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Container(
+                              margin: EdgeInsets.symmetric(
+                                  vertical:
+                                  MediaQuery
+                                      .of(context)
+                                      .size
+                                      .height * 0.005),
+                              decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(6),
+                                  border: Border.all(
+                                      color: Colors.grey[300]!,
+                                      width: 0.8,
+                                      strokeAlign: BorderSide
+                                          .strokeAlignOutside)),
+                              child: Row(
+                                children: [
+                                  IconButton(
+                                      padding: const EdgeInsets.all(5),
+                                      onPressed: productCount > 1 ? dec : null,
+                                      icon: const Icon(Icons.remove)),
+                                  SizedBox(
+                                    width: 20,
+                                    child: Center(
+                                        child: Text(
+                                          '$productCount',
+                                          style: const TextStyle(fontSize: 17),
+                                        )),
+                                  ),
+                                  IconButton(
+                                      padding: EdgeInsets.all(5),
+                                      onPressed: inc,
+                                      icon: const Icon(Icons.add)),
+                                ],
                               ),
-                              IconButton(
-                                  padding: EdgeInsets.all(5),
-                                  onPressed: inc,
-                                  icon: const Icon(Icons.add)),
-                            ],
-                          ),
-                        ),
-                        Text(
-                          '${widget.product.price * productCount} so\'m',
-                          style: const TextStyle(
-                              fontWeight: FontWeight.bold, fontSize: 18),
-                        )
-                      ],
-                    )),
+                            ),
+                            Text(
+                              '${widget.product.price * productCount} so\'m',
+                              style: const TextStyle(
+                                  fontWeight: FontWeight.bold, fontSize: 18),
+                            )
+                          ],
+                        )),
                     const SizedBox(
                       height: 10,
                     ),
@@ -274,14 +358,30 @@ class _DetailPageState extends State<DetailPage> {
                       child: InkWell(
                         borderRadius: BorderRadius.circular(10),
                         onTap: () {
-                          // showSnackBar(
-                          //     'Savatga qo\'shildi ${productCount * widget.product.price}');
+                          if(isAdded){
+                            Navigator.pushReplacement(context, CupertinoPageRoute(builder: (context) => const HostPage(position: 1,)));
+                          } else {
+                            dao.insertProduct(ProductData(
+                                productId: widget.product.id,
+                                price: widget.product.price,
+                                currency: widget.product.currency,
+                                image: widget.product.image,
+                                title: widget.product.title.uz,
+                                description: widget.product.description.uz,
+                                amount: productCount)
+                            ).then((value) {
+                              showToast(['Buyurtmangiz savatga qo\'shildi', 'Savatni tekshirishingiz mumkin'], context, gravity: ToastGravity.TOP);
+                            });
+                            isAdded = true;
+                            setState(() {});
+                          }
                         },
                         child: SizedBox(
                             height: MediaQuery.of(context).size.height * 0.065,
-                            child: const Center(
-                                child: Text('Qo\'shish',
-                                    style: TextStyle(
+                            child: Center(
+                                child: Text(
+                                    isAdded ? 'Savatga' : 'Qo\'shish',
+                                    style: const TextStyle(
                                         fontWeight: FontWeight.bold,
                                         fontSize: 15,
                                         color: Colors.white)))),
@@ -292,7 +392,7 @@ class _DetailPageState extends State<DetailPage> {
               ),
             )
           ],
-        )
+        ),
       ]),
     );
   }
