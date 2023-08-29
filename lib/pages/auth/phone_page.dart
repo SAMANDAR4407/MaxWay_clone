@@ -7,8 +7,7 @@ import 'package:flutter/services.dart';
 import 'name_page.dart';
 
 class PhonePage extends StatefulWidget {
-  final String page;
-  const PhonePage({super.key, required this.page});
+  const PhonePage({super.key});
 
   static String verification = '';
 
@@ -80,44 +79,46 @@ class _PhonePageState extends State<PhonePage> {
                 ),
               ],
             ),
-            InkWell(
-              onTap: () async {
-                setState(() {
-                  _text.text.isEmpty || _text.text.length != 13 ? valid = false : valid = true;
-                });
-                valid
-                    ? await auth.verifyPhoneNumber(
-                  phoneNumber: _text.text,
-                  verificationCompleted: (PhoneAuthCredential credential) async {
-                    await auth.signInWithCredential(credential).then((value) {
-                      print("You are logged in successfully");
-                    });
-                  },
-                  verificationFailed: (FirebaseAuthException e) {
-                    showToast(['Xatolik'], context, color: Colors.redAccent);
-                    print(e.message);
-                  },
-                  codeSent: (String verificationId, int? resendToken) {
-                    PhonePage.verification = verificationId;
-                    Navigator.pushReplacement(context, CupertinoPageRoute(builder: (context) => NamePage(page: widget.page,number: _text.text,)));
-                  },
-                  codeAutoRetrievalTimeout: (String verificationId) {},)
-                    : null;
-              },
-              child: Container(
-                  decoration: BoxDecoration(
-                      color: const Color(0xff51267D),
-                      borderRadius: BorderRadius.circular(10)),
-                  width: double.infinity,
-                  height: MediaQuery.of(context).size.height * 0.07,
-                  child: const Center(
-                      child: Text('Davom eting',
-                          style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                              fontSize: 15,
-                              color: Colors.white)
-                      )
-                  )
+            Material(
+              clipBehavior: Clip.antiAlias,
+              color: const Color(0xff51267D),
+              borderRadius: BorderRadius.circular(10),
+              child: InkWell(
+                onTap: () async {
+                  setState(() {
+                    _text.text.isEmpty || _text.text.length != 13 ? valid = false : valid = true;
+                  });
+                  valid
+                      ? await auth.verifyPhoneNumber(
+                    phoneNumber: _text.text,
+                    verificationCompleted: (PhoneAuthCredential credential) async {
+                      await auth.signInWithCredential(credential).then((value) {
+                        print("You are logged in successfully");
+                      });
+                    },
+                    verificationFailed: (FirebaseAuthException e) {
+                      showToast(['Xatolik'], context, color: Colors.redAccent);
+                      print(e.message);
+                    },
+                    codeSent: (String verificationId, int? resendToken) {
+                      PhonePage.verification = verificationId;
+                      Navigator.pushReplacement(context, CupertinoPageRoute(builder: (context) => NamePage(number: _text.text,)));
+                    },
+                    codeAutoRetrievalTimeout: (String verificationId) {},)
+                      : null;
+                },
+                child: SizedBox(
+                    width: double.infinity,
+                    height: MediaQuery.of(context).size.height * 0.065,
+                    child: const Center(
+                        child: Text('Davom eting',
+                            style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                fontSize: 15,
+                                color: Colors.white)
+                        )
+                    )
+                ),
               ),
             )
           ],

@@ -1,3 +1,6 @@
+// ignore_for_file: must_be_immutable
+
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:demo_max_way/pages/base/base_page.dart';
 import 'package:demo_max_way/utils/utils.dart';
 import 'package:flutter/cupertino.dart';
@@ -40,17 +43,16 @@ class _CartPageState extends State<CartPage> {
 
   @override
   Widget build(BuildContext context) {
-
-
-    Future.delayed(const Duration(milliseconds: 50)).then((value) {
+    Future.delayed(const Duration(milliseconds: 10)).then((value) {
       setState(() {});
     });
     return Scaffold(
       backgroundColor: const Color(0xFFF6F6F6),
       appBar: AppBar(
+        surfaceTintColor: Colors.white,
         automaticallyImplyLeading: false,
         backgroundColor: Colors.white,
-        scrolledUnderElevation: 0,
+        scrolledUnderElevation: 1,
         centerTitle: true,
         title: const Text(
           'Savatcha',
@@ -58,8 +60,21 @@ class _CartPageState extends State<CartPage> {
         ),
         actions: isEmpty ? [] : [
           IconButton(onPressed: () {
-                widget._productDao.deleteProducts();
-                setState(() {});
+                  showCupertinoDialog(context: context, builder: (context) {
+                    return CupertinoAlertDialog(
+                      title: const Text('TOZALASH', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),),
+                      content: const Text('Chindan ham savatni tozalamoqchimisiz?', style: TextStyle(fontSize: 14),),
+                      actions: [
+                        TextButton(onPressed: () {
+                          Navigator.pop(context);
+                        }, child: const Text('Yo\'q', style: TextStyle(color: Colors.red))),
+                        TextButton(onPressed: () {
+                            widget._productDao.deleteProducts();
+                            setState(() {});
+                        }, child: const Text('Ha', style: TextStyle(color: Colors.green),))
+                      ],
+                    );
+                  },);
             }, icon: const Icon(Icons.delete_outline, color: Colors.grey,)),
           const SizedBox(width: 10,)
         ],
@@ -76,8 +91,9 @@ class _CartPageState extends State<CartPage> {
                     stream: snapshot.data!.streamedData(),
                     builder: (context, snapshot) {
                       if (!snapshot.hasData || snapshot.connectionState == ConnectionState.none) {
-                        return const Center(child: CircularProgressIndicator());
-                      } else {
+                        return const Center(child: CupertinoActivityIndicator(radius: 20, color: Color(0xff51267D),));
+                      }
+                      else {
                         if (widget.products.length != snapshot.data!.length) {
                           widget.products = snapshot.data!;
                           var cost = 0;
@@ -100,38 +116,97 @@ class _CartPageState extends State<CartPage> {
                             ],
                           ));
                         }
-                        return ListView.separated(
-                          separatorBuilder: (context, index) => const SizedBox(height: 10,),
+                        return Padding(
                           padding: const EdgeInsets.symmetric(vertical: 10),
-                          itemCount: snapshot.data!.length,
-                          itemBuilder: (BuildContext context, int index) {
-                            return Container(
-                              padding: EdgeInsets.symmetric(vertical: 10),
-                              decoration: BoxDecoration(
-                                color: Colors.white,
-                                borderRadius: BorderRadius.circular(10),
-                              ),
-                              child: ListTile(
-                                title: Text(snapshot.data![index].title),
-                                subtitle: Text(
-                                  snapshot.data![index].description,
-                                  style: const TextStyle(fontSize: 10),
-                                ),
-                                trailing: SizedBox(
-                                  width: 50,
-                                  child: IconButton(
-                                    onPressed: () {
-                                      _delete(snapshot.data![index].productId);
-                                    },
-                                    icon: const Icon(
-                                      Icons.close_rounded,
-                                      color: Colors.redAccent,
-                                    ),
+                          child: Material(
+                            borderRadius: BorderRadius.circular(15),
+                            color: Colors.white,
+                            child: ListView.separated(
+                              separatorBuilder: (context, index) => const Divider(height: 1, indent: 20,endIndent: 20),
+                              padding: const EdgeInsets.symmetric(vertical: 10),
+                              itemCount: snapshot.data!.length,
+                              itemBuilder: (_, i) {
+                                final product = snapshot.data![i];
+                                return Container(
+                                  padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 15),
+                                  child: Row(
+                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    children: [
+                                      SizedBox(
+                                        width:MediaQuery.of(context).size.width*0.23,
+                                        height:MediaQuery.of(context).size.width*0.23,
+                                        child: ClipRRect(
+                                          clipBehavior: Clip.antiAlias,
+                                          borderRadius: BorderRadius.circular(12),
+                                          child: CachedNetworkImage(
+                                            imageUrl: product.image,
+                                            fit: BoxFit.cover,
+                                            placeholder: (context, url) => Image.asset('assets/images/placeholder.png', color: Colors.grey[400], fit: BoxFit.cover,),
+                                          ),
+                                        ),
+                                      ),
+                                      const SizedBox(width: 15,),
+                                      Expanded(
+                                        child: Column(
+                                          children: [
+                                            Row(
+                                              crossAxisAlignment: CrossAxisAlignment.start,
+                                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                              children: [
+                                                Expanded(flex: 2,child: Column(
+                                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                                  children: [
+                                                    Text(product.title, style: const TextStyle(fontWeight: FontWeight.bold)),
+                                                    const Text('Sample product Sample product Sample product Sample product Sample product Sample product Sample product', style: TextStyle(fontSize: 12, color: Colors.grey)),
+                                                  ],
+                                                ),),
+                                                IconButton(onPressed: (){_delete(product.productId);}, icon: Icon(Icons.close_rounded, color: Colors.grey[400])),
+                                              ],
+                                            ),
+                                            const SizedBox(height: 15),
+                                            Row(
+                                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                              crossAxisAlignment: CrossAxisAlignment.center,
+                                              children: [
+                                                Text('${product.amount*product.price} so\'m', style: const TextStyle(fontWeight: FontWeight.bold)),
+                                                Container(
+                                                  height: 30,
+                                                  decoration: BoxDecoration(
+                                                    border: Border.all(color: Colors.grey[300]!, width: 1),
+                                                    borderRadius: BorderRadius.circular(6)
+                                                  ),
+                                                  child: Row(
+                                                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                                    children: [
+                                                      Material(
+                                                        clipBehavior: Clip.antiAlias,
+                                                        borderRadius: BorderRadius.circular(15),
+                                                        color: Colors.white,
+                                                        child:InkWell(
+                                                          onTap: () {},
+                                                          child: const Padding(padding: EdgeInsets.symmetric(horizontal: 5),child:Icon(Icons.remove_rounded)))),
+                                                      SizedBox(width: 20, child: Center(child: Text("${product.amount}"))),
+                                                      Material(
+                                                        clipBehavior: Clip.antiAlias,
+                                                        borderRadius: BorderRadius.circular(15),
+                                                        color: Colors.white,
+                                                        child:InkWell(
+                                                          onTap: () {},
+                                                          child: const Padding(padding: EdgeInsets.symmetric(horizontal: 5),child:Icon(Icons.add_rounded)))),
+                                                    ],
+                                                  ),
+                                                )
+                                              ],
+                                            )
+                                          ],
+                                        ),
+                                      )
+                                    ],
                                   ),
-                                ),
-                              ),
-                            );
-                          },
+                                );
+                              },
+                            ),
+                          ),
                         );
                       }
                     }

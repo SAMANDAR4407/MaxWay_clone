@@ -1,5 +1,6 @@
 import 'package:demo_max_way/core/pref.dart';
 import 'package:demo_max_way/pages/branch_page/branch_list_page.dart';
+import 'package:demo_max_way/pages/settings/settings_page.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -165,7 +166,9 @@ class _ProfilePageState extends State<ProfilePage> {
                     endIndent: 15,
                   ),
                   InkWell(
-                    onTap: () {},
+                    onTap: () {
+                      Navigator.push(context, CupertinoPageRoute(builder: (context) => const SettingsPage()));
+                    },
                     child: Container(
                       padding: const EdgeInsets.symmetric(horizontal: 15),
                       height: MediaQuery.of(context).size.height * 0.1,

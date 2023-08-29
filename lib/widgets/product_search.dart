@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 
 import '../model/models.dart';
@@ -33,7 +34,11 @@ class ProductSearchItem extends StatelessWidget {
                     borderRadius: BorderRadius.circular(10),
                     border: Border.all(color: Colors.black, width: 0.6,strokeAlign: BorderSide.strokeAlignOutside)
                   ),
-                  child: Image.network(product.image, fit: BoxFit.cover,),
+                  child: CachedNetworkImage(
+                    imageUrl: product.image,
+                    fit: BoxFit.cover,
+                    placeholder: (context, url) => Image.asset('assets/images/placeholder.png', color: Colors.grey[400], fit: BoxFit.cover,),
+                  ),
                 ),
               ),
               const SizedBox(width: 10,),

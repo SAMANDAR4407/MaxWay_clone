@@ -116,20 +116,6 @@ class _$ProductDao extends ProductDao {
                   'description': item.description,
                   'amount': item.amount
                 },
-            changeListener),
-        _productDataDeletionAdapter = DeletionAdapter(
-            database,
-            'ProductData',
-            ['productId'],
-            (ProductData item) => <String, Object?>{
-                  'productId': item.productId,
-                  'price': item.price,
-                  'currency': item.currency,
-                  'image': item.image,
-                  'title': item.title,
-                  'description': item.description,
-                  'amount': item.amount
-                },
             changeListener);
 
   final sqflite.DatabaseExecutor database;
@@ -139,8 +125,6 @@ class _$ProductDao extends ProductDao {
   final QueryAdapter _queryAdapter;
 
   final InsertionAdapter<ProductData> _productDataInsertionAdapter;
-
-  final DeletionAdapter<ProductData> _productDataDeletionAdapter;
 
   @override
   Future<List<ProductData>> getAllProducts() async {
@@ -202,11 +186,6 @@ class _$ProductDao extends ProductDao {
   @override
   Future<void> insertProduct(ProductData product) async {
     await _productDataInsertionAdapter.insert(
-        product, OnConflictStrategy.abort);
-  }
-
-  @override
-  Future<void> deleteAll(List<ProductData> list) async {
-    await _productDataDeletionAdapter.deleteList(list);
+        product, OnConflictStrategy.replace);
   }
 }

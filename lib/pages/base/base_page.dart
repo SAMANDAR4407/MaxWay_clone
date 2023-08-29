@@ -79,8 +79,8 @@ class _HostPageState extends State<HostPage> {
         children: [
           const HomePage(isFirst: true),
           CartPage(),
-          const OrdersPage(),
-          hasLogged ? const ProfilePage() : const PhonePage(page: 'profil'),
+          hasLogged ? const OrdersPage() : const PhonePage(),
+          hasLogged ? const ProfilePage() : const PhonePage(),
         ],
       ),
     );

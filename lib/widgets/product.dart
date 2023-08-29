@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 
 import '../model/models.dart';
@@ -46,27 +47,10 @@ class ProductItem extends StatelessWidget {
             height: double.infinity,
             child: ClipRRect(
               borderRadius: BorderRadius.circular(10),
-              child: Image.network(
-                product.image,
+              child: CachedNetworkImage(
+                  imageUrl: product.image,
                 fit: BoxFit.cover,
-                loadingBuilder: (BuildContext context, Widget child,
-                    ImageChunkEvent? loadingProgress) {
-                  if (loadingProgress == null) return child;
-                  return Center(
-                    child: SizedBox(
-                      height: 30,
-                      width: 30,
-                      child: CircularProgressIndicator(
-                        strokeWidth: 3,
-                        color: Colors.grey,
-                        value: loadingProgress.expectedTotalBytes != null
-                            ? loadingProgress.cumulativeBytesLoaded /
-                                loadingProgress.expectedTotalBytes!
-                            : null,
-                      ),
-                    ),
-                  );
-                },
+                placeholder: (context, url) => Image.asset('assets/images/placeholder.png', color: Colors.grey[400], fit: BoxFit.cover,),
               ),
             ),
           )

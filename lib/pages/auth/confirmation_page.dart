@@ -9,9 +9,8 @@ import 'package:fluttertoast/fluttertoast.dart';
 import 'package:pinput/pinput.dart';
 
 class ConfirmationPage extends StatefulWidget {
-  const ConfirmationPage({super.key, required this.page, required this.name, required this.number});
+  const ConfirmationPage({super.key, required this.name, required this.number});
 
-  final String page;
   final String name;
   final String number;
 
@@ -76,21 +75,25 @@ class _ConfirmationPageState extends State<ConfirmationPage> {
                 },
               ),
             ),
-            InkWell(
-              onTap: () async {
-                if (smsCode.length == 6) {
-                  try {
-                    verifyOTP();
-                  } catch (e) {
-                    showToast(['$e'], context);
+            Material(
+              clipBehavior: Clip.antiAlias,
+              color: const Color(0xff51267D),
+              borderRadius: BorderRadius.circular(10),
+              child: InkWell(
+                onTap: () async {
+                  if (smsCode.length == 6) {
+                    try {
+                      verifyOTP();
+                    } catch (e) {
+                      showToast(['$e'], context);
+                    }
                   }
-                }
-              },
-              child: Container(
-                  decoration: BoxDecoration(color: const Color(0xff51267D), borderRadius: BorderRadius.circular(10)),
-                  width: double.infinity,
-                  height: MediaQuery.of(context).size.height * 0.07,
-                  child: const Center(child: Text('Tasdiqlash', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15, color: Colors.white)))),
+                },
+                child: SizedBox(
+                    width: double.infinity,
+                    height: MediaQuery.of(context).size.height * 0.065,
+                    child: const Center(child: Text('Tasdiqlash', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15, color: Colors.white)))),
+              ),
             )
           ],
         ),

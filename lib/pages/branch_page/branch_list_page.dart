@@ -30,8 +30,10 @@ class _BranchListPageState extends State<BranchListPage> {
         return Scaffold(
           backgroundColor: const Color(0xFFF6F6F6),
           appBar: AppBar(
+            surfaceTintColor: Colors.white,
+            shadowColor: Colors.grey[300],
             backgroundColor: Colors.white,
-            scrolledUnderElevation: 0,
+            scrolledUnderElevation: 1,
             title: const Text(
               'Filiallar',
               style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),

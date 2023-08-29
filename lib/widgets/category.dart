@@ -11,9 +11,11 @@ class CategoryItem extends StatelessWidget {
     super.key,
     required this.category,
     required this.isFirst,
+    required this.deserts,
   });
 
   final Category category;
+  final Category deserts;
   final bool isFirst;
 
   @override
@@ -29,8 +31,7 @@ class CategoryItem extends StatelessWidget {
               borderRadius: BorderRadius.circular(20),
               color: Colors.white
             ),
-            // height: 670,
-            height: category.products.length * 90 + (category.products.length-1)*12 + 60,
+            height: category.products.length * 90 + (category.products.length-1) * 12 + 60,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -40,7 +41,7 @@ class CategoryItem extends StatelessWidget {
                 ),
                 const SizedBox(height: 10,),
                 SizedBox(
-                  height: category.products.length * 90 + (category.products.length-1)*12,
+                  height: category.products.length * 90 + (category.products.length-1) * 12,
                   child: ListView.separated(
                     physics: const NeverScrollableScrollPhysics(),
                     itemCount: category.products.length,
@@ -54,7 +55,7 @@ class CategoryItem extends StatelessWidget {
                               Navigator.push(
                                   context,
                                   CupertinoPageRoute(builder: (context) => isFirst
-                                      ? const MapPage() : DetailPage(product: product),));
+                                      ? const MapPage() : DetailPage(product: product, deserts: deserts)));
                             },
                             child: Padding(
                               padding: const EdgeInsets.symmetric(horizontal: 15),
