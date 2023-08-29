@@ -30,7 +30,7 @@ class _CustomBottomSheetState extends State<CustomBottomSheet> {
             children: [
               const Padding(
                 padding: EdgeInsets.only(top: 10,left: 20,bottom: 10),
-                child: Text("Language",style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold,color: Colors.black),),
+                child: Text("Til",style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold,color: Colors.black),),
               ),
               const Divider(
                 height: 1,

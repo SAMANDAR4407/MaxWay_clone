@@ -22,16 +22,16 @@ class HostPage extends StatefulWidget {
 class _HostPageState extends State<HostPage> {
   final pref = PrefHelper();
   bool hasLogged = false;
-  bool isEmpty = true;
+  bool isNotEmpty = false;
   int _selectedIndex = 0;
   var list = [];
 
   @override
   void initState() {
     load();
-    if (list.isNotEmpty) {
-      isEmpty = false;
-    }
+    // if (list.isNotEmpty) {
+    //   isNotEmpty = true;
+    // }
     _selectedIndex = widget.position;
     setState(() {});
     super.initState();
@@ -51,7 +51,9 @@ class _HostPageState extends State<HostPage> {
   @override
   Widget build(BuildContext context) {
     if (list.isNotEmpty) {
-      setState(() {});
+      setState(() {
+        isNotEmpty = true;
+      });
     }
     return Scaffold(
       bottomNavigationBar: BottomNavigationBar(
@@ -61,6 +63,7 @@ class _HostPageState extends State<HostPage> {
           BottomNavigationBarItem(
               icon: Badge(
                 label: Text('${list.length}'),
+                isLabelVisible: isNotEmpty,
                 child: const Icon(CupertinoIcons.cart),
               ),
               label: 'Savatcha'),

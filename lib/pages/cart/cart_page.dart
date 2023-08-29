@@ -70,6 +70,7 @@ class _CartPageState extends State<CartPage> {
                         }, child: const Text('Yo\'q', style: TextStyle(color: Colors.red))),
                         TextButton(onPressed: () {
                             widget._productDao.deleteProducts();
+                            Navigator.pop(context);
                             setState(() {});
                         }, child: const Text('Ha', style: TextStyle(color: Colors.green),))
                       ],

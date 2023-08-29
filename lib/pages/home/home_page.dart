@@ -11,7 +11,7 @@ import '../../widgets/category.dart';
 import '../../widgets/product_search.dart';
 import '../../widgets/shimmer.dart';
 import '../detail/detail_page.dart';
-import '../map/map_page.dart';
+import '../map/first_launch_map_page.dart';
 
 class HomePage extends StatefulWidget {
   final bool isFirst;
@@ -87,7 +87,7 @@ class _HomePageState extends State<HomePage> {
                     onTap: () {
                       Navigator.push(context, CupertinoPageRoute(
                         builder: (context) {
-                          return const MapPage();
+                          return const FirstLaunchMapPage();
                         },
                       ));
                     },
@@ -123,7 +123,7 @@ class _HomePageState extends State<HomePage> {
                         onTap: () {
                           Navigator.push(context, CupertinoPageRoute(
                             builder: (context) {
-                              return const MapPage();
+                              return const FirstLaunchMapPage();
                             },
                           ));
                         },
@@ -299,7 +299,7 @@ class _HomePageState extends State<HomePage> {
                               Navigator.push(
                                   context,
                                   CupertinoPageRoute(builder: (context) => isFirst
-                                      ? const MapPage() : DetailPage(product: product, deserts: deserts)));
+                                      ? const FirstLaunchMapPage() : DetailPage(product: product, deserts: deserts)));
                             },);
                           },
                           separatorBuilder: (_, __) => const SizedBox(height: 10,),

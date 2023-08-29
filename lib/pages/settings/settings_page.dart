@@ -132,19 +132,19 @@ class _SettingsPageState extends State<SettingsPage> {
                   onTap: (){
                     showCupertinoDialog(context: context, builder: (context) {
                       return CupertinoAlertDialog(
-                        title: const Text('CHIQISH', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),),
-                        content: const Text('Chindan ham hisobingizdan chiqmoqchimisiz?', style: TextStyle(fontSize: 14),),
+                        title: const Text('Diqqat!', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),),
+                        content: const Text('Profildan chiqishni xohlaysizmi?', style: TextStyle(fontSize: 14),),
                         actions: [
                           TextButton(onPressed: () {
                             Navigator.pop(context);
-                          }, child: const Text('Yo\'q', style: TextStyle(color: Colors.red))),
+                          }, child: const Text('Bekor qilish', style: TextStyle(color: Colors.red, fontWeight: FontWeight.bold))),
                           TextButton(onPressed: () {
                             pref.setHasLogged(false);
                             pref.setUserData('','');
                             _signOut().then((value){
                               Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => const HostPage()));
                             });
-                          }, child: const Text('Ha', style: TextStyle(color: Colors.green),))
+                          }, child: const Text('Ha', style: TextStyle(color: Colors.green, fontWeight: FontWeight.bold)))
                         ],
                       );
                     },);

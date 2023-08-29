@@ -26,7 +26,7 @@ class _DetailPageState extends State<DetailPage> {
   var productCount = 1;
   bool isAdded = false;
   List<ProductData> list = [];
-  late ProductData lastAddedProduct;
+  var lastAddedProduct = ProductData.empty();
 
   final dao = getIt<AppDatabase>().productDao;
 
@@ -281,15 +281,14 @@ class _DetailPageState extends State<DetailPage> {
                       height: 10,
                     ),
                     Material(
+                      clipBehavior: Clip.antiAlias,
                       color: const Color(0xff51267D),
                       borderRadius: BorderRadius.circular(10),
                       child: InkWell(
-                        borderRadius: BorderRadius.circular(10),
                         onTap: () {
                           if(isAdded){
                             Navigator.pushReplacement(context, CupertinoPageRoute(builder: (context) => const HostPage(position: 1,)));
                           } else {
-                            // dao.deleteProduct(lastAddedProduct.productId);
                             dao.insertProduct(ProductData(
                                 productId: widget.product.id,
                                 price: widget.product.price,

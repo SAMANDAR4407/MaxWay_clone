@@ -1,4 +1,4 @@
-import 'package:demo_max_way/pages/map/map_page.dart';
+import 'package:demo_max_way/pages/map/first_launch_map_page.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -55,7 +55,7 @@ class CategoryItem extends StatelessWidget {
                               Navigator.push(
                                   context,
                                   CupertinoPageRoute(builder: (context) => isFirst
-                                      ? const MapPage() : DetailPage(product: product, deserts: deserts)));
+                                      ? const FirstLaunchMapPage() : DetailPage(product: product, deserts: deserts)));
                             },
                             child: Padding(
                               padding: const EdgeInsets.symmetric(horizontal: 15),
