@@ -1,15 +1,12 @@
 import 'package:floor/floor.dart';
 
-import '../entity/entity.dart';
+import '../entity/product_entity.dart';
 
 
 @dao
 abstract class ProductDao {
   @Query('SELECT * FROM ProductData')
   Future<List<ProductData>> getAllProducts();
-
-  @Query('SELECT * FROM ProductData WHERE productId = :id')
-  Stream<ProductData?> findProductById(String id);
 
   @Query('SELECT * FROM ProductData')
   Stream<List<ProductData>> streamedData();
@@ -22,4 +19,7 @@ abstract class ProductDao {
 
   @Query('DELETE FROM ProductData')
   Future<void> deleteProducts();
+
+  @update
+  Future<void> updateProduct(ProductData productData);
 }

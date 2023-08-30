@@ -1,6 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:demo_max_way/core/database/database.dart';
-import 'package:demo_max_way/core/database/entity/entity.dart';
+import 'package:demo_max_way/core/database/entity/product_entity.dart';
 import 'package:demo_max_way/pages/base/base_page.dart';
 import 'package:demo_max_way/utils/utils.dart';
 import 'package:flutter/cupertino.dart';
@@ -264,7 +264,7 @@ class _DetailPageState extends State<DetailPage> {
                                         )),
                                   ),
                                   IconButton(
-                                      padding: EdgeInsets.all(5),
+                                      padding: const EdgeInsets.all(5),
                                       onPressed: inc,
                                       icon: const Icon(Icons.add)),
                                 ],

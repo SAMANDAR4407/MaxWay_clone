@@ -42,7 +42,7 @@ class AboutTheService extends StatelessWidget {
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             Expanded(
-                                child: Text("Biz haqimizda", style: TextStyle(fontWeight: FontWeight.bold))
+                                child: Text("Biz haqimizda", style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold))
                             ),
                             Icon(
                               Icons.arrow_forward_ios,

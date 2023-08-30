@@ -55,22 +55,24 @@ class _ProfilePageState extends State<ProfilePage> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  Column(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        name,
-                        style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-                      ),
-                      SizedBox(
-                        height: MediaQuery.of(context).size.height * 0.01,
-                      ),
-                      Text(
-                        phone,
-                        style: TextStyle(fontSize: 17, color: Colors.grey[700]),
-                      ),
-                    ],
+                  Expanded(
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          name,
+                          style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                        ),
+                        SizedBox(
+                          height: MediaQuery.of(context).size.height * 0.01,
+                        ),
+                        Text(
+                          phone,
+                          style: TextStyle(fontSize: 17, color: Colors.grey[700]),
+                        ),
+                      ],
+                    ),
                   ),
                   IconButton(
                       onPressed: () {},
@@ -93,7 +95,7 @@ class _ProfilePageState extends State<ProfilePage> {
                 children: [
                   InkWell(
                     onTap: () {
-                      Navigator.push(context, CupertinoPageRoute(builder:(context) => const AddressListPage()));
+                      Navigator.push(context, CupertinoPageRoute(builder:(context) => AddressListPage()));
                     },
                     child: Container(
                       padding: const EdgeInsets.symmetric(horizontal: 15),

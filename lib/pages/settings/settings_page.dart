@@ -130,22 +130,83 @@ class _SettingsPageState extends State<SettingsPage> {
                 color: Colors.white,
                 child: InkWell(
                   onTap: (){
-                    showCupertinoDialog(context: context, builder: (context) {
-                      return CupertinoAlertDialog(
-                        title: const Text('Diqqat!', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),),
-                        content: const Text('Profildan chiqishni xohlaysizmi?', style: TextStyle(fontSize: 14),),
-                        actions: [
-                          TextButton(onPressed: () {
-                            Navigator.pop(context);
-                          }, child: const Text('Bekor qilish', style: TextStyle(color: Colors.red, fontWeight: FontWeight.bold))),
-                          TextButton(onPressed: () {
-                            pref.setHasLogged(false);
-                            pref.setUserData('','');
-                            _signOut().then((value){
-                              Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => const HostPage()));
-                            });
-                          }, child: const Text('Ha', style: TextStyle(color: Colors.green, fontWeight: FontWeight.bold)))
-                        ],
+
+                    showDialog(context: context, builder: (context) {
+                      return Container(
+                        clipBehavior: Clip.antiAlias,
+                        decoration: BoxDecoration(borderRadius: BorderRadius.circular(15)),
+                        padding: EdgeInsets.symmetric(
+                            horizontal: MediaQuery.of(context).size.width*0.13,
+                            vertical: MediaQuery.of(context).size.height*0.38
+                        ),
+                        child: Material(
+                          color: Colors.white,
+                          child: Container(
+                            padding: const EdgeInsets.all(15),
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                const Center(
+                                  child: Text(
+                                    'Diqqat!',
+                                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
+                                  ),
+                                ),
+                                const Expanded(child: SizedBox()),
+                                const Text(
+                                  'Profildan chiqishni xohlaysizmi?', textAlign: TextAlign.center,
+                                  style: TextStyle(fontSize: 14),
+                                ),
+                                const Expanded(child: SizedBox()),
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Expanded(
+                                      child: Padding(
+                                        padding: const EdgeInsets.symmetric(horizontal: 5),
+                                        child: Material(
+                                          borderRadius: BorderRadius.circular(10),
+                                          clipBehavior: Clip.antiAlias,
+                                          color: Colors.grey[200],
+                                          child: InkWell(
+                                              onTap: () {
+                                                Navigator.pop(context);
+                                              },
+                                              child: Container(
+                                                  padding: const EdgeInsets.all(12),
+                                                  child: const Center(
+                                                      child: Text('Bekor qilish', style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold))))),
+                                        ),
+                                      ),
+                                    ),
+                                    Expanded(
+                                      child: Padding(
+                                        padding: const EdgeInsets.symmetric(horizontal: 5),
+                                        child: Material(
+                                          borderRadius: BorderRadius.circular(10),
+                                          clipBehavior: Clip.antiAlias,
+                                          color: const Color(0xff51267D),
+                                          child: InkWell(
+                                              onTap: () {
+                                                pref.setHasLogged(false);
+                                                pref.setUserData('','');
+                                                _signOut().then((value){
+                                                  Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => const HostPage()));
+                                                });
+                                              },
+                                              child: Container(
+                                                  padding: const EdgeInsets.all(12),
+                                                  child: const Center(
+                                                      child: Text('Ha', style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold))))),
+                                        ),
+                                      ),
+                                    ),
+                                  ],
+                                )
+                              ],
+                            ),
+                          ),
+                        ),
                       );
                     },);
                   },

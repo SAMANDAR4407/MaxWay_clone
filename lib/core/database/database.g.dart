@@ -63,13 +63,15 @@ class _$AppDatabase extends AppDatabase {
 
   ProductDao? _productDaoInstance;
 
+  AddressDao? _addressDaoInstance;
+
   Future<sqflite.Database> open(
     String path,
     List<Migration> migrations, [
     Callback? callback,
   ]) async {
     final databaseOptions = sqflite.OpenDatabaseOptions(
-      version: 1,
+      version: 2,
       onConfigure: (database) async {
         await database.execute('PRAGMA foreign_keys = ON');
         await callback?.onConfigure?.call(database);
@@ -86,6 +88,8 @@ class _$AppDatabase extends AppDatabase {
       onCreate: (database, version) async {
         await database.execute(
             'CREATE TABLE IF NOT EXISTS `ProductData` (`productId` TEXT NOT NULL, `price` INTEGER NOT NULL, `currency` TEXT NOT NULL, `image` TEXT NOT NULL, `title` TEXT NOT NULL, `description` TEXT NOT NULL, `amount` INTEGER NOT NULL, PRIMARY KEY (`productId`))');
+        await database.execute(
+            'CREATE TABLE IF NOT EXISTS `AddressEntity` (`locationName` TEXT NOT NULL, `title` TEXT NOT NULL, `apartment` TEXT NOT NULL, `floor` TEXT NOT NULL, `entrance` TEXT NOT NULL, `lat` REAL NOT NULL, `long` REAL NOT NULL, PRIMARY KEY (`locationName`))');
 
         await callback?.onCreate?.call(database, version);
       },
@@ -96,6 +100,11 @@ class _$AppDatabase extends AppDatabase {
   @override
   ProductDao get productDao {
     return _productDaoInstance ??= _$ProductDao(database, changeListener);
+  }
+
+  @override
+  AddressDao get addressDao {
+    return _addressDaoInstance ??= _$AddressDao(database, changeListener);
   }
 }
 
@@ -116,6 +125,20 @@ class _$ProductDao extends ProductDao {
                   'description': item.description,
                   'amount': item.amount
                 },
+            changeListener),
+        _productDataUpdateAdapter = UpdateAdapter(
+            database,
+            'ProductData',
+            ['productId'],
+            (ProductData item) => <String, Object?>{
+                  'productId': item.productId,
+                  'price': item.price,
+                  'currency': item.currency,
+                  'image': item.image,
+                  'title': item.title,
+                  'description': item.description,
+                  'amount': item.amount
+                },
             changeListener);
 
   final sqflite.DatabaseExecutor database;
@@ -125,6 +148,8 @@ class _$ProductDao extends ProductDao {
   final QueryAdapter _queryAdapter;
 
   final InsertionAdapter<ProductData> _productDataInsertionAdapter;
+
+  final UpdateAdapter<ProductData> _productDataUpdateAdapter;
 
   @override
   Future<List<ProductData>> getAllProducts() async {
@@ -137,23 +162,6 @@ class _$ProductDao extends ProductDao {
             title: row['title'] as String,
             description: row['description'] as String,
             amount: row['amount'] as int));
-  }
-
-  @override
-  Stream<ProductData?> findProductById(String id) {
-    return _queryAdapter.queryStream(
-        'SELECT * FROM ProductData WHERE productId = ?1',
-        mapper: (Map<String, Object?> row) => ProductData(
-            productId: row['productId'] as String,
-            price: row['price'] as int,
-            currency: row['currency'] as String,
-            image: row['image'] as String,
-            title: row['title'] as String,
-            description: row['description'] as String,
-            amount: row['amount'] as int),
-        arguments: [id],
-        queryableName: 'ProductData',
-        isView: false);
   }
 
   @override
@@ -187,5 +195,106 @@ class _$ProductDao extends ProductDao {
   Future<void> insertProduct(ProductData product) async {
     await _productDataInsertionAdapter.insert(
         product, OnConflictStrategy.replace);
+  }
+
+  @override
+  Future<void> updateProduct(ProductData productData) async {
+    await _productDataUpdateAdapter.update(
+        productData, OnConflictStrategy.abort);
+  }
+}
+
+class _$AddressDao extends AddressDao {
+  _$AddressDao(
+    this.database,
+    this.changeListener,
+  )   : _queryAdapter = QueryAdapter(database, changeListener),
+        _addressEntityInsertionAdapter = InsertionAdapter(
+            database,
+            'AddressEntity',
+            (AddressEntity item) => <String, Object?>{
+                  'locationName': item.locationName,
+                  'title': item.title,
+                  'apartment': item.apartment,
+                  'floor': item.floor,
+                  'entrance': item.entrance,
+                  'lat': item.lat,
+                  'long': item.long
+                },
+            changeListener),
+        _addressEntityUpdateAdapter = UpdateAdapter(
+            database,
+            'AddressEntity',
+            ['locationName'],
+            (AddressEntity item) => <String, Object?>{
+                  'locationName': item.locationName,
+                  'title': item.title,
+                  'apartment': item.apartment,
+                  'floor': item.floor,
+                  'entrance': item.entrance,
+                  'lat': item.lat,
+                  'long': item.long
+                },
+            changeListener);
+
+  final sqflite.DatabaseExecutor database;
+
+  final StreamController<String> changeListener;
+
+  final QueryAdapter _queryAdapter;
+
+  final InsertionAdapter<AddressEntity> _addressEntityInsertionAdapter;
+
+  final UpdateAdapter<AddressEntity> _addressEntityUpdateAdapter;
+
+  @override
+  Future<List<AddressEntity>> getAllProducts() async {
+    return _queryAdapter.queryList('SELECT * FROM AddressEntity',
+        mapper: (Map<String, Object?> row) => AddressEntity(
+            locationName: row['locationName'] as String,
+            title: row['title'] as String,
+            apartment: row['apartment'] as String,
+            floor: row['floor'] as String,
+            entrance: row['entrance'] as String,
+            lat: row['lat'] as double,
+            long: row['long'] as double));
+  }
+
+  @override
+  Stream<List<AddressEntity>> streamedData() {
+    return _queryAdapter.queryListStream('SELECT * FROM AddressEntity',
+        mapper: (Map<String, Object?> row) => AddressEntity(
+            locationName: row['locationName'] as String,
+            title: row['title'] as String,
+            apartment: row['apartment'] as String,
+            floor: row['floor'] as String,
+            entrance: row['entrance'] as String,
+            lat: row['lat'] as double,
+            long: row['long'] as double),
+        queryableName: 'AddressEntity',
+        isView: false);
+  }
+
+  @override
+  Future<void> deleteAddress(String title) async {
+    await _queryAdapter.queryNoReturn(
+        'DELETE FROM AddressEntity where title = ?1',
+        arguments: [title]);
+  }
+
+  @override
+  Future<void> deleteAddresses() async {
+    await _queryAdapter.queryNoReturn('DELETE FROM AddressEntity');
+  }
+
+  @override
+  Future<void> insertAddress(AddressEntity address) async {
+    await _addressEntityInsertionAdapter.insert(
+        address, OnConflictStrategy.replace);
+  }
+
+  @override
+  Future<void> updateAddress(AddressEntity address) async {
+    await _addressEntityUpdateAdapter.update(address, OnConflictStrategy.abort);
   }
 }

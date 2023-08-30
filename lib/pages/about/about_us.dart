@@ -35,7 +35,7 @@ class AboutUs extends StatelessWidget {
                       children: [
                         Text(
                           "Biz mijozlarimizni xursand qilamiz",
-                          style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
+                          style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
                         ),
                         SizedBox(height: 5),
                         Row(

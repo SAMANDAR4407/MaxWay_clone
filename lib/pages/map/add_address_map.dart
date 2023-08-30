@@ -1,5 +1,9 @@
 import 'dart:async';
 
+import 'package:demo_max_way/core/database/dao/address_dao.dart';
+import 'package:demo_max_way/core/database/database.dart';
+import 'package:demo_max_way/core/database/entity/address_entity.dart';
+import 'package:demo_max_way/utils/setup_db.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
@@ -21,7 +25,8 @@ class _AddAddressMapPageState extends State<AddAddressMapPage> {
   final mapController = Completer<YandexMapController>();
   var _locationModel = LocationModel();
   var locationName = '';
-  final prefs = PrefHelper();
+
+  final dao = getIt<AppDatabase>().addressDao;
 
   final nameController = TextEditingController();
   final apartmentController = TextEditingController();
@@ -37,10 +42,11 @@ class _AddAddressMapPageState extends State<AddAddressMapPage> {
   var entrance = '';
   var floor = '';
 
+  late Point point;
+
   @override
   void initState() {
     handleLocationPermission();
-    prefs.setIsFirst(false);
 
     nameController.addListener(() {
       name = nameController.text;
@@ -75,16 +81,11 @@ class _AddAddressMapPageState extends State<AddAddressMapPage> {
 
   Future<void> move() async {
     var controller = await mapController.future;
-    await Geolocator.getCurrentPosition(
-        desiredAccuracy: LocationAccuracy.bestForNavigation)
-        .then((Position position) {
+    await Geolocator.getCurrentPosition(desiredAccuracy: LocationAccuracy.bestForNavigation).then((Position position) {
+      point = Point(latitude: position.latitude, longitude: position.longitude);
       controller.moveCamera(
-          animation:
-          const MapAnimation(type: MapAnimationType.linear, duration: 1),
-          CameraUpdate.newCameraPosition(CameraPosition(
-              target: Point(
-                  latitude: position.latitude,
-                  longitude: position.longitude))));
+          animation: const MapAnimation(type: MapAnimationType.linear, duration: 1),
+          CameraUpdate.newCameraPosition(CameraPosition(target: Point(latitude: position.latitude, longitude: position.longitude))));
     }).catchError((e) {
       //
     });
@@ -100,13 +101,13 @@ class _AddAddressMapPageState extends State<AddAddressMapPage> {
 
   @override
   Widget build(BuildContext context) {
-    locationName = _locationModel.countryName.isEmpty ? '': '${_locationModel.countryName}, ${_locationModel.regionName}, ${_locationModel.cityName}';
+    locationName =
+        _locationModel.countryName.isEmpty ? '' : '${_locationModel.countryName}, ${_locationModel.regionName}, ${_locationModel.cityName}';
     return Scaffold(
       body: Stack(children: [
         Column(
           children: [
             Expanded(
-              flex: 8,
               child: Stack(children: [
                 YandexMap(
                   onCameraPositionChanged: (cameraPosition, reason, finished) {
@@ -120,10 +121,7 @@ class _AddAddressMapPageState extends State<AddAddressMapPage> {
                   },
                 ),
                 Center(
-                  child: Padding(
-                      padding: const EdgeInsets.only(bottom: 30),
-                      child: SvgPicture.asset('assets/images/pin.svg',
-                          height: 50)),
+                  child: Padding(padding: const EdgeInsets.only(bottom: 30), child: SvgPicture.asset('assets/images/pin.svg', height: 50)),
                 ),
                 Positioned(
                   bottom: 40,
@@ -136,7 +134,7 @@ class _AddAddressMapPageState extends State<AddAddressMapPage> {
                       elevation: 5,
                       borderRadius: BorderRadius.circular(50),
                       child: Container(
-                        padding: const EdgeInsets.all(15),
+                        padding: const EdgeInsets.all(10),
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(50),
                           color: Colors.white,
@@ -164,9 +162,8 @@ class _AddAddressMapPageState extends State<AddAddressMapPage> {
                 ),
               ]),
             ),
-            Expanded(
-              flex: 7,
-              child: Container(),
+            Container(
+              height: 325,
             )
           ],
         ),
@@ -175,42 +172,31 @@ class _AddAddressMapPageState extends State<AddAddressMapPage> {
             Expanded(child: Container()),
             Material(
               elevation: 10,
+              clipBehavior: Clip.antiAlias,
+              color: Colors.white,
               borderRadius: const BorderRadius.only(topLeft: Radius.circular(20), topRight: Radius.circular(20)),
-              child: Container(
-                height: MediaQuery.of(context).size.height * 0.4,
-                decoration: const BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.only(
-                        topLeft: Radius.circular(20),
-                        topRight: Radius.circular(20))),
+              child: SizedBox(
+                height: 345,
                 child: SizedBox(
                   height: double.infinity,
                   width: double.infinity,
                   child: Padding(
-                    padding: const EdgeInsets.only(
-                        left: 15, right: 15, top: 18, bottom: 15),
+                    padding: const EdgeInsets.all(15),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         const Text(
                           'Yetkazib berish manzili',
-                          style: TextStyle(
-                              fontSize: 22, fontWeight: FontWeight.bold),
+                          style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
                         ),
                         const SizedBox(height: 15),
                         Container(
                           width: double.infinity,
                           padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 12),
-                          decoration: BoxDecoration(
-                              color: Colors.grey[200],
-                              borderRadius: const BorderRadius.all(Radius.circular(10))),
-                          child: Expanded(
-                            child: Text(
-                              locationName,
-                              style: const TextStyle(
-                                  fontSize: 16,
-                                  overflow: TextOverflow.ellipsis),
-                            ),
+                          decoration: BoxDecoration(color: Colors.grey[200], borderRadius: const BorderRadius.all(Radius.circular(10))),
+                          child: Text(
+                            locationName,
+                            style: const TextStyle(fontSize: 16, overflow: TextOverflow.ellipsis),
                           ),
                         ),
                         const SizedBox(height: 10),
@@ -218,114 +204,107 @@ class _AddAddressMapPageState extends State<AddAddressMapPage> {
                           width: double.infinity,
                           child: Row(
                             children: [
-                              Expanded(child: Container(
-                                padding: const EdgeInsets.only(left: 12,bottom: 3, top: 3),
-                                decoration: BoxDecoration(
-                                    color: Colors.grey[200],
-                                    borderRadius:
-                                    const BorderRadius.all(Radius.circular(10))),
-                                child: TextField(
-                                  controller: apartmentController,
-                                  focusNode: apartmentNode,
-                                  onTapOutside: (event) {
-                                    apartmentNode.unfocus();
-                                    setState(() {});
-                                  },
-                                  cursorColor: Colors.black,
-                                  decoration: InputDecoration(
-                                    enabledBorder: InputBorder.none,
-                                    focusedBorder: InputBorder.none,
-                                    hintText: 'Kvartira',
-                                    hintStyle: const TextStyle(
-                                      color: Colors.grey,
+                              Expanded(
+                                child: Container(
+                                  padding: const EdgeInsets.only(left: 12, bottom: 3, top: 3),
+                                  decoration: BoxDecoration(color: Colors.grey[200], borderRadius: const BorderRadius.all(Radius.circular(10))),
+                                  child: TextField(
+                                    controller: apartmentController,
+                                    focusNode: apartmentNode,
+                                    onTapOutside: (event) {
+                                      apartmentNode.unfocus();
+                                      setState(() {});
+                                    },
+                                    cursorColor: Colors.black,
+                                    decoration: InputDecoration(
+                                      enabledBorder: InputBorder.none,
+                                      focusedBorder: InputBorder.none,
+                                      hintText: 'Kvartira',
+                                      hintStyle: const TextStyle(
+                                        color: Colors.grey,
+                                      ),
+                                      suffixIcon: apartmentController.text.isNotEmpty
+                                          ? InkWell(
+                                              onTap: () => apartmentController.text = '', child: const Icon(Icons.close, color: Color(0xFFAFAFAF)))
+                                          : null,
                                     ),
-                                    suffixIcon: apartmentController.text.isNotEmpty
-                                        ? InkWell(
-                                        onTap: () => apartmentController.text = '',
-                                        child: const Icon(Icons.close,
-                                            color: Color(0xFFAFAFAF)))
-                                        : null,
                                   ),
                                 ),
-                              ),),
-                              const SizedBox(width: 12,),
-                              Expanded(child: Container(
-                                padding: const EdgeInsets.only(left: 12,bottom: 3, top: 3),
-                                decoration: BoxDecoration(
-                                    color: Colors.grey[200],
-                                    borderRadius:
-                                    const BorderRadius.all(Radius.circular(10))),
-                                child: TextField(
-                                  controller: entranceController,
-                                  focusNode: entranceNode,
-                                  onTapOutside: (event) {
-                                    entranceNode.unfocus();
-                                    setState(() {});
-                                  },
-                                  cursorColor: Colors.black,
-                                  decoration: InputDecoration(
-                                    enabledBorder: InputBorder.none,
-                                    focusedBorder: InputBorder.none,
-                                    hintText: 'Pod`ezd',
-                                    hintStyle: const TextStyle(
-                                      color: Colors.grey,
+                              ),
+                              const SizedBox(
+                                width: 12,
+                              ),
+                              Expanded(
+                                child: Container(
+                                  padding: const EdgeInsets.only(left: 12, bottom: 3, top: 3),
+                                  decoration: BoxDecoration(color: Colors.grey[200], borderRadius: const BorderRadius.all(Radius.circular(10))),
+                                  child: TextField(
+                                    controller: entranceController,
+                                    focusNode: entranceNode,
+                                    onTapOutside: (event) {
+                                      entranceNode.unfocus();
+                                      setState(() {});
+                                    },
+                                    cursorColor: Colors.black,
+                                    decoration: InputDecoration(
+                                      enabledBorder: InputBorder.none,
+                                      focusedBorder: InputBorder.none,
+                                      hintText: 'Pod`ezd',
+                                      hintStyle: const TextStyle(
+                                        color: Colors.grey,
+                                      ),
+                                      suffixIcon: entranceController.text.isNotEmpty
+                                          ? IconButton(
+                                              onPressed: () {
+                                                entranceController.clear();
+                                                entranceNode.unfocus();
+                                                setState(() {});
+                                              },
+                                              icon: const Icon(
+                                                Icons.close,
+                                                color: Colors.grey,
+                                              ))
+                                          : null,
                                     ),
-                                    suffixIcon: entranceController.text.isNotEmpty
-                                        ? IconButton(
-                                        onPressed: () {
-                                          entranceController.clear();
-                                          entranceNode.unfocus();
-                                          setState(() {});
-                                        },
-                                        icon: const Icon(
-                                          Icons.close,
-                                          color: Colors.grey,
-                                        ))
-                                        : null,
                                   ),
                                 ),
-                              ),),
-                              const SizedBox(width: 12,),
-                              Expanded(child: Container(
-                                padding: const EdgeInsets.only(left: 12,bottom: 3, top: 3),
-                                decoration: BoxDecoration(
-                                    color: Colors.grey[200],
-                                    borderRadius:
-                                    const BorderRadius.all(Radius.circular(10))),
-                                child: TextField(
-                                  controller: floorController,
-                                  focusNode: floorNode,
-                                  onTapOutside: (event) {
-                                    floorNode.unfocus();
-                                    setState(() {});
-                                  },
-                                  cursorColor: Colors.black,
-                                  decoration: InputDecoration(
-                                    enabledBorder: InputBorder.none,
-                                    focusedBorder: InputBorder.none,
-                                    hintText: 'Qavat',
-                                    hintStyle: const TextStyle(
-                                      color: Colors.grey,
+                              ),
+                              const SizedBox(
+                                width: 12,
+                              ),
+                              Expanded(
+                                child: Container(
+                                  padding: const EdgeInsets.only(left: 12, bottom: 3, top: 3),
+                                  decoration: BoxDecoration(color: Colors.grey[200], borderRadius: const BorderRadius.all(Radius.circular(10))),
+                                  child: TextField(
+                                    controller: floorController,
+                                    focusNode: floorNode,
+                                    onTapOutside: (event) {
+                                      floorNode.unfocus();
+                                      setState(() {});
+                                    },
+                                    cursorColor: Colors.black,
+                                    decoration: InputDecoration(
+                                      enabledBorder: InputBorder.none,
+                                      focusedBorder: InputBorder.none,
+                                      hintText: 'Qavat',
+                                      hintStyle: const TextStyle(
+                                        color: Colors.grey,
+                                      ),
+                                      suffixIcon: floorController.text.isNotEmpty
+                                          ? InkWell(onTap: () => floorController.text = '', child: const Icon(Icons.close, color: Color(0xFFAFAFAF)))
+                                          : null,
                                     ),
-                                    suffixIcon: floorController.text.isNotEmpty
-                                        ? InkWell(
-                                        onTap: () => floorController.text = '',
-                                        child: const Icon(Icons.close,
-                                            color: Color(0xFFAFAFAF)))
-                                        : null,
                                   ),
                                 ),
-                              ),),
+                              ),
                             ],
                           ),
                         ),
                         const SizedBox(height: 10),
                         Container(
-                          padding: const EdgeInsets.only(left: 12,bottom: 4, top: 4),
-                          decoration: BoxDecoration(
-                              color: Colors.grey[200],
-                              borderRadius:
-                              const BorderRadius.all(Radius.circular(10))),
+                          padding: const EdgeInsets.only(left: 12, bottom: 4, top: 4),
+                          decoration: BoxDecoration(color: Colors.grey[200], borderRadius: const BorderRadius.all(Radius.circular(10))),
                           child: SizedBox(
                             width: double.infinity,
                             child: TextField(
@@ -344,30 +323,28 @@ class _AddAddressMapPageState extends State<AddAddressMapPage> {
                                   color: Colors.grey,
                                 ),
                                 suffixIcon: nameController.text.isNotEmpty
-                                    ? InkWell(
-                                    onTap: () => nameController.text = '',
-                                    child: const Icon(Icons.close, color: Color(0xFFAFAFAF)))
+                                    ? InkWell(onTap: () => nameController.text = '', child: const Icon(Icons.close, color: Color(0xFFAFAFAF)))
                                     : null,
                               ),
                             ),
                           ),
                         ),
-                        const SizedBox(height: 10),
+                        const Expanded(child: SizedBox()),
                         Material(
                           clipBehavior: Clip.antiAlias,
                           color: const Color(0xff51267D),
                           borderRadius: BorderRadius.circular(10),
                           child: InkWell(
                             onTap: () {
-                              // Navigator.push(context, CupertinoPageRoute(
-                              //   builder: (context) {
-                              //     return ConfirmPage(
-                              //       pinnedLocation: locationName,
-                              //     );
-                              //   },
-                              // ));
-
-                              // prefs.setLocation(locationName.replaceAll('Uzbekistan', 'O\'zbekiston'));
+                              dao.insertAddress(AddressEntity(
+                                locationName: locationName,
+                                title: nameController.text,
+                                apartment: apartmentController.text,
+                                floor: floorController.text,
+                                entrance: entranceController.text,
+                                lat: point.latitude,
+                                long: point.longitude,
+                              ));
                               Navigator.pop(context);
                             },
                             child: Container(
@@ -376,8 +353,7 @@ class _AddAddressMapPageState extends State<AddAddressMapPage> {
                               child: const Text(
                                 'Tasdiqlang',
                                 textAlign: TextAlign.center,
-                                style:
-                                TextStyle(color: Colors.white, fontSize: 16),
+                                style: TextStyle(color: Colors.white, fontSize: 16),
                               ),
                             ),
                           ),
