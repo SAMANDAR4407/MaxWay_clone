@@ -1,6 +1,5 @@
 import 'package:demo_max_way/core/pref.dart';
 import 'package:demo_max_way/pages/base/base_page.dart';
-import 'package:demo_max_way/utils/utils.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -34,7 +33,6 @@ class LangOptionPage extends StatelessWidget {
                 onTap: () async {
                   pref.setLang('uz');
                   pref.setHasLang(true);
-                  showSnackBar('Language : uz', context);
                   Future.delayed(const Duration(milliseconds: 200));
                   Navigator.pushReplacement(context, CupertinoPageRoute(builder: (_) => const HostPage()));
                 },
@@ -75,7 +73,6 @@ class LangOptionPage extends StatelessWidget {
                 onTap: () {
                   pref.setLang('ru');
                   pref.setHasLang(true);
-                  showSnackBar('Language : ru', context);
                   Navigator.pushReplacement(context, CupertinoPageRoute(builder: (_) => const HostPage()));
                 },
                 child: Container(
@@ -115,7 +112,6 @@ class LangOptionPage extends StatelessWidget {
                 onTap: () async {
                   pref.setLang('en');
                   pref.setHasLang(true);
-                  showSnackBar('Language : en', context);
                   Future.delayed(const Duration(milliseconds: 200));
                   Navigator.pushReplacement(context, CupertinoPageRoute(builder: (_) => const HostPage()));
                 },

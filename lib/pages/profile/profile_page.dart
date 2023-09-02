@@ -2,9 +2,11 @@ import 'package:demo_max_way/core/pref.dart';
 import 'package:demo_max_way/pages/about/about_the_service.dart';
 import 'package:demo_max_way/pages/branch_page/branch_list_page.dart';
 import 'package:demo_max_way/pages/my_addresses/address_list.dart';
+import 'package:demo_max_way/pages/profile/edit_profile/edit_profile.dart';
 import 'package:demo_max_way/pages/settings/settings_page.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 class ProfilePage extends StatefulWidget {
   const ProfilePage({super.key});
@@ -75,12 +77,10 @@ class _ProfilePageState extends State<ProfilePage> {
                     ),
                   ),
                   IconButton(
-                      onPressed: () {},
-                      icon: Icon(
-                        Icons.edit_rounded,
-                        size: 20,
-                        color: Colors.grey[500],
-                      ))
+                      onPressed: () {
+                        Navigator.push(context, CupertinoPageRoute(builder:(context) => const EditProfile()));
+                      },
+                      icon: SvgPicture.asset('assets/images/edit.svg', width: 18,height: 18,color: Colors.grey[500],))
                 ],
               ),
             ),

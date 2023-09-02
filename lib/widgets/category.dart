@@ -3,7 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import '../model/models.dart';
-import '../pages/detail/detail_page.dart';
+import '../pages/detail/product_detail_page.dart';
 import 'product.dart';
 
 class CategoryItem extends StatelessWidget {

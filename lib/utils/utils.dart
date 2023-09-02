@@ -30,7 +30,7 @@ void showToast(List<String> messages, BuildContext context, {Color color = Color
       ],
     )
     : Center(
-      child: Text(messages[0]),
+      child: Text(messages[0], style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w500, color: Colors.white)),
     ),
   );
 

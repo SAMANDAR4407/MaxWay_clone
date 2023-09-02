@@ -48,6 +48,7 @@ Future<void> getAddressFromLatLong(
         cityName: place.locality ?? "",
         countryName: place.country ?? "",
         regionName: place.administrativeArea ?? "",
+        streetName: place.street ?? '',
         lat: lat,
         long: long);
     callBackLocation(location);

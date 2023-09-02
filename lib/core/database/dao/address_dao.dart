@@ -13,8 +13,8 @@ abstract class AddressDao {
   @Insert(onConflict: OnConflictStrategy.replace)
   Future<void> insertAddress(AddressEntity address);
 
-  @Query('DELETE FROM AddressEntity where title = :title')
-  Future<void> deleteAddress(String title);
+  @delete
+  Future<void> deleteAddress(AddressEntity address);
 
   @Query('DELETE FROM AddressEntity')
   Future<void> deleteAddresses();

@@ -100,15 +100,12 @@ class _FirstLaunchMapPageState extends State<FirstLaunchMapPage> {
                       elevation: 5,
                       borderRadius: BorderRadius.circular(50),
                       child: Container(
-                        padding: const EdgeInsets.all(15),
+                        padding: const EdgeInsets.all(10),
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(50),
                           color: Colors.white,
                         ),
-                        child: const Icon(
-                          Icons.navigation,
-                          color: Color(0xff51267D),
-                        ),
+                        child: SvgPicture.asset('assets/images/navigate.svg'),
                       ),
                     ),
                   ),
@@ -167,18 +164,18 @@ class _FirstLaunchMapPageState extends State<FirstLaunchMapPage> {
                           padding: const EdgeInsets.symmetric(
                               vertical: 16, horizontal: 12),
                           decoration: BoxDecoration(
-                              color: Colors.grey[200],
+                              color: Colors.grey[100],
                               borderRadius:
                                   const BorderRadius.all(Radius.circular(10))),
                           child: Row(
                             children: [
-                              const Icon(CupertinoIcons.paperplane, size: 25),
+                              SvgPicture.asset('assets/images/send.svg'),
                               const SizedBox(
                                 width: 8,
                               ),
                               Expanded(
                                 child: Text(
-                                  locationName,
+                                  locationName.replaceAll('Uzbekistan', 'O\'zbekiston'),
                                   style: const TextStyle(
                                       fontWeight: FontWeight.bold,
                                       fontSize: 16,

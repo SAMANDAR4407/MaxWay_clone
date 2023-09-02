@@ -24,7 +24,7 @@ class MyApp extends StatelessWidget {
       title: 'Demo Max Way',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+        colorScheme: ColorScheme.fromSeed(seedColor: Colors.black),
         useMaterial3: true,
       ),
       home: const Splash(),

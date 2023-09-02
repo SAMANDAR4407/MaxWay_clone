@@ -131,7 +131,7 @@ class _ConfirmationPageState extends State<ConfirmationPage> {
         }
       },
     );
-    pref.setUserData(widget.name, user!.phoneNumber.toString());
+    pref.setUserData(widget.name, user!.phoneNumber.toString(),'');
     pref.setHasLogged(true);
   }
 }

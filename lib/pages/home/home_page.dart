@@ -10,7 +10,7 @@ import 'package:shimmer/shimmer.dart';
 import '../../widgets/category.dart';
 import '../../widgets/product_search.dart';
 import '../../widgets/shimmer.dart';
-import '../detail/detail_page.dart';
+import '../detail/product_detail_page.dart';
 import '../map/first_launch_map_page.dart';
 
 class HomePage extends StatefulWidget {

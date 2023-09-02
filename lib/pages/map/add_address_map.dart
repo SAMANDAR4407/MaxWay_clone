@@ -1,6 +1,5 @@
 import 'dart:async';
 
-import 'package:demo_max_way/core/database/dao/address_dao.dart';
 import 'package:demo_max_way/core/database/database.dart';
 import 'package:demo_max_way/core/database/entity/address_entity.dart';
 import 'package:demo_max_way/utils/setup_db.dart';
@@ -10,7 +9,6 @@ import 'package:flutter_svg/svg.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:yandex_mapkit/yandex_mapkit.dart';
 
-import '../../core/pref.dart';
 import '../../model/location_model.dart';
 import 'map_utils.dart';
 
@@ -46,7 +44,6 @@ class _AddAddressMapPageState extends State<AddAddressMapPage> {
 
   @override
   void initState() {
-    handleLocationPermission();
 
     nameController.addListener(() {
       name = nameController.text;
@@ -101,8 +98,7 @@ class _AddAddressMapPageState extends State<AddAddressMapPage> {
 
   @override
   Widget build(BuildContext context) {
-    locationName =
-        _locationModel.countryName.isEmpty ? '' : '${_locationModel.countryName}, ${_locationModel.regionName}, ${_locationModel.cityName}';
+    locationName = _locationModel.countryName.isEmpty ? '' : '${_locationModel.countryName}, ${_locationModel.regionName}, ${_locationModel.cityName}, ${_locationModel.streetName}';
     return Scaffold(
       body: Stack(children: [
         Column(
@@ -139,10 +135,7 @@ class _AddAddressMapPageState extends State<AddAddressMapPage> {
                           borderRadius: BorderRadius.circular(50),
                           color: Colors.white,
                         ),
-                        child: const Icon(
-                          Icons.navigation,
-                          color: Color(0xff51267D),
-                        ),
+                        child: SvgPicture.asset('assets/images/navigate.svg'),
                       ),
                     ),
                   ),
@@ -193,10 +186,11 @@ class _AddAddressMapPageState extends State<AddAddressMapPage> {
                         Container(
                           width: double.infinity,
                           padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 12),
-                          decoration: BoxDecoration(color: Colors.grey[200], borderRadius: const BorderRadius.all(Radius.circular(10))),
+                          decoration: BoxDecoration(color: Colors.grey[100], borderRadius: const BorderRadius.all(Radius.circular(10))),
                           child: Text(
-                            locationName,
-                            style: const TextStyle(fontSize: 16, overflow: TextOverflow.ellipsis),
+                            locationName.replaceAll('Uzbekistan', 'O\'zbekiston').replaceAll(', Unnamed Road', ''),
+                            maxLines: 2,
+                            style: const TextStyle(height: 1.1,fontSize: 16, overflow: TextOverflow.ellipsis),
                           ),
                         ),
                         const SizedBox(height: 10),
@@ -207,37 +201,7 @@ class _AddAddressMapPageState extends State<AddAddressMapPage> {
                               Expanded(
                                 child: Container(
                                   padding: const EdgeInsets.only(left: 12, bottom: 3, top: 3),
-                                  decoration: BoxDecoration(color: Colors.grey[200], borderRadius: const BorderRadius.all(Radius.circular(10))),
-                                  child: TextField(
-                                    controller: apartmentController,
-                                    focusNode: apartmentNode,
-                                    onTapOutside: (event) {
-                                      apartmentNode.unfocus();
-                                      setState(() {});
-                                    },
-                                    cursorColor: Colors.black,
-                                    decoration: InputDecoration(
-                                      enabledBorder: InputBorder.none,
-                                      focusedBorder: InputBorder.none,
-                                      hintText: 'Kvartira',
-                                      hintStyle: const TextStyle(
-                                        color: Colors.grey,
-                                      ),
-                                      suffixIcon: apartmentController.text.isNotEmpty
-                                          ? InkWell(
-                                              onTap: () => apartmentController.text = '', child: const Icon(Icons.close, color: Color(0xFFAFAFAF)))
-                                          : null,
-                                    ),
-                                  ),
-                                ),
-                              ),
-                              const SizedBox(
-                                width: 12,
-                              ),
-                              Expanded(
-                                child: Container(
-                                  padding: const EdgeInsets.only(left: 12, bottom: 3, top: 3),
-                                  decoration: BoxDecoration(color: Colors.grey[200], borderRadius: const BorderRadius.all(Radius.circular(10))),
+                                  decoration: BoxDecoration(color: Colors.grey[100], borderRadius: const BorderRadius.all(Radius.circular(10))),
                                   child: TextField(
                                     controller: entranceController,
                                     focusNode: entranceNode,
@@ -252,6 +216,7 @@ class _AddAddressMapPageState extends State<AddAddressMapPage> {
                                       hintText: 'Pod`ezd',
                                       hintStyle: const TextStyle(
                                         color: Colors.grey,
+                                        fontSize: 15
                                       ),
                                       suffixIcon: entranceController.text.isNotEmpty
                                           ? IconButton(
@@ -269,13 +234,11 @@ class _AddAddressMapPageState extends State<AddAddressMapPage> {
                                   ),
                                 ),
                               ),
-                              const SizedBox(
-                                width: 12,
-                              ),
+                              const SizedBox(width: 12,),
                               Expanded(
                                 child: Container(
                                   padding: const EdgeInsets.only(left: 12, bottom: 3, top: 3),
-                                  decoration: BoxDecoration(color: Colors.grey[200], borderRadius: const BorderRadius.all(Radius.circular(10))),
+                                  decoration: BoxDecoration(color: Colors.grey[100], borderRadius: const BorderRadius.all(Radius.circular(10))),
                                   child: TextField(
                                     controller: floorController,
                                     focusNode: floorNode,
@@ -290,9 +253,39 @@ class _AddAddressMapPageState extends State<AddAddressMapPage> {
                                       hintText: 'Qavat',
                                       hintStyle: const TextStyle(
                                         color: Colors.grey,
+                                        fontSize: 15
                                       ),
                                       suffixIcon: floorController.text.isNotEmpty
                                           ? InkWell(onTap: () => floorController.text = '', child: const Icon(Icons.close, color: Color(0xFFAFAFAF)))
+                                          : null,
+                                    ),
+                                  ),
+                                ),
+                              ),
+                              const SizedBox(width: 12,),
+                              Expanded(
+                                child: Container(
+                                  padding: const EdgeInsets.only(left: 12, bottom: 3, top: 3),
+                                  decoration: BoxDecoration(color: Colors.grey[100], borderRadius: const BorderRadius.all(Radius.circular(10))),
+                                  child: TextField(
+                                    controller: apartmentController,
+                                    focusNode: apartmentNode,
+                                    onTapOutside: (event) {
+                                      apartmentNode.unfocus();
+                                      setState(() {});
+                                    },
+                                    cursorColor: Colors.black,
+                                    decoration: InputDecoration(
+                                      enabledBorder: InputBorder.none,
+                                      focusedBorder: InputBorder.none,
+                                      hintText: 'Kvartira',
+                                      hintStyle: const TextStyle(
+                                          color: Colors.grey,
+                                          fontSize: 15
+                                      ),
+                                      suffixIcon: apartmentController.text.isNotEmpty
+                                          ? InkWell(
+                                          onTap: () => apartmentController.text = '', child: const Icon(Icons.close, color: Color(0xFFAFAFAF)))
                                           : null,
                                     ),
                                   ),
@@ -304,7 +297,7 @@ class _AddAddressMapPageState extends State<AddAddressMapPage> {
                         const SizedBox(height: 10),
                         Container(
                           padding: const EdgeInsets.only(left: 12, bottom: 4, top: 4),
-                          decoration: BoxDecoration(color: Colors.grey[200], borderRadius: const BorderRadius.all(Radius.circular(10))),
+                          decoration: BoxDecoration(color: Colors.grey[100], borderRadius: const BorderRadius.all(Radius.circular(10))),
                           child: SizedBox(
                             width: double.infinity,
                             child: TextField(
@@ -321,6 +314,7 @@ class _AddAddressMapPageState extends State<AddAddressMapPage> {
                                 hintText: 'Manzil nomi',
                                 hintStyle: const TextStyle(
                                   color: Colors.grey,
+                                    fontSize: 15
                                 ),
                                 suffixIcon: nameController.text.isNotEmpty
                                     ? InkWell(onTap: () => nameController.text = '', child: const Icon(Icons.close, color: Color(0xFFAFAFAF)))
@@ -337,7 +331,7 @@ class _AddAddressMapPageState extends State<AddAddressMapPage> {
                           child: InkWell(
                             onTap: () {
                               dao.insertAddress(AddressEntity(
-                                locationName: locationName,
+                                locationName: locationName.replaceAll('Uzbekistan', 'O\'zbekiston').replaceAll(', Unnamed Road', ''),
                                 title: nameController.text,
                                 apartment: apartmentController.text,
                                 floor: floorController.text,

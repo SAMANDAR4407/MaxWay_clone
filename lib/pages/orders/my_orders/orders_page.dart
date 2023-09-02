@@ -38,13 +38,6 @@ class _OrdersPageState extends State<OrdersPage> with SingleTickerProviderStateM
             style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
           ),
       ),
-      // body: Container(
-      //   height: double.infinity,
-      //   color: const Color(0xFFF6F6F6),
-      //   child: const SingleChildScrollView(
-      //     child: BranchesShimmer(),
-      //   ),
-      // )
       body: SizedBox(
         height: MediaQuery.of(context).size.height,
         child: Column(

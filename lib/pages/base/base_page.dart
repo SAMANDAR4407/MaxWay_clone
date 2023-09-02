@@ -1,7 +1,7 @@
 import 'package:demo_max_way/core/database/database.dart';
 import 'package:demo_max_way/pages/auth/phone_page.dart';
 import 'package:demo_max_way/pages/home/home_page.dart';
-import 'package:demo_max_way/pages/orders/orders_page.dart';
+import 'package:demo_max_way/pages/orders/my_orders/orders_page.dart';
 import 'package:demo_max_way/pages/profile/profile_page.dart';
 import 'package:demo_max_way/utils/setup_db.dart';
 import 'package:flutter/cupertino.dart';

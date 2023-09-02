@@ -34,6 +34,7 @@ dependencies:
   get_it: ^7.6.0
   floor: ^1.4.2
   maps_launcher: ^2.2.0
+  flutter_holo_date_picker: ^1.1.0
 
 dev_dependencies:
   flutter_test:

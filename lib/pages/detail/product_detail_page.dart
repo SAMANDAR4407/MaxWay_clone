@@ -52,7 +52,7 @@ class _DetailPageState extends State<DetailPage> {
   void inc() {
     productCount++;
     if(isAdded){
-      if(productCount > lastAddedProduct.amount){
+      if(productCount != lastAddedProduct.amount){
         isAdded = false;
       }
     }
@@ -62,7 +62,7 @@ class _DetailPageState extends State<DetailPage> {
   void dec() {
     productCount--;
     if(isAdded){
-      if(productCount < lastAddedProduct.amount){
+      if(productCount != lastAddedProduct.amount){
         isAdded = false;
       }
     }

@@ -1,3 +1,5 @@
+// ignore_for_file: must_be_immutable
+
 import 'package:demo_max_way/core/database/entity/address_entity.dart';
 import 'package:demo_max_way/pages/map/add_address_map.dart';
 import 'package:flutter/cupertino.dart';
@@ -7,7 +9,6 @@ import '../../core/database/dao/address_dao.dart';
 import '../../core/database/database.dart';
 import '../../utils/setup_db.dart';
 
-// ignore: must_be_immutable
 
 class AddressListPage extends StatefulWidget {
   AddressListPage({Key? key}) : super(key: key);
@@ -62,7 +63,7 @@ class _AddressListPageState extends State<AddressListPage> {
                               children: [
                                 Image.asset(height: 120,'assets/images/place_holder.png'),
                                 const SizedBox(height: 20),
-                                const Text("Sizda manzillar yo\'q",style: TextStyle(color: Colors.grey),),
+                                const Text("Sizda manzillar yo'q",style: TextStyle(color: Colors.grey),),
                                 const SizedBox(height: 50,)
                               ],
                             ));
@@ -101,7 +102,7 @@ class _AddressListPageState extends State<AddressListPage> {
                                                 clipBehavior: Clip.antiAlias,
                                                 decoration: BoxDecoration(borderRadius: BorderRadius.circular(15)),
                                                 padding: EdgeInsets.symmetric(
-                                                    horizontal: MediaQuery.of(context).size.width*0.13,
+                                                    horizontal: MediaQuery.of(context).size.width*0.1,
                                                     vertical: MediaQuery.of(context).size.height*0.38
                                                 ),
                                                 child: Material(
@@ -153,7 +154,7 @@ class _AddressListPageState extends State<AddressListPage> {
                                                                   color: const Color(0xff51267D),
                                                                   child: InkWell(
                                                                       onTap: () {
-                                                                        widget._addressDao.deleteAddress(address.title);
+                                                                        widget._addressDao.deleteAddress(address);
                                                                         Navigator.pop(context);
                                                                         setState(() {});
                                                                       },

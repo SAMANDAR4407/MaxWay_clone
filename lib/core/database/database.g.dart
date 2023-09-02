@@ -235,6 +235,20 @@ class _$AddressDao extends AddressDao {
                   'lat': item.lat,
                   'long': item.long
                 },
+            changeListener),
+        _addressEntityDeletionAdapter = DeletionAdapter(
+            database,
+            'AddressEntity',
+            ['locationName'],
+            (AddressEntity item) => <String, Object?>{
+                  'locationName': item.locationName,
+                  'title': item.title,
+                  'apartment': item.apartment,
+                  'floor': item.floor,
+                  'entrance': item.entrance,
+                  'lat': item.lat,
+                  'long': item.long
+                },
             changeListener);
 
   final sqflite.DatabaseExecutor database;
@@ -246,6 +260,8 @@ class _$AddressDao extends AddressDao {
   final InsertionAdapter<AddressEntity> _addressEntityInsertionAdapter;
 
   final UpdateAdapter<AddressEntity> _addressEntityUpdateAdapter;
+
+  final DeletionAdapter<AddressEntity> _addressEntityDeletionAdapter;
 
   @override
   Future<List<AddressEntity>> getAllProducts() async {
@@ -276,13 +292,6 @@ class _$AddressDao extends AddressDao {
   }
 
   @override
-  Future<void> deleteAddress(String title) async {
-    await _queryAdapter.queryNoReturn(
-        'DELETE FROM AddressEntity where title = ?1',
-        arguments: [title]);
-  }
-
-  @override
   Future<void> deleteAddresses() async {
     await _queryAdapter.queryNoReturn('DELETE FROM AddressEntity');
   }
@@ -296,5 +305,10 @@ class _$AddressDao extends AddressDao {
   @override
   Future<void> updateAddress(AddressEntity address) async {
     await _addressEntityUpdateAdapter.update(address, OnConflictStrategy.abort);
+  }
+
+  @override
+  Future<void> deleteAddress(AddressEntity address) async {
+    await _addressEntityDeletionAdapter.delete(address);
   }
 }

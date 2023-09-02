@@ -130,13 +130,12 @@ class _SettingsPageState extends State<SettingsPage> {
                 color: Colors.white,
                 child: InkWell(
                   onTap: (){
-
                     showDialog(context: context, builder: (context) {
                       return Container(
                         clipBehavior: Clip.antiAlias,
                         decoration: BoxDecoration(borderRadius: BorderRadius.circular(15)),
                         padding: EdgeInsets.symmetric(
-                            horizontal: MediaQuery.of(context).size.width*0.13,
+                            horizontal: MediaQuery.of(context).size.width*0.1,
                             vertical: MediaQuery.of(context).size.height*0.38
                         ),
                         child: Material(
@@ -189,7 +188,7 @@ class _SettingsPageState extends State<SettingsPage> {
                                           child: InkWell(
                                               onTap: () {
                                                 pref.setHasLogged(false);
-                                                pref.setUserData('','');
+                                                pref.setUserData('','','');
                                                 _signOut().then((value){
                                                   Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => const HostPage()));
                                                 });

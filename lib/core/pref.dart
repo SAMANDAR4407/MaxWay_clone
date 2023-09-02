@@ -52,9 +52,9 @@ class PrefHelper {
     prefs?.setBool('hasLogged', hasLogged);
   }
 
-  Future<void> setUserData(String name, String number) async {
+  Future<void> setUserData(String name, String number, String birthday) async {
     prefs ??= await SharedPreferences.getInstance();
-    prefs?.setString('user', '$name#$number');
+    prefs?.setString('user', '$name#$number#$birthday');
   }
 
   Future<String> getUserData() async {
