@@ -98,77 +98,70 @@ class _AddressListPageState extends State<AddressListPage> {
                                         IconButton(
                                           onPressed: () {
                                             showDialog(context: context, builder: (context) {
-                                              return Container(
-                                                clipBehavior: Clip.antiAlias,
-                                                decoration: BoxDecoration(borderRadius: BorderRadius.circular(15)),
-                                                padding: EdgeInsets.symmetric(
-                                                    horizontal: MediaQuery.of(context).size.width*0.1,
-                                                    vertical: MediaQuery.of(context).size.height*0.38
-                                                ),
-                                                child: Material(
-                                                  color: Colors.white,
-                                                  child: Container(
-                                                    padding: const EdgeInsets.all(15),
-                                                    child: Column(
-                                                      mainAxisAlignment: MainAxisAlignment.center,
-                                                      children: [
-                                                        const Center(
-                                                          child: Text(
-                                                            'Diqqat!',
-                                                            style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
+                                              return Center(
+                                                child: Container(
+                                                  margin: const EdgeInsets.all(30),
+                                                  clipBehavior: Clip.antiAlias,
+                                                  decoration: BoxDecoration(
+                                                      borderRadius: BorderRadius.circular(10), color: Colors.white),
+                                                  padding: const EdgeInsets.all(15),
+                                                  height: 150,
+                                                  child: Column(
+                                                    mainAxisAlignment: MainAxisAlignment.center,
+                                                    children: [
+                                                      const Center(
+                                                        child: Text(
+                                                          'Diqqat!',
+                                                          style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
+                                                        ),
+                                                      ),
+                                                      const SizedBox(height: 8,),
+                                                      const Text(
+                                                        'Bu manzilni o\'chirib tashlamoqchimisiz?',
+                                                        textAlign: TextAlign.center,
+                                                        style: TextStyle(fontSize: 14),
+                                                      ),
+                                                      const Expanded(child: SizedBox()),
+                                                      Row(
+                                                        children: [
+                                                          Expanded(
+                                                            child: Material(
+                                                              borderRadius: BorderRadius.circular(10),
+                                                              clipBehavior: Clip.antiAlias,
+                                                              color: Colors.grey[200],
+                                                              child: InkWell(
+                                                                  onTap: () {
+                                                                    Navigator.pop(context);
+                                                                  },
+                                                                  child: Container(
+                                                                      padding: const EdgeInsets.all(15),
+                                                                      child: const Center(
+                                                                          child: Text('Yo\'q', style: TextStyle(
+                                                                              color: Colors.black, fontWeight: FontWeight.bold))))),
+                                                            ),
                                                           ),
-                                                        ),
-                                                        const Expanded(child: SizedBox()),
-                                                        const Text(
-                                                          'Bu manzilni o\'chirib tashlamoqchimisiz?', textAlign: TextAlign.center,
-                                                          style: TextStyle(fontSize: 14),
-                                                        ),
-                                                        const Expanded(child: SizedBox()),
-                                                        Row(
-                                                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                                          children: [
-                                                            Expanded(
-                                                              child: Padding(
-                                                                padding: const EdgeInsets.symmetric(horizontal: 5),
-                                                                child: Material(
-                                                                  borderRadius: BorderRadius.circular(10),
-                                                                  clipBehavior: Clip.antiAlias,
-                                                                  color: Colors.grey[200],
-                                                                  child: InkWell(
-                                                                      onTap: () {
-                                                                        Navigator.pop(context);
-                                                                      },
-                                                                      child: Container(
-                                                                          padding: const EdgeInsets.all(12),
-                                                                          child: const Center(
-                                                                              child: Text('Yo\'q', style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold))))),
-                                                                ),
-                                                              ),
+                                                          const SizedBox(width: 10),
+                                                          Expanded(
+                                                            child: Material(
+                                                              borderRadius: BorderRadius.circular(10),
+                                                              clipBehavior: Clip.antiAlias,
+                                                              color: const Color(0xff51267D),
+                                                              child: InkWell(
+                                                                  onTap: () {
+                                                                    widget._addressDao.deleteAddress(address);
+                                                                    Navigator.pop(context);
+                                                                    setState(() {});
+                                                                  },
+                                                                  child: Container(
+                                                                      padding: const EdgeInsets.all(15),
+                                                                      child: const Center(
+                                                                          child: Text('Ha', style: TextStyle(
+                                                                              color: Colors.white, fontWeight: FontWeight.bold))))),
                                                             ),
-                                                            Expanded(
-                                                              child: Padding(
-                                                                padding: const EdgeInsets.symmetric(horizontal: 5),
-                                                                child: Material(
-                                                                  borderRadius: BorderRadius.circular(10),
-                                                                  clipBehavior: Clip.antiAlias,
-                                                                  color: const Color(0xff51267D),
-                                                                  child: InkWell(
-                                                                      onTap: () {
-                                                                        widget._addressDao.deleteAddress(address);
-                                                                        Navigator.pop(context);
-                                                                        setState(() {});
-                                                                      },
-                                                                      child: Container(
-                                                                          padding: const EdgeInsets.all(12),
-                                                                          child: const Center(
-                                                                              child: Text('Ha', style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold))))),
-                                                                ),
-                                                              ),
-                                                            ),
-                                                          ],
-                                                        )
-                                                      ],
-                                                    ),
+                                                          ),
+                                                        ],
+                                                      )
+                                                    ],
                                                   ),
                                                 ),
                                               );

@@ -56,81 +56,78 @@ class _CartPageState extends State<CartPage> {
           IconButton(
               onPressed: () {
                 showDialog(context: context, builder: (context) {
-                  return Container(
-                    height: 200,
-                    clipBehavior: Clip.antiAlias,
-                    decoration: BoxDecoration(borderRadius: BorderRadius.circular(10), color: Colors.white),
-                    margin: EdgeInsets.symmetric(
-                        horizontal: MediaQuery
-                            .of(context)
-                            .size
-                            .width * 0.1,
-                        vertical: MediaQuery
-                            .of(context)
-                            .size
-                            .height * 0.36
-                    ),
-                    padding: const EdgeInsets.all(15),
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        const Center(
-                          child: Text(
-                            'Diqqat!',
-                            style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
+                  return Center(
+                    child: Container(
+                      margin: const EdgeInsets.all(30),
+                      clipBehavior: Clip.antiAlias,
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(10), color: Colors.white),
+                      padding: const EdgeInsets.all(15),
+                      height: 160,
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          const Center(
+                            child: Text(
+                              'Diqqat!',
+                              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
+                            ),
                           ),
-                        ),
-                        const SizedBox(height: 8,),
-                        const Text(
-                          'Haqiqatdan ham savatchani bo\'shatmoqchimisiz?', textAlign: TextAlign.center,
-                          style: TextStyle(fontSize: 14),
-                        ),
-                        const Expanded(child: SizedBox()),
-                        Row(
-                          children: [
-                            Expanded(
-                              child: Material(
-                                borderRadius: BorderRadius.circular(10),
-                                clipBehavior: Clip.antiAlias,
-                                color: Colors.grey[200],
-                                child: InkWell(
-                                    onTap: () {
-                                      Navigator.pop(context);
-                                    },
-                                    child: Container(
-                                        padding: const EdgeInsets.all(15),
-                                        child: const Center(
-                                            child: Text('Bekor qilish', style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold))))),
+                          const SizedBox(height: 8,),
+                          const Text(
+                            'Haqiqatdan ham savatchani bo\'shatmoqchimisiz?',
+                            textAlign: TextAlign.center,
+                            style: TextStyle(fontSize: 13),
+                          ),
+                          const Expanded(child: SizedBox()),
+                          Row(
+                            children: [
+                              Expanded(
+                                child: Material(
+                                  borderRadius: BorderRadius.circular(10),
+                                  clipBehavior: Clip.antiAlias,
+                                  color: Colors.grey[200],
+                                  child: InkWell(
+                                      onTap: () {
+                                        Navigator.pop(context);
+                                      },
+                                      child: Container(
+                                          padding: const EdgeInsets.all(15),
+                                          child: const Center(
+                                              child: Text('Bekor qilish', style: TextStyle(
+                                                  color: Colors.black, fontWeight: FontWeight.bold))))),
+                                ),
                               ),
-                            ),
-                            const SizedBox(width: 10),
-                            Expanded(
-                              child: Material(
-                                borderRadius: BorderRadius.circular(10),
-                                clipBehavior: Clip.antiAlias,
-                                color: const Color(0xff51267D),
-                                child: InkWell(
-                                    onTap: () {
-                                      widget._productDao.deleteProducts();
-                                      Navigator.pop(context);
-                                      setState(() {});
-                                    },
-                                    child: Container(
-                                        padding: const EdgeInsets.all(15),
-                                        child: const Center(
-                                            child: Text('Ha', style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold))))),
+                              const SizedBox(width: 10),
+                              Expanded(
+                                child: Material(
+                                  borderRadius: BorderRadius.circular(10),
+                                  clipBehavior: Clip.antiAlias,
+                                  color: const Color(0xff51267D),
+                                  child: InkWell(
+                                      onTap: () {
+                                        widget._productDao.deleteProducts();
+                                        Navigator.pop(context);
+                                        setState(() {});
+                                      },
+                                      child: Container(
+                                          padding: const EdgeInsets.all(15),
+                                          child: const Center(
+                                              child: Text('Ha', style: TextStyle(
+                                                  color: Colors.white, fontWeight: FontWeight.bold))))),
+                                ),
                               ),
-                            ),
-                          ],
-                        )
-                      ],
+                            ],
+                          )
+                        ],
+                      ),
                     ),
                   );
                 },);
               },
               icon: Padding(
-                padding: const EdgeInsets.all(20),
-                child: SvgPicture.asset('assets/images/delete.svg'),
+                padding: const EdgeInsets.all(10),
+                child: SvgPicture.asset('assets/images/delete.svg', width: 20, height: 20),
               )
           ),
           const SizedBox(
@@ -144,7 +141,7 @@ class _CartPageState extends State<CartPage> {
             future: _callProducts(),
             builder: (context, snapshot) {
               return StreamBuilder(
-                  stream: snapshot.data!.streamedData(),
+                  stream: snapshot.data?.streamedData(),
                   builder: (context, snapshot) {
                     if (!snapshot.hasData || snapshot.connectionState == ConnectionState.none) {
                       return const Center(
@@ -244,77 +241,71 @@ class _CartPageState extends State<CartPage> {
                                               IconButton(
                                                   onPressed: () {
                                                     showDialog(context: context, builder: (context) {
-                                                      return Container(
-                                                        height: 200,
-                                                        clipBehavior: Clip.antiAlias,
-                                                        decoration: BoxDecoration(borderRadius: BorderRadius.circular(10), color: Colors.white),
-                                                        margin: EdgeInsets.symmetric(
-                                                            horizontal: MediaQuery
-                                                                .of(context)
-                                                                .size
-                                                                .width * 0.1,
-                                                            vertical: MediaQuery
-                                                                .of(context)
-                                                                .size
-                                                                .height * 0.36
-                                                        ),
-                                                        padding: const EdgeInsets.all(15),
-                                                        child: Column(
-                                                          mainAxisAlignment: MainAxisAlignment.center,
-                                                          children: [
-                                                            const Center(
-                                                              child: Text(
-                                                                'Diqqat!',
-                                                                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
+                                                      return Center(
+                                                        child: Container(
+                                                          margin: const EdgeInsets.all(30),
+                                                          clipBehavior: Clip.antiAlias,
+                                                          decoration: BoxDecoration(
+                                                              borderRadius: BorderRadius.circular(10), color: Colors.white),
+                                                          padding: const EdgeInsets.all(15),
+                                                          height: 170,
+                                                          child: Column(
+                                                            mainAxisAlignment: MainAxisAlignment.center,
+                                                            children: [
+                                                              const Center(
+                                                                child: Text(
+                                                                  'Diqqat!',
+                                                                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
+                                                                ),
                                                               ),
-                                                            ),
-                                                            const SizedBox(height: 8,),
-                                                            const Text(
-                                                              'Haqiqatdan ham mahsulotni ro\'yxatdan olib tashlamoqchimisiz?',
-                                                              textAlign: TextAlign.center,
-                                                              style: TextStyle(fontSize: 14),
-                                                            ),
-                                                            const Expanded(child: SizedBox()),
-                                                            Row(
-                                                              children: [
-                                                                Expanded(
-                                                                  child: Material(
-                                                                    borderRadius: BorderRadius.circular(10),
-                                                                    clipBehavior: Clip.antiAlias,
-                                                                    color: Colors.grey[200],
-                                                                    child: InkWell(
-                                                                        onTap: () {
-                                                                          Navigator.pop(context);
-                                                                        },
-                                                                        child: Container(
-                                                                            padding: const EdgeInsets.all(15),
-                                                                            child: const Center(
-                                                                                child: Text('Bekor qilish', style: TextStyle(
-                                                                                    color: Colors.black, fontWeight: FontWeight.bold))))),
+                                                              const SizedBox(height: 8,),
+                                                              const Text(
+                                                                'Haqiqatdan ham mahsulotni ro\'yxatdan olib tashlamoqchimisiz?',
+                                                                textAlign: TextAlign.center,
+                                                                style: TextStyle(fontSize: 14),
+                                                              ),
+                                                              const Expanded(child: SizedBox()),
+                                                              Row(
+                                                                children: [
+                                                                  Expanded(
+                                                                    child: Material(
+                                                                      borderRadius: BorderRadius.circular(10),
+                                                                      clipBehavior: Clip.antiAlias,
+                                                                      color: Colors.grey[200],
+                                                                      child: InkWell(
+                                                                          onTap: () {
+                                                                            Navigator.pop(context);
+                                                                          },
+                                                                          child: Container(
+                                                                              padding: const EdgeInsets.all(15),
+                                                                              child: const Center(
+                                                                                  child: Text('Bekor qilish', style: TextStyle(
+                                                                                      color: Colors.black, fontWeight: FontWeight.bold))))),
+                                                                    ),
                                                                   ),
-                                                                ),
-                                                                const SizedBox(width: 10),
-                                                                Expanded(
-                                                                  child: Material(
-                                                                    borderRadius: BorderRadius.circular(10),
-                                                                    clipBehavior: Clip.antiAlias,
-                                                                    color: const Color(0xff51267D),
-                                                                    child: InkWell(
-                                                                        onTap: () {
-                                                                          widget._productDao.deleteProduct(product.productId);
-                                                                          Navigator.pop(context);
-                                                                          setState(() {});
-                                                                        },
-                                                                        child: Container(
-                                                                            padding: const EdgeInsets.all(15),
-                                                                            child: const Center(
-                                                                                child: Text('Ha', style: TextStyle(
-                                                                                    color: Colors.white, fontWeight: FontWeight.bold))))),
+                                                                  const SizedBox(width: 10),
+                                                                  Expanded(
+                                                                    child: Material(
+                                                                      borderRadius: BorderRadius.circular(10),
+                                                                      clipBehavior: Clip.antiAlias,
+                                                                      color: const Color(0xff51267D),
+                                                                      child: InkWell(
+                                                                          onTap: () {
+                                                                            widget._productDao.deleteProduct(product.productId);
+                                                                            Navigator.pop(context);
+                                                                            setState(() {});
+                                                                          },
+                                                                          child: Container(
+                                                                              padding: const EdgeInsets.all(15),
+                                                                              child: const Center(
+                                                                                  child: Text('Ha', style: TextStyle(
+                                                                                      color: Colors.white, fontWeight: FontWeight.bold))))),
+                                                                    ),
                                                                   ),
-                                                                ),
-                                                              ],
-                                                            )
-                                                          ],
+                                                                ],
+                                                              )
+                                                            ],
+                                                          ),
                                                         ),
                                                       );
                                                     },);
@@ -344,78 +335,71 @@ class _CartPageState extends State<CartPage> {
                                                               var amount = product.amount;
                                                               if (amount == 1) {
                                                                 showDialog(context: context, builder: (context) {
-                                                                  return Container(
-                                                                    height: 200,
-                                                                    clipBehavior: Clip.antiAlias,
-                                                                    decoration: BoxDecoration(
-                                                                        borderRadius: BorderRadius.circular(10), color: Colors.white),
-                                                                    margin: EdgeInsets.symmetric(
-                                                                        horizontal: MediaQuery
-                                                                            .of(context)
-                                                                            .size
-                                                                            .width * 0.1,
-                                                                        vertical: MediaQuery
-                                                                            .of(context)
-                                                                            .size
-                                                                            .height * 0.36
-                                                                    ),
-                                                                    padding: const EdgeInsets.all(15),
-                                                                    child: Column(
-                                                                      mainAxisAlignment: MainAxisAlignment.center,
-                                                                      children: [
-                                                                        const Center(
-                                                                          child: Text(
-                                                                            'Diqqat!',
-                                                                            style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
+                                                                  return Center(
+                                                                    child: Container(
+                                                                      margin: const EdgeInsets.all(30),
+                                                                      clipBehavior: Clip.antiAlias,
+                                                                      decoration: BoxDecoration(
+                                                                          borderRadius: BorderRadius.circular(10), color: Colors.white),
+                                                                      padding: const EdgeInsets.all(15),
+                                                                      height: 170,
+                                                                      child: Column(
+                                                                        mainAxisAlignment: MainAxisAlignment.center,
+                                                                        children: [
+                                                                          const Center(
+                                                                            child: Text(
+                                                                              'Diqqat!',
+                                                                              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
+                                                                            ),
                                                                           ),
-                                                                        ),
-                                                                        const SizedBox(height: 8,),
-                                                                        const Text(
-                                                                          'Haqiqatdan ham mahsulotni ro\'yxatdan olib tashlamoqchimisiz?',
-                                                                          textAlign: TextAlign.center,
-                                                                          style: TextStyle(fontSize: 14),
-                                                                        ),
-                                                                        const Expanded(child: SizedBox()),
-                                                                        Row(
-                                                                          children: [
-                                                                            Expanded(
-                                                                              child: Material(
-                                                                                borderRadius: BorderRadius.circular(10),
-                                                                                clipBehavior: Clip.antiAlias,
-                                                                                color: Colors.grey[200],
-                                                                                child: InkWell(
-                                                                                    onTap: () {
-                                                                                      Navigator.pop(context);
-                                                                                    },
-                                                                                    child: Container(
-                                                                                        padding: const EdgeInsets.all(15),
-                                                                                        child: const Center(
-                                                                                            child: Text('Bekor qilish', style: TextStyle(
-                                                                                                color: Colors.black, fontWeight: FontWeight.bold))))),
+                                                                          const SizedBox(height: 8,),
+                                                                          const Text(
+                                                                            'Haqiqatdan ham mahsulotni ro\'yxatdan olib tashlamoqchimisiz?',
+                                                                            textAlign: TextAlign.center,
+                                                                            style: TextStyle(fontSize: 14),
+                                                                          ),
+                                                                          const Expanded(child: SizedBox()),
+                                                                          Row(
+                                                                            children: [
+                                                                              Expanded(
+                                                                                child: Material(
+                                                                                  borderRadius: BorderRadius.circular(10),
+                                                                                  clipBehavior: Clip.antiAlias,
+                                                                                  color: Colors.grey[200],
+                                                                                  child: InkWell(
+                                                                                      onTap: () {
+                                                                                        Navigator.pop(context);
+                                                                                      },
+                                                                                      child: Container(
+                                                                                          padding: const EdgeInsets.all(15),
+                                                                                          child: const Center(
+                                                                                              child: Text('Bekor qilish', style: TextStyle(
+                                                                                                  color: Colors.black, fontWeight: FontWeight.bold))))),
+                                                                                ),
                                                                               ),
-                                                                            ),
-                                                                            const SizedBox(width: 10),
-                                                                            Expanded(
-                                                                              child: Material(
-                                                                                borderRadius: BorderRadius.circular(10),
-                                                                                clipBehavior: Clip.antiAlias,
-                                                                                color: const Color(0xff51267D),
-                                                                                child: InkWell(
-                                                                                    onTap: () {
-                                                                                      widget._productDao.deleteProduct(product.productId);
-                                                                                      Navigator.pop(context);
-                                                                                      setState(() {});
-                                                                                    },
-                                                                                    child: Container(
-                                                                                        padding: const EdgeInsets.all(15),
-                                                                                        child: const Center(
-                                                                                            child: Text('Ha', style: TextStyle(
-                                                                                                color: Colors.white, fontWeight: FontWeight.bold))))),
+                                                                              const SizedBox(width: 10),
+                                                                              Expanded(
+                                                                                child: Material(
+                                                                                  borderRadius: BorderRadius.circular(10),
+                                                                                  clipBehavior: Clip.antiAlias,
+                                                                                  color: const Color(0xff51267D),
+                                                                                  child: InkWell(
+                                                                                      onTap: () {
+                                                                                        widget._productDao.deleteProduct(product.productId);
+                                                                                        Navigator.pop(context);
+                                                                                        setState(() {});
+                                                                                      },
+                                                                                      child: Container(
+                                                                                          padding: const EdgeInsets.all(15),
+                                                                                          child: const Center(
+                                                                                              child: Text('Ha', style: TextStyle(
+                                                                                                  color: Colors.white, fontWeight: FontWeight.bold))))),
+                                                                                ),
                                                                               ),
-                                                                            ),
-                                                                          ],
-                                                                        )
-                                                                      ],
+                                                                            ],
+                                                                          )
+                                                                        ],
+                                                                      ),
                                                                     ),
                                                                   );
                                                                 },);
@@ -432,7 +416,7 @@ class _CartPageState extends State<CartPage> {
                                                                   description: product.description,
                                                                   amount: amount
                                                               ));
-                                                              widget.products = snapshot.data!;
+                                                              _callProducts();
                                                               setState(() {});
                                                             },
                                                             child: const Padding(
@@ -456,7 +440,7 @@ class _CartPageState extends State<CartPage> {
                                                                   description: product.description,
                                                                   amount: amount
                                                               ));
-                                                              widget.products = snapshot.data!;
+                                                              _callProducts();
                                                               setState(() {});
                                                             },
                                                             child: const Padding(
@@ -484,13 +468,9 @@ class _CartPageState extends State<CartPage> {
         Container(
           color: widget.products.isEmpty ? Colors.transparent : Colors.white,
           padding: const EdgeInsets.all(15),
-          height: widget.products.isEmpty ? MediaQuery
-              .of(context)
-              .size
-              .height * 0.10 : MediaQuery
-              .of(context)
-              .size
-              .height * 0.16,
+          height: widget.products.isEmpty
+              ? MediaQuery.of(context).size.height * 0.10
+              : MediaQuery.of(context).size.height * 0.16,
           child: widget.products.isNotEmpty
               ? Column(
             children: [
@@ -516,13 +496,12 @@ class _CartPageState extends State<CartPage> {
                 child: InkWell(
                   onTap: () {
                     Navigator.push(context, CupertinoPageRoute(builder: (context) => OrderDetailPage(list: widget.products)));
-                    print('products: ${widget.products[0].amount} \n ${widget.products[1].amount}');
+                    for(var a in widget.products){
+                      print('product: \n${a.title}\n${a.amount}\n${a.price}');
+                    }
                   },
                   child: SizedBox(
-                      height: MediaQuery
-                          .of(context)
-                          .size
-                          .height * 0.065,
+                      height: MediaQuery.of(context).size.height * 0.065,
                       child: const Center(
                           child: Text('Buyurtmani rasmiylashtirish',
                               style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15, color: Colors.white)))),
@@ -537,13 +516,9 @@ class _CartPageState extends State<CartPage> {
             child: InkWell(
               onTap: () {
                 Navigator.pop(context);
-                // Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => const HostPage()));
               },
               child: SizedBox(
-                  height: MediaQuery
-                      .of(context)
-                      .size
-                      .height * 0.065,
+                  height: MediaQuery.of(context).size.height * 0.065,
                   child: const Center(
                       child: Text('Mahsulot qo\'shing', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15, color: Colors.white)))),
             ),

@@ -1,4 +1,5 @@
 import 'package:demo_max_way/pages/orders/order_placing/delivery_tab.dart';
+import 'package:demo_max_way/pages/orders/order_placing/take_away_tab.dart';
 import 'package:demo_max_way/utils/utils.dart';
 import 'package:flutter/material.dart';
 
@@ -97,7 +98,7 @@ class _OrderDetailPageState extends State<OrderDetailPage> with SingleTickerProv
                           controller: tabController,
                           children: [
                             OrderDeliveryTab(list: widget.list, totalPrice: totalPrice),
-                            Scaffold(backgroundColor: Colors.purple)
+                            OrderTakeAwayTab(list: widget.list, totalPrice: totalPrice),
                           ],
                         ),
                       )
@@ -128,16 +129,14 @@ class _OrderDetailPageState extends State<OrderDetailPage> with SingleTickerProv
                     onTap: () {
                       if(totalPrice < 20000){
                         showDialog(context: context, builder: (context) {
-                          return Container(
-                            clipBehavior: Clip.antiAlias,
-                            decoration: BoxDecoration(borderRadius: BorderRadius.circular(15)),
-                            padding: EdgeInsets.symmetric(
-                                horizontal: MediaQuery.of(context).size.width*0.13,
-                                vertical: MediaQuery.of(context).size.height*0.38
-                            ),
-                            child: Material(
-                              color: Colors.white,
+                          return Material(
+                            color: Colors.transparent,
+                            child: Center(
                               child: Container(
+                                height: 170,
+                                clipBehavior: Clip.antiAlias,
+                                margin: const EdgeInsets.all(30),
+                                decoration: BoxDecoration(color: Colors.white, borderRadius: BorderRadius.circular(10)),
                                 padding: const EdgeInsets.all(15),
                                 child: Column(
                                   mainAxisAlignment: MainAxisAlignment.center,
@@ -154,21 +153,18 @@ class _OrderDetailPageState extends State<OrderDetailPage> with SingleTickerProv
                                       style: const TextStyle(fontSize: 14),
                                     ),
                                     const Expanded(child: SizedBox()),
-                                    Padding(
-                                      padding: const EdgeInsets.symmetric(horizontal: 5),
-                                      child: Material(
-                                        borderRadius: BorderRadius.circular(10),
-                                        clipBehavior: Clip.antiAlias,
-                                        color: const Color(0xff51267D),
-                                        child: InkWell(
-                                            onTap: () {
-                                              Navigator.pop(context);
-                                            },
-                                            child: Container(
-                                                padding: const EdgeInsets.all(12),
-                                                child: const Center(
-                                                    child: Text('Ok', style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold))))),
-                                      ),
+                                    Material(
+                                      borderRadius: BorderRadius.circular(10),
+                                      clipBehavior: Clip.antiAlias,
+                                      color: const Color(0xff51267D),
+                                      child: InkWell(
+                                          onTap: () {
+                                            Navigator.pop(context);
+                                          },
+                                          child: Container(
+                                              padding: const EdgeInsets.all(12),
+                                              child: const Center(
+                                                  child: Text('Ok', style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold))))),
                                     )
                                   ],
                                 ),

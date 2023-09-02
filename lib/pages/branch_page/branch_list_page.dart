@@ -588,11 +588,11 @@ class _BranchListPageState extends State<BranchListPage> {
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
-                                    Text(list[13].name,
+                                    Text(list[14].name,
                                       style: const TextStyle(
                                         fontSize: 15, ),
                                     ),
-                                    Text(list[13].destination,
+                                    Text(list[14].destination,
                                       style: TextStyle(
                                           fontSize: 13, color: Colors.grey[600]),
                                     ),

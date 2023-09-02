@@ -92,12 +92,10 @@ class _PhonePageState extends State<PhonePage> {
                       ? await auth.verifyPhoneNumber(
                     phoneNumber: _text.text,
                     verificationCompleted: (PhoneAuthCredential credential) async {
-                      await auth.signInWithCredential(credential).then((value) {
-                        print("You are logged in successfully");
-                      });
+                      await auth.signInWithCredential(credential);
                     },
                     verificationFailed: (FirebaseAuthException e) {
-                      showToast(['Xatolik'], context, color: Colors.redAccent);
+                      showToast(['Xatolik', '$e'], context, color: Colors.redAccent);
                       print(e.message);
                     },
                     codeSent: (String verificationId, int? resendToken) {
