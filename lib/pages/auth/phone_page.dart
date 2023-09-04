@@ -7,8 +7,8 @@ import 'package:flutter/services.dart';
 import 'name_page.dart';
 
 class PhonePage extends StatefulWidget {
-  const PhonePage({super.key});
-
+  const PhonePage({super.key, required this.pageName});
+  final String? pageName;
   static String verification = '';
 
   @override
@@ -100,7 +100,7 @@ class _PhonePageState extends State<PhonePage> {
                     },
                     codeSent: (String verificationId, int? resendToken) {
                       PhonePage.verification = verificationId;
-                      Navigator.pushReplacement(context, CupertinoPageRoute(builder: (context) => NamePage(number: _text.text,)));
+                      Navigator.pushReplacement(context, CupertinoPageRoute(builder: (context) => NamePage(pageName: widget.pageName,number: _text.text,)));
                     },
                     codeAutoRetrievalTimeout: (String verificationId) {},)
                       : null;

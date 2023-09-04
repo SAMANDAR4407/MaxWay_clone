@@ -4,7 +4,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class NamePage extends StatefulWidget {
-  const NamePage({super.key, required this.number});
+  const NamePage({super.key, required this.number, required this.pageName});
+  final String? pageName;
   final String number;
 
   static String verification = '';
@@ -90,7 +91,7 @@ class _NamePageState extends State<NamePage> {
                   });
 
                   valid
-                      ? Navigator.pushReplacement(context, CupertinoPageRoute(builder: (context) => ConfirmationPage(name: _text.text,number: widget.number)))
+                      ? Navigator.pushReplacement(context, CupertinoPageRoute(builder: (context) => ConfirmationPage(name: _text.text,number: widget.number,pageName: widget.pageName)))
                       : null;
                 },
                 child: SizedBox(

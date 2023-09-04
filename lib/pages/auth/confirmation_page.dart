@@ -9,8 +9,8 @@ import 'package:fluttertoast/fluttertoast.dart';
 import 'package:pinput/pinput.dart';
 
 class ConfirmationPage extends StatefulWidget {
-  const ConfirmationPage({super.key, required this.name, required this.number});
-
+  const ConfirmationPage({super.key, required this.name, required this.number, required this.pageName});
+  final String? pageName;
   final String name;
   final String number;
 
@@ -115,7 +115,7 @@ class _ConfirmationPageState extends State<ConfirmationPage> {
           Navigator.pushReplacement(
             context,
             CupertinoPageRoute(
-              builder: (context) => const HostPage(),
+              builder: (context) => widget.pageName != null && widget.pageName == 'cart' ? const HostPage(position: 1) : const HostPage(),
             ),
           );
         } else {

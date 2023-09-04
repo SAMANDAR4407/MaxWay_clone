@@ -1,6 +1,7 @@
 // ignore_for_file: must_be_immutable
 
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:demo_max_way/pages/auth/phone_page.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -8,6 +9,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import '../../core/database/dao/product_dao.dart';
 import '../../core/database/database.dart';
 import '../../core/database/entity/product_entity.dart';
+import '../../core/pref.dart';
 import '../../utils/setup_db.dart';
 import '../orders/order_placing/order_detail_page.dart';
 
@@ -15,15 +17,22 @@ class CartPage extends StatefulWidget {
   CartPage({super.key});
 
   final _productDao = getIt<AppDatabase>().productDao;
-  List<ProductData> products = [];
 
   @override
   State<CartPage> createState() => _CartPageState();
 }
 
 class _CartPageState extends State<CartPage> {
+  final pref = PrefHelper();
   bool isEmpty = true;
+  bool hasLogged = false;
   var finalCost = 0;
+
+  var products = <ProductData>[];
+
+  void load() async {
+    hasLogged = await pref.hasLogged();
+  }
 
   Future<ProductDao> _callProducts() async {
     return widget._productDao;
@@ -34,8 +43,15 @@ class _CartPageState extends State<CartPage> {
   }
 
   @override
+  void initState() {
+    // load();
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
-    Future.delayed(const Duration(milliseconds: 10)).then((value) {
+    Future.delayed(const Duration(milliseconds: 10)).then((value) async {
+      hasLogged = await pref.hasLogged();
       setState(() {});
     });
     return Scaffold(
@@ -150,16 +166,17 @@ class _CartPageState extends State<CartPage> {
                           )
                       );
                     } else {
-                      if (widget.products.length != snapshot.data!.length) {
-                        widget.products = snapshot.data!;
+                      if (products.length != snapshot.data!.length) {
+                        products = snapshot.data!;
+                        // print('hashcode before => ${products.hashCode}');
                         var cost = 0;
 
-                        for (var product in widget.products) {
+                        for (var product in snapshot.data!) {
                           cost += product.price * product.amount;
                         }
                         finalCost = cost;
 
-                        if (widget.products.isEmpty) {
+                        if (snapshot.data!.isEmpty) {
                           isEmpty = true;
                         } else {
                           isEmpty = false;
@@ -416,7 +433,11 @@ class _CartPageState extends State<CartPage> {
                                                                   description: product.description,
                                                                   amount: amount
                                                               ));
-                                                              _callProducts();
+                                                              products = snapshot.data!;
+                                                              for(var a in products){
+                                                                print('product: ${a.title}\n${a.amount}\n${a.price*a.amount}');
+                                                              }
+                                                              // print('hashcode after => ${products.hashCode}');
                                                               setState(() {});
                                                             },
                                                             child: const Padding(
@@ -440,7 +461,10 @@ class _CartPageState extends State<CartPage> {
                                                                   description: product.description,
                                                                   amount: amount
                                                               ));
-                                                              _callProducts();
+                                                              products = snapshot.data!;
+                                                              for(var a in products){
+                                                                print('product: \n${a.title}\n${a.amount}\n${a.price*a.amount}');
+                                                              }
                                                               setState(() {});
                                                             },
                                                             child: const Padding(
@@ -466,12 +490,12 @@ class _CartPageState extends State<CartPage> {
           ),
         ),
         Container(
-          color: widget.products.isEmpty ? Colors.transparent : Colors.white,
+          color: products.isEmpty ? Colors.transparent : Colors.white,
           padding: const EdgeInsets.all(15),
-          height: widget.products.isEmpty
+          height: products.isEmpty
               ? MediaQuery.of(context).size.height * 0.10
               : MediaQuery.of(context).size.height * 0.16,
-          child: widget.products.isNotEmpty
+          child: products.isNotEmpty
               ? Column(
             children: [
               Expanded(
@@ -495,10 +519,11 @@ class _CartPageState extends State<CartPage> {
                 borderRadius: BorderRadius.circular(10),
                 child: InkWell(
                   onTap: () {
-                    Navigator.push(context, CupertinoPageRoute(builder: (context) => OrderDetailPage(list: widget.products)));
-                    for(var a in widget.products){
-                      print('product: \n${a.title}\n${a.amount}\n${a.price}');
-                    }
+                    Navigator.push(context, CupertinoPageRoute(builder: (context) => hasLogged ? OrderDetailPage(list: products) : const PhonePage(pageName: 'cart',)));
+                    // for(var a in products){
+                    //   print('product: \n${a.title}\n${a.amount}\n${a.price*a.amount}');
+                    // }
+                    // print('hashcode after => ${products.hashCode}');
                   },
                   child: SizedBox(
                       height: MediaQuery.of(context).size.height * 0.065,

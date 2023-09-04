@@ -67,68 +67,71 @@ class _AccountManagementState extends State<AccountManagement> {
                   child: InkWell(
                       onTap: (){
                         showDialog(context: context, builder: (context) {
-                          return Center(
-                            child: Container(
-                              margin: const EdgeInsets.all(30),
-                              clipBehavior: Clip.antiAlias,
-                              decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(10), color: Colors.white),
-                              padding: const EdgeInsets.all(15),
-                              height: 170,
-                              child: Column(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  const Center(
-                                    child: Text(
-                                      'Diqqat!',
-                                      style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
+                          return Material(
+                            color: Colors.transparent,
+                            child: Center(
+                              child: Container(
+                                margin: const EdgeInsets.all(30),
+                                clipBehavior: Clip.antiAlias,
+                                decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(10), color: Colors.white),
+                                padding: const EdgeInsets.all(15),
+                                height: 170,
+                                child: Column(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    const Center(
+                                      child: Text(
+                                        'Diqqat!',
+                                        style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
+                                      ),
                                     ),
-                                  ),
-                                  const SizedBox(height: 8,),
-                                  const Text(
-                                    'Haqiqatdan ham shaxsiy hisobni o\'chirishingizga ishonchingiz komilmi?',
-                                    textAlign: TextAlign.center,
-                                    style: TextStyle(fontSize: 14),
-                                  ),
-                                  const Expanded(child: SizedBox()),
-                                  Row(
-                                    children: [
-                                      Expanded(
-                                        child: Material(
-                                          borderRadius: BorderRadius.circular(10),
-                                          clipBehavior: Clip.antiAlias,
-                                          color: Colors.grey[200],
-                                          child: InkWell(
-                                              onTap: () {
-                                                Navigator.pop(context);
-                                              },
-                                              child: Container(
-                                                  padding: const EdgeInsets.all(15),
-                                                  child: const Center(
-                                                      child: Text('Bekor qilish', style: TextStyle(
-                                                          color: Colors.black, fontWeight: FontWeight.bold))))),
+                                    const SizedBox(height: 8,),
+                                    const Text(
+                                      'Haqiqatdan ham shaxsiy hisobni o\'chirishingizga ishonchingiz komilmi?',
+                                      textAlign: TextAlign.center,
+                                      style: TextStyle(fontSize: 14),
+                                    ),
+                                    const Expanded(child: SizedBox()),
+                                    Row(
+                                      children: [
+                                        Expanded(
+                                          child: Material(
+                                            borderRadius: BorderRadius.circular(10),
+                                            clipBehavior: Clip.antiAlias,
+                                            color: Colors.grey[200],
+                                            child: InkWell(
+                                                onTap: () {
+                                                  Navigator.pop(context);
+                                                },
+                                                child: Container(
+                                                    padding: const EdgeInsets.all(15),
+                                                    child: const Center(
+                                                        child: Text('Bekor qilish', style: TextStyle(
+                                                            color: Colors.black, fontWeight: FontWeight.bold))))),
+                                          ),
                                         ),
-                                      ),
-                                      const SizedBox(width: 10),
-                                      Expanded(
-                                        child: Material(
-                                          borderRadius: BorderRadius.circular(10),
-                                          clipBehavior: Clip.antiAlias,
-                                          color: const Color(0xff51267D),
-                                          child: InkWell(
-                                              onTap: () {
-                                                Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => const HostPage()));
-                                              },
-                                              child: Container(
-                                                  padding: const EdgeInsets.all(15),
-                                                  child: const Center(
-                                                      child: Text('Ha', style: TextStyle(
-                                                          color: Colors.white, fontWeight: FontWeight.bold))))),
+                                        const SizedBox(width: 10),
+                                        Expanded(
+                                          child: Material(
+                                            borderRadius: BorderRadius.circular(10),
+                                            clipBehavior: Clip.antiAlias,
+                                            color: const Color(0xff51267D),
+                                            child: InkWell(
+                                                onTap: () {
+                                                  Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => const HostPage()));
+                                                },
+                                                child: Container(
+                                                    padding: const EdgeInsets.all(15),
+                                                    child: const Center(
+                                                        child: Text('Ha', style: TextStyle(
+                                                            color: Colors.white, fontWeight: FontWeight.bold))))),
+                                          ),
                                         ),
-                                      ),
-                                    ],
-                                  )
-                                ],
+                                      ],
+                                    )
+                                  ],
+                                ),
                               ),
                             ),
                           );
