@@ -61,4 +61,14 @@ class PrefHelper {
     prefs ??= await SharedPreferences.getInstance();
     return prefs?.getString('user') ?? '';
   }
+
+  Future<int> getOrderNumber() async {
+    prefs ??= await SharedPreferences.getInstance();
+    return prefs?.getInt('orderNo') ?? 1;
+  }
+
+  Future<void> setOrderNumber(int number) async {
+    prefs ??= await SharedPreferences.getInstance();
+    prefs?.setInt('orderNo', number);
+  }
 }

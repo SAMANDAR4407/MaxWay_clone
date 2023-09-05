@@ -73,7 +73,7 @@ class _$AppDatabase extends AppDatabase {
     Callback? callback,
   ]) async {
     final databaseOptions = sqflite.OpenDatabaseOptions(
-      version: 3,
+      version: 4,
       onConfigure: (database) async {
         await database.execute('PRAGMA foreign_keys = ON');
         await callback?.onConfigure?.call(database);
@@ -93,7 +93,7 @@ class _$AppDatabase extends AppDatabase {
         await database.execute(
             'CREATE TABLE IF NOT EXISTS `AddressEntity` (`locationName` TEXT NOT NULL, `title` TEXT NOT NULL, `apartment` TEXT NOT NULL, `floor` TEXT NOT NULL, `entrance` TEXT NOT NULL, `lat` REAL NOT NULL, `long` REAL NOT NULL, PRIMARY KEY (`locationName`))');
         await database.execute(
-            'CREATE TABLE IF NOT EXISTS `OrderEntity` (`orderNo` TEXT NOT NULL, `branch` TEXT NOT NULL, `time` TEXT NOT NULL, `date` TEXT NOT NULL, `payment` TEXT NOT NULL, `product` TEXT NOT NULL, `amount` INTEGER NOT NULL, `price` INTEGER NOT NULL, PRIMARY KEY (`orderNo`))');
+            'CREATE TABLE IF NOT EXISTS `OrderEntity` (`orderNo` INTEGER NOT NULL, `branch` TEXT NOT NULL, `time` TEXT NOT NULL, `date` TEXT NOT NULL, `payment` TEXT NOT NULL, `products` TEXT NOT NULL, `price` INTEGER NOT NULL, PRIMARY KEY (`orderNo`))');
 
         await callback?.onCreate?.call(database, version);
       },
@@ -336,38 +336,7 @@ class _$OrderDao extends OrderDao {
                   'time': item.time,
                   'date': item.date,
                   'payment': item.payment,
-                  'product': item.product,
-                  'amount': item.amount,
-                  'price': item.price
-                },
-            changeListener),
-        _orderEntityUpdateAdapter = UpdateAdapter(
-            database,
-            'OrderEntity',
-            ['orderNo'],
-            (OrderEntity item) => <String, Object?>{
-                  'orderNo': item.orderNo,
-                  'branch': item.branch,
-                  'time': item.time,
-                  'date': item.date,
-                  'payment': item.payment,
-                  'product': item.product,
-                  'amount': item.amount,
-                  'price': item.price
-                },
-            changeListener),
-        _orderEntityDeletionAdapter = DeletionAdapter(
-            database,
-            'OrderEntity',
-            ['orderNo'],
-            (OrderEntity item) => <String, Object?>{
-                  'orderNo': item.orderNo,
-                  'branch': item.branch,
-                  'time': item.time,
-                  'date': item.date,
-                  'payment': item.payment,
-                  'product': item.product,
-                  'amount': item.amount,
+                  'products': item.products,
                   'price': item.price
                 },
             changeListener);
@@ -380,21 +349,16 @@ class _$OrderDao extends OrderDao {
 
   final InsertionAdapter<OrderEntity> _orderEntityInsertionAdapter;
 
-  final UpdateAdapter<OrderEntity> _orderEntityUpdateAdapter;
-
-  final DeletionAdapter<OrderEntity> _orderEntityDeletionAdapter;
-
   @override
   Future<List<OrderEntity>> getAllOrders() async {
-    return _queryAdapter.queryList('SELECT * FROM AddressEntity',
+    return _queryAdapter.queryList('SELECT * FROM OrderEntity',
         mapper: (Map<String, Object?> row) => OrderEntity(
-            orderNo: row['orderNo'] as String,
+            orderNo: row['orderNo'] as int,
             branch: row['branch'] as String,
             time: row['time'] as String,
             date: row['date'] as String,
             payment: row['payment'] as String,
-            product: row['product'] as String,
-            amount: row['amount'] as int,
+            products: row['products'] as String,
             price: row['price'] as int));
   }
 
@@ -402,36 +366,20 @@ class _$OrderDao extends OrderDao {
   Stream<List<OrderEntity>> streamedData() {
     return _queryAdapter.queryListStream('SELECT * FROM OrderEntity',
         mapper: (Map<String, Object?> row) => OrderEntity(
-            orderNo: row['orderNo'] as String,
+            orderNo: row['orderNo'] as int,
             branch: row['branch'] as String,
             time: row['time'] as String,
             date: row['date'] as String,
             payment: row['payment'] as String,
-            product: row['product'] as String,
-            amount: row['amount'] as int,
+            products: row['products'] as String,
             price: row['price'] as int),
         queryableName: 'OrderEntity',
         isView: false);
   }
 
   @override
-  Future<void> deleteOrders() async {
-    await _queryAdapter.queryNoReturn('DELETE FROM OrderEntity');
-  }
-
-  @override
   Future<void> insertOrder(OrderEntity order) async {
     await _orderEntityInsertionAdapter.insert(
         order, OnConflictStrategy.replace);
-  }
-
-  @override
-  Future<void> updateOrder(OrderEntity order) async {
-    await _orderEntityUpdateAdapter.update(order, OnConflictStrategy.abort);
-  }
-
-  @override
-  Future<void> deleteOrder(OrderEntity order) async {
-    await _orderEntityDeletionAdapter.delete(order);
   }
 }

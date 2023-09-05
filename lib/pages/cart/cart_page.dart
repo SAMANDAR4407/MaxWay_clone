@@ -11,6 +11,7 @@ import '../../core/database/database.dart';
 import '../../core/database/entity/product_entity.dart';
 import '../../core/pref.dart';
 import '../../utils/setup_db.dart';
+import '../base/base_page.dart';
 import '../orders/order_placing/order_detail_page.dart';
 
 class CartPage extends StatefulWidget {
@@ -540,7 +541,7 @@ class _CartPageState extends State<CartPage> {
             borderRadius: BorderRadius.circular(10),
             child: InkWell(
               onTap: () {
-                Navigator.pop(context);
+                Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => const HostPage()));
               },
               child: SizedBox(
                   height: MediaQuery.of(context).size.height * 0.065,

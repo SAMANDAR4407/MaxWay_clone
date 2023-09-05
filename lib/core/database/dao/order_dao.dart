@@ -3,7 +3,7 @@ import 'package:floor/floor.dart';
 
 @dao
 abstract class OrderDao {
-  @Query('SELECT * FROM AddressEntity')
+  @Query('SELECT * FROM OrderEntity')
   Future<List<OrderEntity>> getAllOrders();
 
   @Query('SELECT * FROM OrderEntity')
@@ -12,12 +12,4 @@ abstract class OrderDao {
   @Insert(onConflict: OnConflictStrategy.replace)
   Future<void> insertOrder(OrderEntity order);
 
-  @delete
-  Future<void> deleteOrder(OrderEntity order);
-
-  @Query('DELETE FROM OrderEntity')
-  Future<void> deleteOrders();
-
-  @update
-  Future<void> updateOrder(OrderEntity order);
 }

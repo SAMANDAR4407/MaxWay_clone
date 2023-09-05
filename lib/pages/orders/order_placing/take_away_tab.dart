@@ -18,6 +18,8 @@ class OrderTakeAwayTab extends StatefulWidget {
   const OrderTakeAwayTab({super.key, required this.list, required this.totalPrice});
   final int totalPrice;
   final List<ProductData> list;
+  static var branchName = 'MAX WAY MEGA PLANET';
+  static var paymentMethod = 'Naqd pul';
 
   @override
   State<OrderTakeAwayTab> createState() => _OrderTakeAwayTabState();
@@ -75,14 +77,13 @@ class _OrderTakeAwayTabState extends State<OrderTakeAwayTab> {
       setState(() {});
     });
   }
-
-  PaymentMethod? method = PaymentMethod.cash;
+  Branch? branch = Branch.megaplanet;
   void _paymentOption(PaymentMethod? value){
     method = value;
     setState(() {});
   }
 
-  Branch? branch = Branch.megaplanet;
+  PaymentMethod? method = PaymentMethod.cash;
   void _branchOption(Branch value) {
     branch = value;
     setState(() {});
@@ -190,6 +191,7 @@ class _OrderTakeAwayTabState extends State<OrderTakeAwayTab> {
                                     onTap: () {
                                       _branchOption(Branch.megaplanet);
                                       moveToBranch(Point(latitude: list[0].location.lat, longitude: list[0].location.long));
+                                      OrderTakeAwayTab.branchName = list[0].name;
                                     },
                                     child: SizedBox(
                                       height: MediaQuery.of(context).size.height * 0.08,
@@ -228,6 +230,7 @@ class _OrderTakeAwayTabState extends State<OrderTakeAwayTab> {
                                     onTap: () {
                                       _branchOption(Branch.aviasozlar);
                                       moveToBranch(Point(latitude: list[1].location.lat, longitude: list[1].location.long));
+                                      OrderTakeAwayTab.branchName = list[1].name;
                                     },
                                     child: SizedBox(
                                       height: MediaQuery.of(context).size.height * 0.08,
@@ -266,6 +269,7 @@ class _OrderTakeAwayTabState extends State<OrderTakeAwayTab> {
                                     onTap: () {
                                       _branchOption(Branch.risoviy);
                                       moveToBranch(Point(latitude: list[2].location.lat, longitude: list[2].location.long));
+                                      OrderTakeAwayTab.branchName = list[2].name;
                                     },
                                     child: SizedBox(
                                       height: MediaQuery.of(context).size.height * 0.08,
@@ -304,6 +308,7 @@ class _OrderTakeAwayTabState extends State<OrderTakeAwayTab> {
                                     onTap: () {
                                       _branchOption(Branch.parus);
                                       moveToBranch(Point(latitude: list[3].location.lat, longitude: list[3].location.long));
+                                      OrderTakeAwayTab.branchName = list[3].name;
                                     },
                                     child: SizedBox(
                                       height: MediaQuery.of(context).size.height * 0.08,
@@ -342,6 +347,7 @@ class _OrderTakeAwayTabState extends State<OrderTakeAwayTab> {
                                     onTap: () {
                                       _branchOption(Branch.magiccity);
                                       moveToBranch(Point(latitude: list[4].location.lat, longitude: list[4].location.long));
+                                      OrderTakeAwayTab.branchName = list[4].name;
                                     },
                                     child: SizedBox(
                                       height: MediaQuery.of(context).size.height * 0.08,
@@ -379,7 +385,9 @@ class _OrderTakeAwayTabState extends State<OrderTakeAwayTab> {
                                   InkWell(
                                     onTap: () {
                                       _branchOption(Branch.samarqanddarvoza);
-                                      moveToBranch(Point(latitude: list[5].location.lat, longitude: list[5].location.long));                                  },
+                                      moveToBranch(Point(latitude: list[5].location.lat, longitude: list[5].location.long));
+                                      OrderTakeAwayTab.branchName = list[5].name;
+                                    },
                                     child: SizedBox(
                                       height: MediaQuery.of(context).size.height * 0.08,
                                       child: Row(
@@ -417,6 +425,7 @@ class _OrderTakeAwayTabState extends State<OrderTakeAwayTab> {
                                     onTap: () {
                                       _branchOption(Branch.parkent);
                                       moveToBranch(Point(latitude: list[6].location.lat, longitude: list[6].location.long));
+                                      OrderTakeAwayTab.branchName = list[6].name;
                                     },
                                     child: SizedBox(
                                       height: MediaQuery.of(context).size.height * 0.08,
@@ -455,6 +464,7 @@ class _OrderTakeAwayTabState extends State<OrderTakeAwayTab> {
                                     onTap: () {
                                       _branchOption(Branch.universam);
                                       moveToBranch(Point(latitude: list[7].location.lat, longitude: list[7].location.long));
+                                      OrderTakeAwayTab.branchName = list[7].name;
                                     },
                                     child: SizedBox(
                                       height: MediaQuery.of(context).size.height * 0.08,
@@ -493,6 +503,7 @@ class _OrderTakeAwayTabState extends State<OrderTakeAwayTab> {
                                     onTap: () {
                                       _branchOption(Branch.royson);
                                       moveToBranch(Point(latitude: list[8].location.lat, longitude: list[8].location.long));
+                                      OrderTakeAwayTab.branchName = list[8].name;
                                     },
                                     child: SizedBox(
                                       height: MediaQuery.of(context).size.height * 0.08,
@@ -531,6 +542,7 @@ class _OrderTakeAwayTabState extends State<OrderTakeAwayTab> {
                                     onTap: () {
                                       _branchOption(Branch.next);
                                       moveToBranch(Point(latitude: list[9].location.lat, longitude: list[9].location.long));
+                                      OrderTakeAwayTab.branchName = list[9].name;
                                     },
                                     child: SizedBox(
                                       height: MediaQuery.of(context).size.height * 0.08,
@@ -569,6 +581,7 @@ class _OrderTakeAwayTabState extends State<OrderTakeAwayTab> {
                                     onTap: () {
                                       _branchOption(Branch.muqumiy);
                                       moveToBranch(Point(latitude: list[10].location.lat, longitude: list[10].location.long));
+                                      OrderTakeAwayTab.branchName = list[10].name;
                                     },
                                     child: SizedBox(
                                       height: MediaQuery.of(context).size.height * 0.08,
@@ -607,6 +620,7 @@ class _OrderTakeAwayTabState extends State<OrderTakeAwayTab> {
                                     onTap: () {
                                       _branchOption(Branch.grandmir);
                                       moveToBranch(Point(latitude: list[11].location.lat, longitude: list[11].location.long));
+                                      OrderTakeAwayTab.branchName = list[11].name;
                                     },
                                     child: SizedBox(
                                       height: MediaQuery.of(context).size.height * 0.08,
@@ -645,6 +659,7 @@ class _OrderTakeAwayTabState extends State<OrderTakeAwayTab> {
                                     onTap: () {
                                       _branchOption(Branch.sayram);
                                       moveToBranch(Point(latitude: list[12].location.lat, longitude: list[12].location.long));
+                                      OrderTakeAwayTab.branchName = list[12].name;
                                     },
                                     child: SizedBox(
                                       height: MediaQuery.of(context).size.height * 0.08,
@@ -683,6 +698,7 @@ class _OrderTakeAwayTabState extends State<OrderTakeAwayTab> {
                                     onTap: () {
                                       _branchOption(Branch.maksimgorkiy);
                                       moveToBranch(Point(latitude: list[13].location.lat, longitude: list[13].location.long));
+                                      OrderTakeAwayTab.branchName = list[13].name;
                                     },
                                     child: SizedBox(
                                       height: MediaQuery.of(context).size.height * 0.08,
@@ -721,6 +737,7 @@ class _OrderTakeAwayTabState extends State<OrderTakeAwayTab> {
                                     onTap: () {
                                       _branchOption(Branch.sergeli);
                                       moveToBranch(Point(latitude: list[14].location.lat, longitude: list[14].location.long));
+                                      OrderTakeAwayTab.branchName = list[14].name;
                                     },
                                     child: SizedBox(
                                       height: MediaQuery.of(context).size.height * 0.08,
@@ -759,6 +776,7 @@ class _OrderTakeAwayTabState extends State<OrderTakeAwayTab> {
                                     onTap: () {
                                       _branchOption(Branch.fontan);
                                       moveToBranch(Point(latitude: list[15].location.lat, longitude: list[15].location.long));
+                                      OrderTakeAwayTab.branchName = list[15].name;
                                     },
                                     child: SizedBox(
                                       height: MediaQuery.of(context).size.height * 0.08,
@@ -797,6 +815,7 @@ class _OrderTakeAwayTabState extends State<OrderTakeAwayTab> {
                                     onTap: () {
                                       _branchOption(Branch.minor);
                                       moveToBranch(Point(latitude: list[16].location.lat, longitude: list[16].location.long));
+                                      OrderTakeAwayTab.branchName = list[16].name;
                                     },
                                     child: SizedBox(
                                       height: MediaQuery.of(context).size.height * 0.08,
@@ -864,7 +883,10 @@ class _OrderTakeAwayTabState extends State<OrderTakeAwayTab> {
                       Material(
                         color: Colors.white,
                         child: InkWell(
-                          onTap: () => _paymentOption(PaymentMethod.cash),
+                          onTap: () {
+                            _paymentOption(PaymentMethod.cash);
+                            OrderTakeAwayTab.paymentMethod = 'Naqd pul';
+                          },
                           child: SizedBox(
                             height: 50,
                             child: Row(
@@ -889,7 +911,10 @@ class _OrderTakeAwayTabState extends State<OrderTakeAwayTab> {
                       Material(
                         color: Colors.white,
                         child: InkWell(
-                          onTap: () => _paymentOption(PaymentMethod.payme),
+                          onTap: () {
+                            _paymentOption(PaymentMethod.payme);
+                            OrderTakeAwayTab.paymentMethod = 'Payme';
+                        },
                           child: SizedBox(
                             height: 50,
                             child: Row(
@@ -914,7 +939,10 @@ class _OrderTakeAwayTabState extends State<OrderTakeAwayTab> {
                       Material(
                         color: Colors.white,
                         child: InkWell(
-                          onTap: () => _paymentOption(PaymentMethod.click),
+                          onTap: () {
+                              _paymentOption(PaymentMethod.click);
+                              OrderTakeAwayTab.paymentMethod = 'Click';
+                          },
                           child: SizedBox(
                             height: 50,
                             child: Row(

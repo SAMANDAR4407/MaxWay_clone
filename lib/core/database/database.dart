@@ -12,7 +12,7 @@ import 'entity/product_entity.dart';
 
 part 'database.g.dart';
 
-@Database(version: 3, entities: [ProductData, AddressEntity, OrderEntity])
+@Database(version: 4, entities: [ProductData, AddressEntity, OrderEntity])
 abstract class AppDatabase extends FloorDatabase {
   ProductDao get productDao;
   AddressDao get addressDao;

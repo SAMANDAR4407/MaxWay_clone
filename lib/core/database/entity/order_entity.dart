@@ -3,13 +3,12 @@ import 'package:floor/floor.dart';
 @entity
 class OrderEntity {
   @PrimaryKey(autoGenerate: false)
-  String orderNo;
+  int orderNo;
   String branch;
   String time;
   String date;
   String payment;
-  String product;
-  int amount;
+  String products;
   int price;
 
   OrderEntity({
@@ -18,19 +17,17 @@ class OrderEntity {
     required this.time,
     required this.date,
     required this.payment,
-    required this.product,
-    required this.amount,
-    required this.price,
+    required this.products,
+    required this.price
   });
 
   factory OrderEntity.empty({
-    String orderNo = '',
+    int orderNo = 0,
     String branch = '',
     String time = '',
     String date = '',
     String payment = '',
-    String product = '',
-    int amount = 0,
-    int price = 0,
-  }) => OrderEntity(orderNo: orderNo, branch: branch, time: time, date: date, payment: payment, product: product, amount: amount, price: price);
+    String products = '',
+    int price = 0
+  }) => OrderEntity(orderNo: orderNo, branch: branch, time: time, date: date, payment: payment, products: products, price: price);
 }

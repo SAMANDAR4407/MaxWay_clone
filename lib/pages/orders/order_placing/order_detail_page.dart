@@ -1,9 +1,14 @@
+import 'package:demo_max_way/pages/base/base_page.dart';
 import 'package:demo_max_way/pages/orders/order_placing/delivery_tab.dart';
 import 'package:demo_max_way/pages/orders/order_placing/take_away_tab.dart';
-import 'package:demo_max_way/utils/utils.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
+import '../../../core/database/database.dart';
+import '../../../core/database/entity/order_entity.dart';
 import '../../../core/database/entity/product_entity.dart';
+import '../../../core/pref.dart';
+import '../../../utils/setup_db.dart';
 
 class OrderDetailPage extends StatefulWidget {
   const OrderDetailPage({super.key, required this.list});
@@ -16,7 +21,10 @@ class OrderDetailPage extends StatefulWidget {
 
 class _OrderDetailPageState extends State<OrderDetailPage> with SingleTickerProviderStateMixin{
   var totalPrice = 0;
+  final _orderDao = getIt<AppDatabase>().orderDao;
+  final _productDao = getIt<AppDatabase>().productDao;
   late TabController tabController;
+  final pref = PrefHelper();
 
   @override
   void initState() {
@@ -64,7 +72,7 @@ class _OrderDetailPageState extends State<OrderDetailPage> with SingleTickerProv
                             color: const Color(0xFFF5F5F5),
                             borderRadius: BorderRadius.circular(10)),
                         child: TabBar(
-                          padding: const EdgeInsets.all(3),
+                          padding: const EdgeInsets.all(4),
                           indicatorSize: TabBarIndicatorSize.tab,
                           labelStyle: const TextStyle(fontSize: 13,fontWeight: FontWeight.bold),
                           unselectedLabelColor: Colors.grey,
@@ -72,7 +80,7 @@ class _OrderDetailPageState extends State<OrderDetailPage> with SingleTickerProv
                           dividerColor: Colors.transparent,
                           indicator: BoxDecoration(
                             color: Colors.white,
-                            borderRadius: BorderRadius.circular(10),
+                            borderRadius: BorderRadius.circular(8),
                           ),
                           controller: tabController,
                           tabs: const [
@@ -126,7 +134,7 @@ class _OrderDetailPageState extends State<OrderDetailPage> with SingleTickerProv
                   color: const Color(0xff51267D),
                   borderRadius: BorderRadius.circular(10),
                   child: InkWell(
-                    onTap: () {
+                    onTap: () async {
                       if(totalPrice < 20000){
                         showDialog(context: context, builder: (context) {
                           return Material(
@@ -174,7 +182,32 @@ class _OrderDetailPageState extends State<OrderDetailPage> with SingleTickerProv
                         },);
                         return;
                       }
-                      showToast(['Buyurtma narxi: $totalPrice so\'m'], context);
+
+                      String products = '';
+
+                      for(int i = 0; i < widget.list.length ; i++){
+                        if(i == widget.list.length-1){
+                          products += '${widget.list[i].title},${widget.list[i].price},${widget.list[i].amount}';
+                          break;
+                        }
+                        products += '${widget.list[i].title},${widget.list[i].price},${widget.list[i].amount}#';
+                      }
+
+                      final orderNo = await pref.getOrderNumber();
+                      tabController.index == 0
+                          ? null
+                          : _orderDao.insertOrder(OrderEntity(
+                            orderNo: orderNo,
+                            branch: OrderTakeAwayTab.branchName,
+                            time: '${DateTime.now().hour<10?'0${DateTime.now().hour}':'${DateTime.now().hour}'}:${DateTime.now().minute<10?'0${DateTime.now().minute}':'${DateTime.now().minute}'}',
+                            date: '${DateTime.now().day<10?'0${DateTime.now().day}':'${DateTime.now().day}'}.${DateTime.now().month<10?'0${DateTime.now().month}':'${DateTime.now().month}'}.${DateTime.now().year}',
+                            payment: OrderTakeAwayTab.paymentMethod,
+                            products: products,
+                            price: totalPrice
+                        ));
+                      pref.setOrderNumber(orderNo+1);
+                      _productDao.deleteProducts();
+                      Navigator.pushReplacement(context, CupertinoPageRoute(builder: (context) => const HostPage()));
                     },
                     child: SizedBox(
                         height: MediaQuery.of(context).size.height*0.065,

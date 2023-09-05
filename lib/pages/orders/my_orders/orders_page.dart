@@ -50,7 +50,7 @@ class _OrdersPageState extends State<OrdersPage> with SingleTickerProviderStateM
                   color: const Color(0xFFF5F5F5),
                   borderRadius: BorderRadius.circular(10)),
               child: TabBar(
-                padding: const EdgeInsets.all(3),
+                padding: const EdgeInsets.all(4),
                 indicatorSize: TabBarIndicatorSize.tab,
                 labelStyle: const TextStyle(fontSize: 13,fontWeight: FontWeight.bold),
                 unselectedLabelColor: Colors.grey,
@@ -58,7 +58,7 @@ class _OrdersPageState extends State<OrdersPage> with SingleTickerProviderStateM
                 dividerColor: Colors.transparent,
                 indicator: BoxDecoration(
                   color: Colors.white,
-                  borderRadius: BorderRadius.circular(10),
+                  borderRadius: BorderRadius.circular(8),
                 ),
                 controller: tabController,
                 tabs: const [
@@ -81,7 +81,7 @@ class _OrdersPageState extends State<OrdersPage> with SingleTickerProviderStateM
             Expanded(
               child: TabBarView(
                 controller: tabController,
-                children: const [
+                children: [
                   Tab1(),
                   Tab2()
                 ],
