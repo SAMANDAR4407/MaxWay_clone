@@ -1,14 +1,17 @@
 import 'dart:async';
 
 import 'package:demo_max_way/core/database/entity/product_entity.dart';
+import 'package:demo_max_way/pages/orders/order_placing/provider.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:yandex_mapkit/yandex_mapkit.dart';
 
 import '../../../model/location_model.dart';
 import '../../map/map_utils.dart';
+import '../../map/pick_address_map_page.dart';
 
 class OrderDeliveryTab extends StatefulWidget {
   const OrderDeliveryTab({super.key, required this.list, required this.totalPrice});
@@ -89,10 +92,32 @@ class _OrderDeliveryTabState extends State<OrderDeliveryTab> {
     getCameraPos();
   }
 
+  Future<void> moveToPoint(Point point) async {
+    var controller = await mapController.future;
+    await Geolocator.getCurrentPosition(desiredAccuracy: LocationAccuracy.bestForNavigation).then((Position position) {
+      controller.moveCamera(
+          animation: const MapAnimation(type: MapAnimationType.linear, duration: 1),
+          CameraUpdate.newCameraPosition(CameraPosition(target: Point(latitude: point.latitude, longitude: point.longitude))));
+    }).catchError((e) {
+      //
+    });
+    getCameraPos();
+  }
+
   Future<void> getPlaceMark(double lat, double long) async {
     getAddressFromLatLong(lat, long, (locationModel) {
       _locationModel = locationModel;
       setState(() {});
+    });
+  }
+
+  Future<void> _getLocationFromMap() async {
+    final result = await Navigator.push(context, CupertinoPageRoute(builder: (context) => const PickAddressMapPage()));
+    setState(() {
+      _locationModel = result;
+      locationName = _locationModel.countryName.isEmpty ? '' : '${_locationModel.countryName}, ${_locationModel.regionName}, ${_locationModel.cityName}, ${_locationModel.streetName}';
+      moveToPoint(Point(latitude:_locationModel.lat, longitude:_locationModel.long));
+      context.read<OrderDetailProvider>().updateAddress(locationName.replaceAll('Uzbekistan', 'O\'zbekiston').replaceAll(', Unnamed Road', ''),);
     });
   }
 
@@ -117,6 +142,7 @@ class _OrderDeliveryTabState extends State<OrderDeliveryTab> {
   @override
   Widget build(BuildContext context) {
     locationName = _locationModel.countryName.isEmpty ? '' : '${_locationModel.countryName}, ${_locationModel.regionName}, ${_locationModel.cityName}, ${_locationModel.streetName}';
+    context.read<OrderDetailProvider>().updateAddress(locationName.replaceAll('Uzbekistan', 'O\'zbekiston').replaceAll(', Unnamed Road', ''),);
     return Container(
         color: const Color(0xFFF5F5F5),
         child: SingleChildScrollView(
@@ -301,7 +327,7 @@ class _OrderDeliveryTabState extends State<OrderDeliveryTab> {
                               clipBehavior: Clip.antiAlias,
                               child: InkWell(
                                 onTap: () {
-                                  // move();
+                                  _getLocationFromMap();
                                 },
                                 child: Container(
                                   padding: const EdgeInsets.all(4),
@@ -489,7 +515,10 @@ class _OrderDeliveryTabState extends State<OrderDeliveryTab> {
                     Material(
                       color: Colors.white,
                       child: InkWell(
-                        onTap: () => _paymentOption(PaymentMethod.cash),
+                        onTap: () {
+                          _paymentOption(PaymentMethod.cash);
+                          context.read<OrderDetailProvider>().updatePaymentMethod('Naqd pul');
+                        },
                         child: SizedBox(
                           height: 50,
                           child: Row(
@@ -514,7 +543,10 @@ class _OrderDeliveryTabState extends State<OrderDeliveryTab> {
                     Material(
                       color: Colors.white,
                       child: InkWell(
-                        onTap: () => _paymentOption(PaymentMethod.payme),
+                        onTap: () {
+                          _paymentOption(PaymentMethod.payme);
+                          context.read<OrderDetailProvider>().updatePaymentMethod('Payme');
+                        },
                         child: SizedBox(
                           height: 50,
                           child: Row(
@@ -539,7 +571,10 @@ class _OrderDeliveryTabState extends State<OrderDeliveryTab> {
                     Material(
                       color: Colors.white,
                       child: InkWell(
-                        onTap: () => _paymentOption(PaymentMethod.click),
+                        onTap: () {
+                          _paymentOption(PaymentMethod.click);
+                          context.read<OrderDetailProvider>().updatePaymentMethod('Click');
+                        },
                         child: SizedBox(
                           height: 50,
                           child: Row(

@@ -8,6 +8,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import '../../core/pref.dart';
+import '../../utils/utils.dart';
 import '../cart/cart_page.dart';
 
 class HostPage extends StatefulWidget {
@@ -28,6 +29,7 @@ class _HostPageState extends State<HostPage> {
 
   @override
   void initState() {
+    updateOrders();
     load();
     // if (list.isNotEmpty) {
     //   isNotEmpty = true;

@@ -4,7 +4,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_holo_date_picker/date_picker_theme.dart';
 import 'package:flutter_holo_date_picker/widget/date_picker_widget.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
 import '../../../core/pref.dart';
@@ -154,17 +153,14 @@ class _EditProfileState extends State<EditProfile> {
                           setState(() {});
                         },
                         cursorColor: Colors.black,
-                        decoration: InputDecoration(
+                        decoration: const InputDecoration(
                             enabledBorder: InputBorder.none,
                             focusedBorder: InputBorder.none,
                             hintText: 'Tug\'ilgan kuningizni kiriting',
-                            hintStyle: const TextStyle(
+                            hintStyle: TextStyle(
                               fontSize: 14
                             ),
-                            suffixIcon: Padding(
-                              padding: const EdgeInsets.all(10),
-                              child: SvgPicture.asset('assets/images/calendar.svg'),
-                            )
+                            suffixIcon: Icon(Icons.date_range_outlined)
                         ),
                       ),
                     ),
@@ -271,10 +267,10 @@ class _WidgetPageState extends State<WidgetPage> {
           Container(
             padding: const EdgeInsets.symmetric(horizontal: 20),
             child: DatePickerWidget(
-              looping: false,
+              looping: true,
               initialDate: DateTime.now(),
-              firstDate: DateTime(1930),
-              lastDate: DateTime(2023),
+              firstDate: DateTime(2000),
+              lastDate: DateTime(2040),
               dateFormat: "dd/MMMM/yyyy",
               onChange: (DateTime newDate, _) {
                 setState(() {
@@ -282,7 +278,6 @@ class _WidgetPageState extends State<WidgetPage> {
                 });
               },
               pickerTheme: const DateTimePickerTheme(
-                // cancel: TextButton(onPressed: _button, child: Text("Cancel")),
                 itemTextStyle: TextStyle(color: Colors.black, fontSize: 19),
                 dividerColor: Colors.blueAccent,
               ),

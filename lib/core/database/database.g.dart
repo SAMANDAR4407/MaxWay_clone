@@ -93,7 +93,7 @@ class _$AppDatabase extends AppDatabase {
         await database.execute(
             'CREATE TABLE IF NOT EXISTS `AddressEntity` (`locationName` TEXT NOT NULL, `title` TEXT NOT NULL, `apartment` TEXT NOT NULL, `floor` TEXT NOT NULL, `entrance` TEXT NOT NULL, `lat` REAL NOT NULL, `long` REAL NOT NULL, PRIMARY KEY (`locationName`))');
         await database.execute(
-            'CREATE TABLE IF NOT EXISTS `OrderEntity` (`orderNo` INTEGER NOT NULL, `branch` TEXT NOT NULL, `time` TEXT NOT NULL, `date` TEXT NOT NULL, `payment` TEXT NOT NULL, `products` TEXT NOT NULL, `price` INTEGER NOT NULL, PRIMARY KEY (`orderNo`))');
+            'CREATE TABLE IF NOT EXISTS `OrderEntity` (`orderNo` INTEGER NOT NULL, `branch` TEXT NOT NULL, `time` TEXT NOT NULL, `date` TEXT NOT NULL, `payment` TEXT NOT NULL, `products` TEXT NOT NULL, `price` INTEGER NOT NULL, `address` TEXT NOT NULL, `delivery` TEXT, `scheduledTime` TEXT, `isCompleted` INTEGER NOT NULL, PRIMARY KEY (`orderNo`))');
 
         await callback?.onCreate?.call(database, version);
       },
@@ -337,7 +337,29 @@ class _$OrderDao extends OrderDao {
                   'date': item.date,
                   'payment': item.payment,
                   'products': item.products,
-                  'price': item.price
+                  'price': item.price,
+                  'address': item.address,
+                  'delivery': item.delivery,
+                  'scheduledTime': item.scheduledTime,
+                  'isCompleted': item.isCompleted ? 1 : 0
+                },
+            changeListener),
+        _orderEntityUpdateAdapter = UpdateAdapter(
+            database,
+            'OrderEntity',
+            ['orderNo'],
+            (OrderEntity item) => <String, Object?>{
+                  'orderNo': item.orderNo,
+                  'branch': item.branch,
+                  'time': item.time,
+                  'date': item.date,
+                  'payment': item.payment,
+                  'products': item.products,
+                  'price': item.price,
+                  'address': item.address,
+                  'delivery': item.delivery,
+                  'scheduledTime': item.scheduledTime,
+                  'isCompleted': item.isCompleted ? 1 : 0
                 },
             changeListener);
 
@@ -349,9 +371,12 @@ class _$OrderDao extends OrderDao {
 
   final InsertionAdapter<OrderEntity> _orderEntityInsertionAdapter;
 
+  final UpdateAdapter<OrderEntity> _orderEntityUpdateAdapter;
+
   @override
-  Future<List<OrderEntity>> getAllOrders() async {
-    return _queryAdapter.queryList('SELECT * FROM OrderEntity',
+  Future<List<OrderEntity>> getAllCurrentOrders() async {
+    return _queryAdapter.queryList(
+        'SELECT * FROM OrderEntity where isCompleted = 0',
         mapper: (Map<String, Object?> row) => OrderEntity(
             orderNo: row['orderNo'] as int,
             branch: row['branch'] as String,
@@ -359,12 +384,15 @@ class _$OrderDao extends OrderDao {
             date: row['date'] as String,
             payment: row['payment'] as String,
             products: row['products'] as String,
-            price: row['price'] as int));
+            price: row['price'] as int,
+            address: row['address'] as String,
+            isCompleted: (row['isCompleted'] as int) != 0));
   }
 
   @override
-  Stream<List<OrderEntity>> streamedData() {
-    return _queryAdapter.queryListStream('SELECT * FROM OrderEntity',
+  Stream<List<OrderEntity>> streamedDataCurrent() {
+    return _queryAdapter.queryListStream(
+        'SELECT * FROM OrderEntity where isCompleted = 0',
         mapper: (Map<String, Object?> row) => OrderEntity(
             orderNo: row['orderNo'] as int,
             branch: row['branch'] as String,
@@ -372,7 +400,43 @@ class _$OrderDao extends OrderDao {
             date: row['date'] as String,
             payment: row['payment'] as String,
             products: row['products'] as String,
-            price: row['price'] as int),
+            price: row['price'] as int,
+            address: row['address'] as String,
+            isCompleted: (row['isCompleted'] as int) != 0),
+        queryableName: 'OrderEntity',
+        isView: false);
+  }
+
+  @override
+  Future<List<OrderEntity>> getAllHistoryOrders() async {
+    return _queryAdapter.queryList(
+        'SELECT * FROM OrderEntity where isCompleted = 1',
+        mapper: (Map<String, Object?> row) => OrderEntity(
+            orderNo: row['orderNo'] as int,
+            branch: row['branch'] as String,
+            time: row['time'] as String,
+            date: row['date'] as String,
+            payment: row['payment'] as String,
+            products: row['products'] as String,
+            price: row['price'] as int,
+            address: row['address'] as String,
+            isCompleted: (row['isCompleted'] as int) != 0));
+  }
+
+  @override
+  Stream<List<OrderEntity>> streamedDataHistory() {
+    return _queryAdapter.queryListStream(
+        'SELECT * FROM OrderEntity where isCompleted = 1',
+        mapper: (Map<String, Object?> row) => OrderEntity(
+            orderNo: row['orderNo'] as int,
+            branch: row['branch'] as String,
+            time: row['time'] as String,
+            date: row['date'] as String,
+            payment: row['payment'] as String,
+            products: row['products'] as String,
+            price: row['price'] as int,
+            address: row['address'] as String,
+            isCompleted: (row['isCompleted'] as int) != 0),
         queryableName: 'OrderEntity',
         isView: false);
   }
@@ -381,5 +445,10 @@ class _$OrderDao extends OrderDao {
   Future<void> insertOrder(OrderEntity order) async {
     await _orderEntityInsertionAdapter.insert(
         order, OnConflictStrategy.replace);
+  }
+
+  @override
+  Future<void> updateOrder(OrderEntity order) async {
+    await _orderEntityUpdateAdapter.update(order, OnConflictStrategy.abort);
   }
 }

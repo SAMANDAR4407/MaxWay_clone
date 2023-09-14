@@ -41,8 +41,7 @@ Future<void> getCurrentPosition(Function(LocationModel locationModel) callBackLo
 
 Future<void> getAddressFromLatLong(
     double lat, double long, Function(LocationModel locationModel) callBackLocation) async {
-  await placemarkFromCoordinates(lat, long, localeIdentifier: 'en_US')
-      .then((List<Placemark> placemarks) {
+  await placemarkFromCoordinates(lat, long, localeIdentifier: 'en_US').then((List<Placemark> placemarks) {
     Placemark place = placemarks[0];
     final location = LocationModel(
         cityName: place.locality ?? "",

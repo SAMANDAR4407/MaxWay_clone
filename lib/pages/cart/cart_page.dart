@@ -162,9 +162,7 @@ class _CartPageState extends State<CartPage> {
                   builder: (context, snapshot) {
                     if (!snapshot.hasData || snapshot.connectionState == ConnectionState.none) {
                       return const Center(
-                          child: CupertinoActivityIndicator(
-                            color: Colors.red,
-                          )
+                          child: CupertinoActivityIndicator()
                       );
                     } else {
                       if (products.length != snapshot.data!.length) {

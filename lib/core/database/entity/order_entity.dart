@@ -10,6 +10,10 @@ class OrderEntity {
   String payment;
   String products;
   int price;
+  String address;
+  String? delivery;
+  String? scheduledTime;
+  bool isCompleted;
 
   OrderEntity({
     required this.orderNo,
@@ -18,16 +22,19 @@ class OrderEntity {
     required this.date,
     required this.payment,
     required this.products,
-    required this.price
+    required this.price,
+    required this.address,
+    this.isCompleted = false
   });
 
   factory OrderEntity.empty({
     int orderNo = 0,
-    String branch = '',
     String time = '',
     String date = '',
     String payment = '',
     String products = '',
-    int price = 0
-  }) => OrderEntity(orderNo: orderNo, branch: branch, time: time, date: date, payment: payment, products: products, price: price);
+    String address = '',
+    int price = 0,
+    bool isCompleted = false
+  }) => OrderEntity(orderNo: orderNo, branch: '', time: time, date: date, payment: payment, products: products, price: price, address: address, isCompleted: isCompleted);
 }

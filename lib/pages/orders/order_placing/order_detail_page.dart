@@ -1,8 +1,10 @@
 import 'package:demo_max_way/pages/base/base_page.dart';
 import 'package:demo_max_way/pages/orders/order_placing/delivery_tab.dart';
+import 'package:demo_max_way/pages/orders/order_placing/provider.dart';
 import 'package:demo_max_way/pages/orders/order_placing/take_away_tab.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 import '../../../core/database/database.dart';
 import '../../../core/database/entity/order_entity.dart';
@@ -195,15 +197,25 @@ class _OrderDetailPageState extends State<OrderDetailPage> with SingleTickerProv
 
                       final orderNo = await pref.getOrderNumber();
                       tabController.index == 0
-                          ? null
+                          ? _orderDao.insertOrder(OrderEntity(
+                          orderNo: orderNo,
+                          branch: Provider.of<OrderDetailProvider>(context, listen: false).branch,
+                          time: '${DateTime.now().hour<10?'0${DateTime.now().hour}':'${DateTime.now().hour}'}:${DateTime.now().minute<10?'0${DateTime.now().minute}':'${DateTime.now().minute}'}',
+                          date: '${DateTime.now().day<10?'0${DateTime.now().day}':'${DateTime.now().day}'}.${DateTime.now().month<10?'0${DateTime.now().month}':'${DateTime.now().month}'}.${DateTime.now().year}',
+                          payment: Provider.of<OrderDetailProvider>(context, listen: false).paymentMethod,
+                          products: products,
+                          price: totalPrice,
+                          address: Provider.of<OrderDetailProvider>(context, listen: false).address
+                        ))
                           : _orderDao.insertOrder(OrderEntity(
                             orderNo: orderNo,
-                            branch: OrderTakeAwayTab.branchName,
+                            branch: Provider.of<OrderDetailProvider>(context, listen: false).branch,
                             time: '${DateTime.now().hour<10?'0${DateTime.now().hour}':'${DateTime.now().hour}'}:${DateTime.now().minute<10?'0${DateTime.now().minute}':'${DateTime.now().minute}'}',
                             date: '${DateTime.now().day<10?'0${DateTime.now().day}':'${DateTime.now().day}'}.${DateTime.now().month<10?'0${DateTime.now().month}':'${DateTime.now().month}'}.${DateTime.now().year}',
-                            payment: OrderTakeAwayTab.paymentMethod,
+                            payment: Provider.of<OrderDetailProvider>(context, listen: false).paymentMethod,
                             products: products,
-                            price: totalPrice
+                            price: totalPrice,
+                            address: Provider.of<OrderDetailProvider>(context, listen: false).address
                         ));
                       pref.setOrderNumber(orderNo+1);
                       _productDao.deleteProducts();
