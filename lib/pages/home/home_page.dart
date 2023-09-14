@@ -1,5 +1,6 @@
 import 'package:demo_max_way/core/api/food_api.dart';
 import 'package:demo_max_way/core/pref.dart';
+import 'package:demo_max_way/model/models.dart';
 import 'package:demo_max_way/pages/home/bloc/bloc.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -9,8 +10,8 @@ import 'package:shimmer/shimmer.dart';
 import '../../widgets/category.dart';
 import '../../widgets/product_search.dart';
 import '../../widgets/shimmer.dart';
-import '../detail/detail_page.dart';
-import '../map/map_page.dart';
+import '../detail/product_detail_page.dart';
+import '../map/first_launch_map_page.dart';
 
 class HomePage extends StatefulWidget {
   final bool isFirst;
@@ -56,6 +57,7 @@ class _HomePageState extends State<HomePage> {
   }
 
   var selectedCategories = <String>[];
+  var deserts = Category.empty();
 
   @override
   Widget build(BuildContext context) {
@@ -69,6 +71,11 @@ class _HomePageState extends State<HomePage> {
     return BlocBuilder<FoodBloc, FoodState>(
       bloc: bloc,
       builder: (context, state) {
+        for(var category in state.categories){
+          if(category.title.uz.contains('Desertlar')){
+            deserts = category;
+          }
+        }
         return Scaffold(
           backgroundColor: const Color(0xFFF6F6F6),
           appBar: AppBar(
@@ -80,7 +87,7 @@ class _HomePageState extends State<HomePage> {
                     onTap: () {
                       Navigator.push(context, CupertinoPageRoute(
                         builder: (context) {
-                          return const MapPage();
+                          return const FirstLaunchMapPage();
                         },
                       ));
                     },
@@ -116,7 +123,7 @@ class _HomePageState extends State<HomePage> {
                         onTap: () {
                           Navigator.push(context, CupertinoPageRoute(
                             builder: (context) {
-                              return const MapPage();
+                              return const FirstLaunchMapPage();
                             },
                           ));
                         },
@@ -182,6 +189,7 @@ class _HomePageState extends State<HomePage> {
                                   ? IconButton(
                                   onPressed: () {
                                     controller.clear();
+                                    _node.unfocus();
                                     setState(() {});
                                   },
                                   icon: const Icon(
@@ -291,7 +299,7 @@ class _HomePageState extends State<HomePage> {
                               Navigator.push(
                                   context,
                                   CupertinoPageRoute(builder: (context) => isFirst
-                                      ? const MapPage() : DetailPage(product: product),));
+                                      ? const FirstLaunchMapPage() : DetailPage(product: product, deserts: deserts)));
                             },);
                           },
                           separatorBuilder: (_, __) => const SizedBox(height: 10,),
@@ -310,6 +318,7 @@ class _HomePageState extends State<HomePage> {
                           final category = state.categories[i];
                           return CategoryItem(
                             category: category,
+                            deserts: deserts,
                             isFirst: isFirst,
                           );
                         },

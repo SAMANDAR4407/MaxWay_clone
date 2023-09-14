@@ -4,8 +4,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class NamePage extends StatefulWidget {
-  const NamePage({super.key, required this.page, required this.number});
-  final String page;
+  const NamePage({super.key, required this.number, required this.pageName});
+  final String? pageName;
   final String number;
 
   static String verification = '';
@@ -25,6 +25,12 @@ class _NamePageState extends State<NamePage> {
   void dispose() {
     _text.dispose();
     super.dispose();
+  }
+
+  @override
+  void initState() {
+    _text.text = 'Samandar Kamalov';
+    super.initState();
   }
 
   @override
@@ -74,30 +80,32 @@ class _NamePageState extends State<NamePage> {
                 ),
               ],
             ),
-            InkWell(
-              onTap: () async {
-                setState(() {
-                  _text.text.isEmpty ? valid = false : valid = true;
-                });
+            Material(
+              clipBehavior: Clip.antiAlias,
+              color: const Color(0xff51267D),
+              borderRadius: BorderRadius.circular(10),
+              child: InkWell(
+                onTap: () async {
+                  setState(() {
+                    _text.text.isEmpty ? valid = false : valid = true;
+                  });
 
-                valid
-                    ? Navigator.pushReplacement(context, CupertinoPageRoute(builder: (context) => ConfirmationPage(page: widget.page, name: _text.text,number: widget.number,)))
-                    : null;
-              },
-              child: Container(
-                  decoration: BoxDecoration(
-                      color: const Color(0xff51267D),
-                      borderRadius: BorderRadius.circular(10)),
-                  width: double.infinity,
-                  height: MediaQuery.of(context).size.height * 0.07,
-                  child: const Center(
-                      child: Text('Davom eting',
-                          style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                              fontSize: 15,
-                              color: Colors.white)
-                      )
-                  )
+                  valid
+                      ? Navigator.pushReplacement(context, CupertinoPageRoute(builder: (context) => ConfirmationPage(name: _text.text,number: widget.number,pageName: widget.pageName)))
+                      : null;
+                },
+                child: SizedBox(
+                    width: double.infinity,
+                    height: MediaQuery.of(context).size.height * 0.065,
+                    child: const Center(
+                        child: Text('Davom eting',
+                            style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                fontSize: 15,
+                                color: Colors.white)
+                        )
+                    )
+                ),
               ),
             )
           ],

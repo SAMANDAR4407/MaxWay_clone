@@ -25,9 +25,9 @@
         </intent>
     </queries>
     <application
-        android:label="demo_max_way"
+        android:label="MaxWay clone"
         android:name="${applicationName}"
-        android:icon="@mipmap/ic_launcher">
+        android:icon="@drawable/icon">
         <activity
             android:name=".MainActivity"
             android:exported="true"

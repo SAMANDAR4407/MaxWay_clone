@@ -72,7 +72,7 @@ class _ConfirmPageState extends State<ConfirmPage> {
                       CupertinoIcons.paperplane,
                       size: 25
                   ),
-                  const SizedBox(width: 8,),
+                  const SizedBox(width: 8),
                   Expanded(
                     child: Text(
                       widget.pinnedLocation,
@@ -113,9 +113,8 @@ class _ConfirmPageState extends State<ConfirmPage> {
                     ),
                     suffixIcon: nameController.text.isNotEmpty
                         ? InkWell(
-                        onTap: () => nameController.text = '',
-                        child: const Icon(Icons.close,
-                            color: Color(0xFFAFAFAF)))
+                            onTap: () => nameController.text = '',
+                            child: const Icon(Icons.close, color: Color(0xFFAFAFAF)))
                         : null,
                   ),
                 ),

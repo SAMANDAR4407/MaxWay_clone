@@ -1,13 +1,14 @@
 import 'package:demo_max_way/core/database/database.dart';
 import 'package:demo_max_way/pages/auth/phone_page.dart';
 import 'package:demo_max_way/pages/home/home_page.dart';
-import 'package:demo_max_way/pages/orders/orders_page.dart';
+import 'package:demo_max_way/pages/orders/my_orders/orders_page.dart';
 import 'package:demo_max_way/pages/profile/profile_page.dart';
 import 'package:demo_max_way/utils/setup_db.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import '../../core/pref.dart';
+import '../../utils/utils.dart';
 import '../cart/cart_page.dart';
 
 class HostPage extends StatefulWidget {
@@ -22,16 +23,17 @@ class HostPage extends StatefulWidget {
 class _HostPageState extends State<HostPage> {
   final pref = PrefHelper();
   bool hasLogged = false;
-  bool isEmpty = true;
+  bool isNotEmpty = false;
   int _selectedIndex = 0;
   var list = [];
 
   @override
   void initState() {
+    updateOrders();
     load();
-    if (list.isNotEmpty) {
-      isEmpty = false;
-    }
+    // if (list.isNotEmpty) {
+    //   isNotEmpty = true;
+    // }
     _selectedIndex = widget.position;
     setState(() {});
     super.initState();
@@ -51,7 +53,9 @@ class _HostPageState extends State<HostPage> {
   @override
   Widget build(BuildContext context) {
     if (list.isNotEmpty) {
-      setState(() {});
+      setState(() {
+        isNotEmpty = true;
+      });
     }
     return Scaffold(
       bottomNavigationBar: BottomNavigationBar(
@@ -61,6 +65,7 @@ class _HostPageState extends State<HostPage> {
           BottomNavigationBarItem(
               icon: Badge(
                 label: Text('${list.length}'),
+                isLabelVisible: isNotEmpty,
                 child: const Icon(CupertinoIcons.cart),
               ),
               label: 'Savatcha'),
@@ -79,8 +84,8 @@ class _HostPageState extends State<HostPage> {
         children: [
           const HomePage(isFirst: true),
           CartPage(),
-          const OrdersPage(),
-          hasLogged ? const ProfilePage() : const PhonePage(page: 'profil'),
+          hasLogged ? const OrdersPage() : const PhonePage(pageName: 'order'),
+          hasLogged ? const ProfilePage() : const PhonePage(pageName: 'profil'),
         ],
       ),
     );
