@@ -204,7 +204,7 @@ class _OrderDetailPageState extends State<OrderDetailPage> with SingleTickerProv
                           date: '${DateTime.now().day<10?'0${DateTime.now().day}':'${DateTime.now().day}'}.${DateTime.now().month<10?'0${DateTime.now().month}':'${DateTime.now().month}'}.${DateTime.now().year}',
                           payment: Provider.of<OrderDetailProvider>(context, listen: false).paymentMethod,
                           products: products,
-                          price: totalPrice,
+                          price: totalPrice+10000,
                           address: Provider.of<OrderDetailProvider>(context, listen: false).address
                         ))
                           : _orderDao.insertOrder(OrderEntity(
